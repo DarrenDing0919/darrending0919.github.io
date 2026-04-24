@@ -5,82 +5,146 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ongredients with Influu | Darren Ding</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <style>
-    .ong-dashboard-grid {
+    body {
+      background: linear-gradient(180deg, #fffef5 0%, #fef9c3 60%, #fef08a 100%);
+      min-height: 100vh;
+    }
+    .dash-section {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .dash-section:last-of-type { border-bottom: none; }
+    .dash-section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--primary); margin: 0 0 4px;
+    }
+    .dash-section-title {
+      font-size: 1.3rem; font-weight: 800; color: var(--text);
+      margin: 0 0 16px; letter-spacing: -0.02em;
+    }
+
+    /* ── Range selector ── */
+    .range-row {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .range-btn {
+      padding: 6px 14px; border-radius: 8px; font-size: 0.78rem;
+      font-weight: 600; border: 1.5px solid var(--border);
+      background: rgba(255,255,255,0.6); color: var(--muted);
+      cursor: pointer; transition: 0.15s ease;
+    }
+    .range-btn.active {
+      background: var(--text); border-color: var(--text); color: #fff;
+    }
+    .date-picker-wrap {
+      position: relative; display: inline-flex; align-items: center;
+    }
+    .date-picker-wrap input {
+      padding: 6px 12px 6px 32px;
+      border-radius: 8px; border: 1.5px solid var(--border);
+      background: rgba(255,255,255,0.6); font-size: 0.78rem;
+      font-weight: 600; color: var(--text); cursor: pointer;
+      width: 210px; outline: none; font-family: inherit;
+    }
+    .date-picker-wrap input:focus { border-color: var(--primary); }
+    .date-picker-icon {
+      position: absolute; left: 9px; font-size: 0.85rem; pointer-events: none;
+    }
+    .range-divider {
+      width: 1px; height: 18px; background: var(--border); margin: 0 2px;
+    }
+    /* flatpickr overrides */
+    .flatpickr-calendar {
+      border-radius: 12px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
+      border: 1px solid var(--border) !important;
+    }
+    .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange {
+      background: var(--primary) !important; border-color: var(--primary) !important;
+    }
+    .flatpickr-day.inRange {
+      background: #dbeafe !important; box-shadow: none !important; border-color: transparent !important;
+    }
+
+    /* ── Section 1 layout ── */
+    .s1-layout {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 220px 1fr;
       gap: 20px;
+      align-items: start;
+    }
+    .stat-cards-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .stat-card-item {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-top: 3px solid transparent;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .stat-card-label {
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--muted); margin: 0 0 8px;
+    }
+    .stat-card-value {
+      font-size: 1.6rem; font-weight: 800; color: var(--text);
+      margin: 0; line-height: 1;
     }
 
-    .ong-dashboard-card-wide {
-      grid-column: 1 / -1;
+    /* ── Toggles ── */
+    .toggle-row {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .toggle-row-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      white-space: nowrap; min-width: 52px;
+    }
+    .toggle-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toggle-btn {
+      padding: 5px 14px; border-radius: 999px; font-size: 0.78rem;
+      font-weight: 600; border: 1.5px solid var(--border);
+      background: transparent; color: var(--muted);
+      cursor: pointer; transition: 0.15s ease;
+    }
+    .toggle-btn.active { color: #fff; border-color: transparent; }
+    .period-btn {
+      padding: 5px 14px; border-radius: 999px; font-size: 0.78rem;
+      font-weight: 600; border: 1.5px solid var(--border);
+      background: transparent; color: var(--muted);
+      cursor: pointer; transition: 0.15s ease;
+    }
+    .period-btn.active {
+      background: var(--text); border-color: var(--text); color: #fff;
     }
 
-    .ong-dashboard-card {
-      background: #fff;
-      border: 1px solid #e8d87a;
+    /* ── Chart card ── */
+    .chart-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 36px 32px;
-      text-align: center;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+      padding: 20px;
       box-shadow: var(--shadow);
     }
+    .chart-wrap { position: relative; height: 240px; }
 
-    .ong-placeholder-icon {
-      width: 48px;
-      height: 48px;
-      background: #fef9c3;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-    }
-
-    .ong-placeholder-tag {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #b8960a;
-      background: #fef3c7;
-      border-radius: 20px;
-      padding: 3px 10px;
-    }
-
-    .ong-placeholder-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin: 0;
-    }
-
-    .ong-placeholder-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin: 0;
-      max-width: 280px;
-    }
-
-    @media (max-width: 640px) {
-      .ong-dashboard-grid { grid-template-columns: 1fr; }
-      .ong-dashboard-card-wide { grid-column: 1; }
+    @media (max-width: 768px) {
+      .s1-layout { grid-template-columns: 1fr; }
+      .stat-cards-grid { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <div style="border-bottom: 1px solid var(--border); padding: 16px 0;">
+  <div style="border-bottom: 1px solid var(--border); padding: 16px 0; background: rgba(255,255,255,0.5);">
     <div class="container">
       <nav class="nav" style="margin-bottom: 0;">
-        <div class="brand">
-          <a href="/">Darren Ding</a>
-        </div>
+        <div class="brand"><a href="/">Darren Ding</a></div>
         <div class="nav-links">
           <a href="mailto:drz20020919@gmail.com">Email</a>
           <a href="https://www.linkedin.com/in/darrending/" target="_blank">LinkedIn</a>
@@ -90,36 +154,99 @@
     </div>
   </div>
 
-  <section class="section" style="padding-top: 32px;">
+  <!-- ── Section 1: Invitation Funnel ── -->
+  <section class="dash-section" style="padding-top: 32px;">
     <div class="container">
-      <div class="section-header">
-        <p class="section-label">Analytics Dashboards</p>
-        <h2>Ongredients × Influu</h2>
+      <p class="dash-section-label">Section 01</p>
+      <h2 class="dash-section-title">Invitation Funnel</h2>
+
+      <!-- Date range selector -->
+      <div class="range-row">
+        <div class="date-picker-wrap">
+          <span class="date-picker-icon">📅</span>
+          <input type="text" id="date-range-input" placeholder="Select date range" readonly />
+        </div>
+        <div class="range-divider"></div>
+        <button class="range-btn" data-days="7">Last 7 Days</button>
+        <button class="range-btn" data-days="14">Last 14 Days</button>
+        <button class="range-btn active" data-days="30">Last 30 Days</button>
       </div>
 
-      <div class="ong-dashboard-grid">
-
-        <div class="ong-dashboard-card ong-dashboard-card-wide">
-          <div class="ong-placeholder-icon">📊</div>
-          <p class="ong-placeholder-tag">Coming Soon</p>
-          <p class="ong-placeholder-title">Campaign Performance Overview</p>
-          <p class="ong-placeholder-desc">Overall affiliate campaign metrics — reach, GMV attribution, and ROI across all creators.</p>
+      <div class="s1-layout">
+        <!-- Stat summary cards -->
+        <div class="stat-cards-grid" style="padding-top: 90px;">
+          <div class="stat-card-item" style="border-top-color:#1d4ed8;">
+            <p class="stat-card-label">Invitations Sent</p>
+            <p class="stat-card-value" id="stat-sent">—</p>
+          </div>
+          <div class="stat-card-item" style="border-top-color:#3b82f6;">
+            <p class="stat-card-label">Sample Requested</p>
+            <p class="stat-card-value" id="stat-req">—</p>
+          </div>
+          <div class="stat-card-item" style="border-top-color:#22c55e;">
+            <p class="stat-card-label">Sample Approved</p>
+            <p class="stat-card-value" id="stat-approved">—</p>
+          </div>
+          <div class="stat-card-item" style="border-top-color:#f59e0b;">
+            <p class="stat-card-label">Video Posted</p>
+            <p class="stat-card-value" id="stat-posted">—</p>
+          </div>
         </div>
 
-        <div class="ong-dashboard-card">
-          <div class="ong-placeholder-icon">🎯</div>
-          <p class="ong-placeholder-tag">Coming Soon</p>
-          <p class="ong-placeholder-title">Creator Tier Analysis</p>
-          <p class="ong-placeholder-desc">Performance breakdown by creator size, content format, and posting frequency.</p>
+        <!-- Chart column -->
+        <div>
+          <div class="toggle-row">
+            <span class="toggle-row-label">Period</span>
+            <div class="toggle-group">
+              <button class="period-btn active" data-period="daily">Daily</button>
+              <button class="period-btn" data-period="weekly">Weekly</button>
+              <button class="period-btn" data-period="monthly">Monthly</button>
+            </div>
+          </div>
+          <div class="toggle-row" style="margin-bottom:14px;">
+            <span class="toggle-row-label">Metrics</span>
+            <div class="toggle-group" id="toggles-1">
+              <button class="toggle-btn active" data-chart="chart1" data-index="0" style="background:#1d4ed8;border-color:#1d4ed8;">Invitations Sent</button>
+              <button class="toggle-btn" data-chart="chart1" data-index="1" data-color="#3b82f6">Sample Requested</button>
+              <button class="toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Approved</button>
+              <button class="toggle-btn" data-chart="chart1" data-index="3" data-color="#f59e0b">Video Posted</button>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-wrap"><canvas id="chart1"></canvas></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="ong-dashboard-card">
-          <div class="ong-placeholder-icon">🛒</div>
-          <p class="ong-placeholder-tag">Coming Soon</p>
-          <p class="ong-placeholder-title">Conversion & GMV Funnel</p>
-          <p class="ong-placeholder-desc">From creator views to product page visits, add-to-cart, and final purchase — by SKU.</p>
-        </div>
+  <!-- ── Section 2: Video Performance ── -->
+  <section class="dash-section">
+    <div class="container">
+      <p class="dash-section-label">Section 02</p>
+      <h2 class="dash-section-title">Video Performance</h2>
+      <div class="toggle-group" style="margin-bottom:16px;" id="toggles-2">
+        <button class="toggle-btn active" data-chart="chart2" data-index="0" style="background:#1d4ed8;border-color:#1d4ed8;">Avg. CTR</button>
+        <button class="toggle-btn" data-chart="chart2" data-index="1" data-color="#8b5cf6">Avg. CTOR</button>
+      </div>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chart2"></canvas></div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ── Section 3: GMV ── -->
+  <section class="dash-section">
+    <div class="container">
+      <p class="dash-section-label">Section 03</p>
+      <h2 class="dash-section-title">GMV</h2>
+      <div class="toggle-group" style="margin-bottom:16px;" id="toggles-3">
+        <button class="toggle-btn active" data-chart="chart3" data-index="0" style="background:#f59e0b;border-color:#f59e0b;">Daily</button>
+        <button class="toggle-btn" data-chart="chart3" data-index="1" data-color="#1d4ed8">Weekly</button>
+        <button class="toggle-btn" data-chart="chart3" data-index="2" data-color="#22c55e">Monthly</button>
+      </div>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chart3"></canvas></div>
       </div>
     </div>
   </section>
@@ -130,6 +257,219 @@
       <p><a href="/" style="color:var(--muted);">← Back to Portfolio</a></p>
     </div>
   </footer>
+
+  <script>
+    /* ── Data loaded from JSON ── */
+    let rawInv = [];
+
+    /* ── Aggregation helpers ── */
+    function fmtDate(str) {
+      const d = new Date(str);
+      return d.toLocaleString('default',{month:'short'}) + ' ' + d.getDate();
+    }
+    function weekKey(str) {
+      const d = new Date(str);
+      const day = d.getDay();
+      const diff = day === 0 ? -6 : 1 - day;
+      const mon = new Date(d); mon.setDate(d.getDate() + diff);
+      return 'Wk ' + fmtDate(mon.toISOString().slice(0,10));
+    }
+    function monthKey(str) {
+      const d = new Date(str);
+      return d.toLocaleString('default',{month:'short',year:'numeric'});
+    }
+
+    function aggregate(rows, period) {
+      if (period === 'daily') {
+        return {
+          labels:   rows.map(r => fmtDate(r.date)),
+          sent:     rows.map(r => r.sent),
+          req:      rows.map(r => r.req),
+          approved: rows.map(r => r.approved),
+          posted:   rows.map(r => r.posted),
+        };
+      }
+      const keyFn = period === 'weekly' ? weekKey : monthKey;
+      const groups = {}, order = [];
+      rows.forEach(r => {
+        const k = keyFn(r.date);
+        if (!groups[k]) { groups[k] = {sent:0,req:0,approved:0,posted:0}; order.push(k); }
+        groups[k].sent     += r.sent;
+        groups[k].req      += r.req;
+        groups[k].approved += r.approved;
+        groups[k].posted   += r.posted;
+      });
+      return {
+        labels:   order,
+        sent:     order.map(k => groups[k].sent),
+        req:      order.map(k => groups[k].req),
+        approved: order.map(k => groups[k].approved),
+        posted:   order.map(k => groups[k].posted),
+      };
+    }
+
+    /* ── Load data then init ── */
+    fetch('/data/ongredients/invitation.json')
+      .then(r => r.json())
+      .then(data => { rawInv = data; init(); });
+
+    function init() {
+
+    /* ── State ── */
+    let currentStart = new Date('2026-03-26');
+    let currentEnd   = new Date('2026-04-24');
+    let currentPeriod1 = 'daily';
+
+    function getRows() {
+      return rawInv.filter(r => {
+        const d = new Date(r.date);
+        return d >= currentStart && d <= currentEnd;
+      });
+    }
+
+    function updateSection1() {
+      const rows = getRows();
+      const agg  = aggregate(rows, currentPeriod1);
+
+      const c = charts.chart1;
+      c.data.labels          = agg.labels;
+      c.data.datasets[0].data = agg.sent;
+      c.data.datasets[1].data = agg.req;
+      c.data.datasets[2].data = agg.approved;
+      c.data.datasets[3].data = agg.posted;
+      c.update();
+
+      const tot = rows.reduce((a,r) => ({
+        sent:     a.sent     + r.sent,
+        req:      a.req      + r.req,
+        approved: a.approved + r.approved,
+        posted:   a.posted   + r.posted,
+      }), {sent:0,req:0,approved:0,posted:0});
+
+      document.getElementById('stat-sent').textContent     = tot.sent.toLocaleString();
+      document.getElementById('stat-req').textContent      = tot.req.toLocaleString();
+      document.getElementById('stat-approved').textContent = tot.approved.toLocaleString();
+      document.getElementById('stat-posted').textContent   = tot.posted.toLocaleString();
+    }
+
+    /* ── Chart factory ── */
+    function makeChart(id, datasets, initLabels) {
+      const ctx = document.getElementById(id).getContext('2d');
+      return new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: initLabels || [],
+          datasets: datasets.map((d,i) => ({
+            label: d.label,
+            data: d.data || [],
+            borderColor: d.color,
+            backgroundColor: d.color + '18',
+            borderWidth: 2.5,
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            tension: 0.4,
+            fill: false,
+            hidden: i !== 0,
+          }))
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode:'index', intersect:false },
+          plugins: {
+            legend: { display:false },
+            tooltip: {
+              backgroundColor:'#1a1a1a', titleColor:'#fff',
+              bodyColor:'rgba(255,255,255,0.75)', padding:12, cornerRadius:8,
+            }
+          },
+          scales: {
+            x: { grid:{color:'rgba(0,0,0,0.04)'}, ticks:{color:'#9ca3af',font:{size:11}} },
+            y: { grid:{color:'rgba(0,0,0,0.04)'}, ticks:{color:'#9ca3af',font:{size:11}}, beginAtZero:true }
+          }
+        }
+      });
+    }
+
+    const charts = {
+      chart1: makeChart('chart1', [
+        {label:'Invitations Sent', color:'#1d4ed8'},
+        {label:'Sample Requested', color:'#3b82f6'},
+        {label:'Sample Approved',  color:'#22c55e'},
+        {label:'Video Posted',     color:'#f59e0b'},
+      ]),
+      chart2: makeChart('chart2', [
+        {label:'Avg. CTR',  color:'#1d4ed8'},
+        {label:'Avg. CTOR', color:'#8b5cf6'},
+      ]),
+      chart3: makeChart('chart3', [
+        {label:'Daily GMV',   color:'#f59e0b'},
+        {label:'Weekly GMV',  color:'#1d4ed8'},
+        {label:'Monthly GMV', color:'#22c55e'},
+      ]),
+    };
+
+    /* ── Init Section 1 ── */
+    updateSection1();
+
+    /* ── Flatpickr date range picker ── */
+    const fp = flatpickr('#date-range-input', {
+      mode: 'range',
+      dateFormat: 'M j, Y',
+      defaultDate: ['2026-03-26', '2026-04-24'],
+      onChange: function(selectedDates) {
+        if (selectedDates.length === 2) {
+          document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+          currentStart = selectedDates[0];
+          currentEnd   = selectedDates[1];
+          updateSection1();
+        }
+      }
+    });
+
+    /* ── Preset range buttons ── */
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const days = parseInt(btn.dataset.days);
+        const end   = new Date('2026-04-24');
+        const start = new Date(end);
+        start.setDate(end.getDate() - days + 1);
+        currentStart = start;
+        currentEnd   = end;
+        fp.setDate([start, end]);
+        updateSection1();
+      });
+    });
+
+    /* ── Period buttons ── */
+    document.querySelectorAll('.period-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPeriod1 = btn.dataset.period;
+        updateSection1();
+      });
+    });
+
+    /* ── Metric toggle buttons ── */
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const chart = charts[btn.dataset.chart];
+        const index = parseInt(btn.dataset.index);
+        const color = btn.dataset.color || btn.style.background;
+        const isActive = btn.classList.toggle('active');
+        btn.style.background  = isActive ? color : 'transparent';
+        btn.style.borderColor = isActive ? color : '';
+        btn.style.color       = isActive ? '#fff' : '';
+        chart.data.datasets[index].hidden = !isActive;
+        chart.update();
+      });
+    });
+
+    } // end init()
+  </script>
 
 </body>
 </html>
