@@ -263,6 +263,12 @@ a {
   color: var(--primary);
 }
 
+.cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -552,6 +558,181 @@ a {
 .tiktok-sub strong {
   color: var(--text);
   font-weight: 700;
+}
+
+/* ── Ongredients brand variables ── */
+:root {
+  --ong-yellow: #f0c000;
+  --ong-yellow-light: #fffdf0;
+  --ong-yellow-mid: #fef3c7;
+  --ong-dark: #1a1a1a;
+  --ong-muted: #5a5241;
+}
+
+/* ── Ongredients card (in Selected Work) ── */
+.card-ong {
+  background: var(--ong-yellow-light);
+  border: 1.5px solid #e8d87a;
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-ong-header {
+  background: linear-gradient(135deg, #f5e642 0%, #f0c000 100%) !important;
+  padding: 20px 24px 18px;
+  position: relative;
+}
+
+.ong-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ong-dark);
+  color: #fff;
+  border-radius: 20px;
+  padding: 2px 10px;
+  margin-bottom: 10px;
+}
+
+.ong-brand-name {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--ong-dark);
+  margin: 0 0 4px;
+  letter-spacing: -0.03em;
+  font-style: italic;
+}
+
+.ong-tagline {
+  font-size: 0.78rem;
+  color: rgba(26,26,26,0.7);
+  margin: 0;
+  font-style: normal;
+  letter-spacing: 0.01em;
+}
+
+.card-ong .card-body {
+  padding: 20px 24px 0;
+}
+
+.ong-tag {
+  color: var(--ong-muted) !important;
+  background: var(--ong-yellow-mid);
+  border-radius: 4px;
+  padding: 2px 8px;
+  display: inline-block;
+  font-size: 0.7rem;
+}
+
+.card-ong .card-body h3 {
+  color: var(--ong-dark);
+}
+
+.card-ong ul li::before {
+  background: var(--ong-yellow);
+}
+
+.card-ong {
+  align-self: start;
+  min-height: 0;
+  background: linear-gradient(160deg, #fffde7 0%, #fef9c3 60%, #fef08a 100%);
+  border: 1.5px solid #f0d060;
+  padding: 0;
+}
+
+.ong-logo-block {
+  padding: 4px 24px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ong-logo-img {
+  width: 55%;
+  max-width: 170px;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+.card-footer-ong {
+  background: var(--ong-yellow-mid);
+  border-top: 1px solid #e8d87a;
+}
+
+.card-link-ong {
+  color: var(--ong-dark) !important;
+  font-weight: 700;
+}
+
+.card-link-ong:hover {
+  color: #856800 !important;
+}
+
+/* ── Ongredients page ── */
+.hero-sm {
+  padding: 28px 0 40px;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 8px 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.nav-active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.coming-soon-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.card-active {
+  border: 1.5px solid var(--primary);
+  position: relative;
+}
+
+.card-active::before {
+  content: "In Progress";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--surface-alt);
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  padding: 2px 10px;
+}
+
+.coming-soon-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 12px;
+}
+
+.coming-soon-text {
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 1rem;
 }
 
 /* ── Responsive ── */

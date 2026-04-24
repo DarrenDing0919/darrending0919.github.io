@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ongredients with Influu | Darren Ding</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .ong-dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .ong-dashboard-card-wide {
+      grid-column: 1 / -1;
+    }
+
+    .ong-dashboard-card {
+      background: #fff;
+      border: 1px solid #e8d87a;
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .ong-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      background: #fef9c3;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .ong-placeholder-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b8960a;
+      background: #fef3c7;
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    .ong-placeholder-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0;
+    }
+
+    .ong-placeholder-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0;
+      max-width: 280px;
+    }
+
+    @media (max-width: 640px) {
+      .ong-dashboard-grid { grid-template-columns: 1fr; }
+      .ong-dashboard-card-wide { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="border-bottom: 1px solid var(--border); padding: 16px 0;">
+    <div class="container">
+      <nav class="nav" style="margin-bottom: 0;">
+        <div class="brand">
+          <a href="/">Darren Ding</a>
+        </div>
+        <div class="nav-links">
+          <a href="mailto:drz20020919@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/darrending/" target="_blank">LinkedIn</a>
+          <a href="/asset/Darren_Resume_latest.pdf" target="_blank">Resume</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 32px;">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Analytics Dashboards</p>
+        <h2>Ongredients × Influu</h2>
+      </div>
+
+      <div class="ong-dashboard-grid">
+
+        <div class="ong-dashboard-card ong-dashboard-card-wide">
+          <div class="ong-placeholder-icon">📊</div>
+          <p class="ong-placeholder-tag">Coming Soon</p>
+          <p class="ong-placeholder-title">Campaign Performance Overview</p>
+          <p class="ong-placeholder-desc">Overall affiliate campaign metrics — reach, GMV attribution, and ROI across all creators.</p>
+        </div>
+
+        <div class="ong-dashboard-card">
+          <div class="ong-placeholder-icon">🎯</div>
+          <p class="ong-placeholder-tag">Coming Soon</p>
+          <p class="ong-placeholder-title">Creator Tier Analysis</p>
+          <p class="ong-placeholder-desc">Performance breakdown by creator size, content format, and posting frequency.</p>
+        </div>
+
+        <div class="ong-dashboard-card">
+          <div class="ong-placeholder-icon">🛒</div>
+          <p class="ong-placeholder-tag">Coming Soon</p>
+          <p class="ong-placeholder-title">Conversion & GMV Funnel</p>
+          <p class="ong-placeholder-desc">From creator views to product page visits, add-to-cart, and final purchase — by SKU.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Darren Ding</p>
+      <p><a href="/" style="color:var(--muted);">← Back to Portfolio</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
