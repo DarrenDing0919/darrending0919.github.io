@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Darren Ding | Portfolio</title>
-  <meta
-    name="description"
-    content="Portfolio of Darren Ding: TikTok Shop, e-commerce operations, analytics, Python, and Power BI work samples."
-  />
+  <meta name="description" content="Portfolio of Darren Ding: TikTok Shop, e-commerce operations, analytics, Python, and Power BI work samples." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- ══ Hero ══ -->
   <header class="hero">
     <div class="container">
       <nav class="nav">
@@ -22,8 +21,12 @@
         </div>
       </nav>
 
-      <div class="hero-content">
-        <p class="eyebrow">Portfolio</p>
+      <div class="hero-inner">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-line"></span>
+          <span class="hero-eyebrow-text">Portfolio · 2026</span>
+        </div>
+
         <div class="wordcloud" role="heading" aria-level="1">
           <span class="wc wc-xl wc-dark">TikTok Shop</span>
           <span class="wc wc-lg wc-mid">Ecommerce</span>
@@ -35,7 +38,8 @@
           <span class="wc wc-lg wc-dark">Analytics</span>
           <span class="wc wc-sm wc-light">Python · Power BI</span>
         </div>
-        <p class="subtitle">
+
+        <p class="hero-sub">
           I turn TikTok Shop operations into measurable growth — from zero-to-one launches
           to data-backed commercial decisions.
         </p>
@@ -49,40 +53,75 @@
   </header>
 
   <main>
+
+    <!-- ══ 01 About ══ -->
     <section class="section">
       <div class="container">
-        <div class="section-header">
-          <p class="section-label">About</p>
-          <h2>What I do</h2>
+        <div class="section-marker">
+          <span class="section-num">01</span>
+          <span class="section-tick"></span>
+          <span class="section-tag">About</span>
         </div>
-        <div class="about-card">
-          <p class="about-lead">
-            A five-year cross-functional journey — <em>system engineering</em> at Aptiv,
-            <em>financial audit</em> at PwC, <em>banking</em> at BOC, and now
-            <strong>e-commerce operations</strong> at UpSpring.
-          </p>
-          <p class="about-body">
-            At UpSpring I went deep into the TikTok Shop ecosystem — scaling a new channel from
-            <strong>$0 to $115K GMV in under 100 days</strong>, running BFCM campaigns at
-            <strong>6× ROI</strong>, and building Python and Power BI tools to automate workflows
-            and surface actionable insights.
-          </p>
-          <p class="about-body about-intent-text">
-            Looking for roles at the intersection of <strong>commercial ownership</strong>,
-            <strong>cross-functional coordination</strong>, and <strong>data-driven strategy</strong> —
-            ideally in TikTok Shop, e-commerce, or category management.
-          </p>
+        <h2>What I do</h2>
+        <div class="about-grid">
+          <div>
+            <p class="about-lead">
+              A five-year cross-functional journey — <em>system engineering</em> at Aptiv,
+              <em>financial audit</em> at PwC, <em>banking</em> at BOC, and now
+              <strong>e-commerce operations</strong> at UpSpring.
+            </p>
+            <p class="about-body">
+              At UpSpring I went deep into the TikTok Shop ecosystem — scaling a new channel from
+              <strong>$0 to $115K GMV in under 100 days</strong>, running BFCM campaigns at
+              <strong>6× ROI</strong>, and building Python and Power BI tools to automate workflows
+              and surface actionable insights.
+            </p>
+            <p class="about-intent">
+              Looking for roles at the intersection of <strong>commercial ownership</strong>,
+              <strong>cross-functional coordination</strong>, and <strong>data-driven strategy</strong> —
+              ideally in TikTok Shop, e-commerce, or category management.
+            </p>
+          </div>
+
+          <div>
+            <p class="journey-label">Career Journey</p>
+            <div class="journey">
+              <div class="journey-item current">
+                <p class="journey-co">UpSpring</p>
+                <p class="journey-role">E-commerce Operations · TikTok Shop</p>
+              </div>
+              <div class="journey-item">
+                <p class="journey-co">Bank of China</p>
+                <p class="journey-role">Banking · Corporate Finance</p>
+              </div>
+              <div class="journey-item">
+                <p class="journey-co">PricewaterhouseCoopers</p>
+                <p class="journey-role">Financial Audit · Transaction Services</p>
+              </div>
+              <div class="journey-item">
+                <p class="journey-co">Aptiv</p>
+                <p class="journey-role">System Engineering · Automotive</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── NEW: TikTok Shop Cold Start Section ── -->
-    <section class="section tiktok-section alt">
+    <!-- ══ 02 Growth Story ══ -->
+    <section class="section section-growth">
       <div class="container">
-        <div class="section-header">
-          <p class="section-label">Growth Story</p>
-          <h2>TikTok Shop Cold Start: $0 → $115K in &lt;100 Days</h2>
+        <div class="section-marker">
+          <span class="section-num">02</span>
+          <span class="section-tick"></span>
+          <span class="section-tag">Growth Story</span>
         </div>
+
+        <div class="growth-headline">
+          <span class="growth-num">$115K</span>
+          <span class="growth-num-label">in &lt;100 days</span>
+        </div>
+
         <p class="tiktok-sub">
           Launched and scaled a net-new TikTok Shop from scratch — zero revenue to
           <strong>$115K GMV in under 100 days</strong>, growing orders and customers by
@@ -90,7 +129,7 @@
         </p>
 
         <div class="tiktok-layout">
-          <!-- Left: metric cards -->
+          <!-- Metric cards -->
           <div class="tiktok-metrics">
             <div class="metric-card metric-accent">
               <p class="metric-label">Peak GMV (Jun – Sep 2025)</p>
@@ -119,7 +158,7 @@
             </div>
           </div>
 
-          <!-- Right: chart + bullets -->
+          <!-- Chart + bullets -->
           <div class="tiktok-right">
             <div class="chart-card">
               <p class="chart-title">
@@ -143,116 +182,112 @@
         </div>
       </div>
     </section>
-    <!-- ── END NEW SECTION ── -->
 
-    <section class="section alt" id="work">
+    <!-- ══ 03 Work ══ -->
+    <section class="section" id="work">
       <div class="container">
-        <div class="section-header">
-          <p class="section-label">Selected Work</p>
-          <h2>Projects and business reviews</h2>
+        <div class="section-marker">
+          <span class="section-num">03</span>
+          <span class="section-tick"></span>
+          <span class="section-tag">Selected Work</span>
         </div>
+        <h2>Projects and business reviews</h2>
 
         <div class="cards-stack">
-        <div class="cards">
+          <div class="cards">
+            <article class="card card-ong">
+              <div class="card-body">
+                <p class="card-tag">Affiliate Analytics · TikTok Shop</p>
+                <h3>Ongredients × Influu</h3>
+                <p class="card-text">
+                  Influu provides <strong>affiliate marketing</strong> for Ongredients —
+                  recruiting creators and attributing sales. The dashboard tracks
+                  <strong>GMV, creator performance, and conversion</strong>.
+                </p>
+              </div>
+              <div class="ong-logo-block">
+                <img src="/asset/Ongredients logo.png" alt="óngredients logo" class="ong-logo-img" />
+              </div>
+              <div class="card-footer">
+                <a class="card-link" href="/ongredients.html">View Project →</a>
+              </div>
+            </article>
+          </div>
 
-          <article class="card card-ong">
-            <div class="card-body">
-              <p class="card-tag" style="color:rgba(26,26,26,0.55);">Affiliate Analytics · TikTok Shop</p>
-              <h3 style="color:#1a1a1a;">Ongredients × Influu</h3>
-              <p class="card-text" style="color:rgba(26,26,26,0.75);">
-                Influu provides <strong style="color:#1a1a1a;">affiliate marketing</strong> for Ongredients —
-                recruiting creators and attributing sales. The dashboard tracks
-                <strong style="color:#1a1a1a;">GMV, creator performance, and conversion</strong>.
-              </p>
-            </div>
-            <div class="ong-logo-block">
-              <img src="/asset/Ongredients logo.png" alt="óngredients logo" class="ong-logo-img" />
-            </div>
-            <div class="card-footer">
-              <a class="card-link" href="/ongredients.html" style="color:#1a1a1a;">View Project →</a>
-            </div>
-          </article>
+          <div class="cards">
+            <article class="card">
+              <div class="card-body">
+                <p class="card-tag">Python · Audit Automation</p>
+                <h3>PwC | Transaction Reconciliation Automation</h3>
+                <p class="card-text">
+                  Python-based automation project for <strong>transaction processing</strong>,
+                  weighted average cost calculation, and closing balance validation.
+                </p>
+                <ul>
+                  <li><strong>Built a multi-step workflow</strong> using Python, Pandas, and OpenPyXL</li>
+                  <li>Automated <strong>reconciliation and exception checks</strong> for large transaction datasets</li>
+                  <li>Packaged into a clean <strong>public GitHub repository</strong> as a work sample</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <a class="card-link" href="https://github.com/DarrenDing0919/python-transaction-reconciliation-automation.git" target="_blank">View Code →</a>
+              </div>
+            </article>
 
+            <article class="card">
+              <div class="card-body">
+                <p class="card-tag">TikTok Shop · Business Review</p>
+                <h3>UpSpring | 2025 BFCM Business Review</h3>
+                <p class="card-text">
+                  Business review summarizing strategy, execution, performance, and efficiency insights
+                  from the <strong>2025 Black Friday / Cyber Monday</strong> campaign.
+                </p>
+                <ul>
+                  <li>Delivered <strong>$120K GMV</strong> while saving <strong>61% of media budget</strong></li>
+                  <li>Maintained <strong>6.17 ROI</strong> with GMV MAX and margin gains from AB link and bundling</li>
+                  <li>Turned campaign performance into a <strong>concise commercial review</strong></li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <a class="card-link" href="/asset/bfcm-review.pdf" target="_blank">View Review →</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-body">
+                <p class="card-tag">Power BI · Operations Analytics</p>
+                <h3>UpSpring | Order &amp; Shipping Dashboard</h3>
+                <p class="card-text">
+                  Dashboard visualizing <strong>order geography</strong> and supporting
+                  <strong>shipping cost optimization</strong> decisions across U.S. states.
+                </p>
+                <ul>
+                  <li>Mapped <strong>order distribution by state</strong> in Power BI</li>
+                  <li>Supported <strong>shipping cost analysis</strong> and 3PL decision making</li>
+                  <li>Connected geographic demand patterns to <strong>unit economics</strong></li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <a class="card-link" href="/asset/powerbi-dashboard.png" target="_blank">View Dashboard →</a>
+              </div>
+            </article>
+          </div>
         </div>
-        <div class="cards">
-
-          <article class="card">
-            <div class="card-body">
-              <p class="card-tag">Python · Audit Automation</p>
-              <h3>PwC | Transaction Reconciliation Automation</h3>
-              <p class="card-text">
-                Python-based automation project for <strong>transaction processing</strong>,
-                weighted average cost calculation, and closing balance validation.
-              </p>
-              <ul>
-                <li><strong>Built a multi-step workflow</strong> using Python, Pandas, and OpenPyXL</li>
-                <li>Automated <strong>reconciliation and exception checks</strong> for large transaction datasets</li>
-                <li>Packaged into a clean <strong>public GitHub repository</strong> as a work sample</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a class="card-link" href="https://github.com/DarrenDing0919/python-transaction-reconciliation-automation.git" target="_blank">
-                View Code
-              </a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-body">
-              <p class="card-tag">TikTok Shop · Business Review</p>
-              <h3>UpSpring | 2025 BFCM Business Review</h3>
-              <p class="card-text">
-                Business review summarizing strategy, execution, performance, and efficiency insights
-                from the <strong>2025 Black Friday / Cyber Monday</strong> campaign.
-              </p>
-              <ul>
-                <li>Delivered <strong>$120K GMV</strong> while saving <strong>61% of media budget</strong></li>
-                <li>Maintained <strong>6.17 ROI</strong> with GMV MAX and margin gains from AB link and bundling</li>
-                <li>Turned campaign performance into a <strong>concise commercial review</strong></li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a class="card-link" href="/asset/bfcm-review.pdf" target="_blank">
-                View Review
-              </a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-body">
-              <p class="card-tag">Power BI · Operations Analytics</p>
-              <h3>UpSpring | Order & Shipping Dashboard</h3>
-              <p class="card-text">
-                Dashboard visualizing <strong>order geography</strong> and supporting
-                <strong>shipping cost optimization</strong> decisions across U.S. states.
-              </p>
-              <ul>
-                <li>Mapped <strong>order distribution by state</strong> in Power BI</li>
-                <li>Supported <strong>shipping cost analysis</strong> and 3PL decision making</li>
-                <li>Connected geographic demand patterns to <strong>unit economics</strong></li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <a class="card-link" href="/asset/powerbi-dashboard.png" target="_blank">
-                View Dashboard
-              </a>
-            </div>
-          </article>
-
-        </div>
-        </div><!-- /.cards-stack -->
       </div>
     </section>
 
+    <!-- ══ 04 Contact ══ -->
     <section class="section">
       <div class="container">
-        <div class="section-header">
-          <p class="section-label">Contact</p>
-          <h2>Let's connect</h2>
+        <div class="section-marker">
+          <span class="section-num">04</span>
+          <span class="section-tick"></span>
+          <span class="section-tag">Contact</span>
         </div>
+        <h2>Let's connect</h2>
 
         <div class="contact-card">
-          <p>
+          <p class="contact-text">
             I am currently exploring opportunities in TikTok Shop, e-commerce, category management,
             and analytics-focused roles.
           </p>
@@ -264,6 +299,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
@@ -273,7 +309,6 @@
     </div>
   </footer>
 
-  <!-- Chart.js for growth curve -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
   <script>
     /* ── Counter animation ── */
@@ -300,28 +335,27 @@
           {
             label: 'GMV',
             data: gmvData,
-            borderColor: '#0ea5e9',
-            backgroundColor: 'rgba(14,165,233,0.08)',
+            borderColor: '#b5451b',
+            backgroundColor: 'rgba(181,69,27,0.06)',
             fill: true,
             tension: 0.35,
             pointRadius: 0,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#0ea5e9',
+            pointHoverBackgroundColor: '#b5451b',
             borderWidth: 2,
             yAxisID: 'yGMV'
           },
           {
             label: 'Orders',
             data: ordersData,
-            borderColor: '#1d4ed8',
+            borderColor: '#2a6b4a',
             backgroundColor: 'transparent',
             fill: false,
             tension: 0.35,
             pointRadius: 0,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#1d4ed8',
+            pointHoverBackgroundColor: '#2a6b4a',
             borderWidth: 2,
-            borderDash: [],
             yAxisID: 'yOrders'
           }
         ]
@@ -335,15 +369,23 @@
             display: true,
             position: 'top',
             align: 'end',
-            labels: { font: { size: 11 }, color: '#5b6473', boxWidth: 16, padding: 12 }
+            labels: {
+              font: { size: 11, family: "'IBM Plex Mono'" },
+              color: '#9c968f',
+              boxWidth: 14,
+              padding: 14
+            }
           },
           tooltip: {
-            backgroundColor: '#fff',
-            borderColor: '#dbe2ea',
+            backgroundColor: '#ffffff',
+            borderColor: 'rgba(27,24,20,0.12)',
             borderWidth: 1,
-            titleColor: '#111827',
-            bodyColor: '#5b6473',
+            titleColor: '#1b1814',
+            bodyColor: '#56524d',
             padding: 12,
+            cornerRadius: 8,
+            titleFont: { family: "'IBM Plex Mono'", size: 11, color: '#1b1814' },
+            bodyFont: { family: "'IBM Plex Mono'", size: 11 },
             callbacks: {
               title: ctx => ctx[0].label,
               label: ctx => {
@@ -355,22 +397,25 @@
         },
         scales: {
           x: {
-            ticks: { maxTicksLimit: 6, font: { size: 11 }, color: '#5b6473' },
-            grid: { display: false }
+            ticks: { maxTicksLimit: 6, font: { size: 10, family: "'IBM Plex Mono'" }, color: '#9c968f' },
+            grid: { display: false },
+            border: { color: 'rgba(27,24,20,0.08)' }
           },
           yGMV: {
             position: 'left',
             ticks: {
-              font: { size: 11 },
-              color: '#5b6473',
+              font: { size: 10, family: "'IBM Plex Mono'" },
+              color: '#9c968f',
               callback: v => '$' + (v >= 1000 ? (v / 1000).toFixed(1) + 'K' : v)
             },
-            grid: { color: 'rgba(0,0,0,0.04)' }
+            grid: { color: 'rgba(27,24,20,0.05)' },
+            border: { color: 'transparent' }
           },
           yOrders: {
             position: 'right',
-            ticks: { font: { size: 11 }, color: '#5b6473' },
-            grid: { display: false }
+            ticks: { font: { size: 10, family: "'IBM Plex Mono'" }, color: '#9c968f' },
+            grid: { display: false },
+            border: { color: 'transparent' }
           }
         }
       }

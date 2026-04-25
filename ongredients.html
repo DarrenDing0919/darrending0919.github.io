@@ -3,280 +3,738 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ongredients with Influu | Darren Ding</title>
+  <title>Ongredients × Influu | Affiliate Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <style>
+    /* ── Ongredients brand overrides ── */
+    :root {
+      --ong-yellow:      #f5c842;
+      --ong-yellow-deep: #c89800;
+      --ong-yellow-pale: #fffce0;
+      --ong-yellow-mid:  #fff6b0;
+      --ong-dark:        #1c1a0e;
+      --ong-text2:       #5c5640;
+      --ong-muted:       #9a9070;
+      --ong-border:      rgba(200,160,0,0.18);
+      --ong-surface:     #ffffff;
+    }
+
     body {
-      background: linear-gradient(180deg, #fffef5 0%, #fef9c3 60%, #fef08a 100%);
-      min-height: 100vh;
+      background-color: #fefcf0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+      color: var(--ong-dark);
     }
-    .dash-section {
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
+
+    /* ── Sticky Nav ── */
+    .ong-nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(254,252,240,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--ong-border);
     }
-    .dash-section:last-of-type { border-bottom: none; }
-    .dash-section-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--primary); margin: 0 0 4px;
+
+    .ong-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      gap: 16px;
     }
-    .dash-section-title {
-      font-size: 1.3rem; font-weight: 800; color: var(--text);
-      margin: 0 0 16px; letter-spacing: -0.02em;
+
+    .ong-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ong-nav-title {
+      font-family: var(--font-sans);
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--ong-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .ong-nav-x {
+      color: var(--ong-yellow);
+    }
+
+    .ong-nav-vr {
+      width: 1px;
+      height: 16px;
+      background: var(--ong-border);
+    }
+
+    .ong-nav-sub {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ong-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .ong-nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .ong-nav-links a {
+      font-size: 0.86rem;
+      color: var(--ong-muted);
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .ong-nav-links a:hover { color: var(--ong-dark); }
+
+    /* ── Hero ── */
+    .ong-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: calc(100vh - 52px);
+      min-height: 480px;
+      max-height: 800px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--ong-border);
+    }
+
+    .ong-hero-left {
+      background: linear-gradient(140deg, #fffce0 0%, #fff8c0 35%, #fff4a0 70%, #fef0c0 100%);
+      padding: 60px 52px 60px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative circles — echoing the bottle's round shape */
+    .ong-hero-left::before {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 70px solid rgba(245,200,66,0.12);
+      bottom: -120px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .ong-hero-left::after {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 40px solid rgba(245,200,66,0.08);
+      top: -50px;
+      left: -40px;
+      pointer-events: none;
+    }
+
+    .ong-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ong-eyebrow-line {
+      width: 22px;
+      height: 1px;
+      background: var(--ong-muted);
+      flex-shrink: 0;
+    }
+
+    .ong-eyebrow-text {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+    }
+
+    .ong-wordmark {
+      display: block;
+      width: 100%;
+      max-width: 420px;
+      mix-blend-mode: multiply;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ong-product-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      line-height: 1.08;
+      color: var(--ong-dark);
+      letter-spacing: -0.025em;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ong-product-headline sup {
+      font-size: 0.4em;
+      font-family: var(--font-mono);
+      vertical-align: super;
+      font-weight: 600;
+      color: var(--ong-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .ong-label-stripe {
+      display: inline-flex;
+      align-items: center;
+      background: var(--ong-yellow);
+      color: var(--ong-dark);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+      border-radius: 2px;
+      align-self: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ong-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ong-benefit-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.77rem;
+      color: var(--ong-dark);
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(200,160,0,0.22);
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+
+    .ong-benefit-pill::before {
+      content: '✓';
+      font-size: 0.68rem;
+      color: var(--ong-yellow-deep);
+      font-weight: 800;
+    }
+
+    .ong-ingredients {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ong-muted);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero right: image */
+    .ong-hero-right {
+      position: relative;
+      overflow: hidden;
+      background-image: url("/asset/Ongredietns%20EX%20Lotion%20Product%20Images/%EC%B9%B4%EB%B0%8D%EB%A1%9C%EC%85%98EX%20%EB%AC%BC%EB%B0%A9%EC%9A%B8%20%EC%97%B0%EC%B6%9C%EC%BB%B7.jpg%EC%9D%98%20%EC%82%AC%EB%B3%B8.jpg");
+      background-size: cover;
+      background-position: center 45%;
+      background-color: #e8d840;
+    }
+
+    .ong-hero-img { display: none; }
+
+    /* ── Product image strip ── */
+    .ong-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--ong-border);
+    }
+
+    .ong-strip-item {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ong-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .ong-strip-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* thin right border between strip items */
+    .ong-strip-item:not(:last-child) {
+      border-right: 1px solid var(--ong-border);
+    }
+
+    /* ── Dashboard sections ── */
+    .ong-section {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--ong-border);
+    }
+
+    .ong-section:last-of-type { border-bottom: none; }
+
+    .ong-section-marker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .ong-section-num {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--ong-muted);
+      letter-spacing: 0.12em;
+    }
+
+    .ong-section-tick {
+      width: 1px;
+      height: 12px;
+      background: var(--ong-border);
+    }
+
+    .ong-section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--ong-yellow-deep);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .ong-section-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--ong-dark);
+      margin: 0 0 24px;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Stat cards ── */
+    .ong-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .ong-stat-card {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-top: 2.5px solid transparent;
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+    }
+
+    .ong-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ong-muted);
+      margin: 0 0 8px;
+    }
+
+    .ong-stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--ong-dark);
+      margin: 0;
+      line-height: 1;
+    }
+
+    /* ── Chart cards ── */
+    .ong-chart-card {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 12px rgba(28,26,14,0.05);
+    }
+
+    .ong-chart-wrap {
+      position: relative;
+      height: 240px;
     }
 
     /* ── Range selector ── */
-    .range-row {
-      display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
-    }
-    .range-btn {
-      padding: 6px 14px; border-radius: 8px; font-size: 0.78rem;
-      font-weight: 600; border: 1.5px solid var(--border);
-      background: rgba(255,255,255,0.6); color: var(--muted);
-      cursor: pointer; transition: 0.15s ease;
-    }
-    .range-btn.active {
-      background: var(--text); border-color: var(--text); color: #fff;
-    }
-    .date-picker-wrap {
-      position: relative; display: inline-flex; align-items: center;
-    }
-    .date-picker-wrap input {
-      padding: 6px 12px 6px 32px;
-      border-radius: 8px; border: 1.5px solid var(--border);
-      background: rgba(255,255,255,0.6); font-size: 0.78rem;
-      font-weight: 600; color: var(--text); cursor: pointer;
-      width: 210px; outline: none; font-family: inherit;
-    }
-    .date-picker-wrap input:focus { border-color: var(--primary); }
-    .date-picker-icon {
-      position: absolute; left: 9px; font-size: 0.85rem; pointer-events: none;
-    }
-    .range-divider {
-      width: 1px; height: 18px; background: var(--border); margin: 0 2px;
-    }
-    /* flatpickr overrides */
-    .flatpickr-calendar {
-      border-radius: 12px !important;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
-      border: 1px solid var(--border) !important;
-    }
-    .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange {
-      background: var(--primary) !important; border-color: var(--primary) !important;
-    }
-    .flatpickr-day.inRange {
-      background: #dbeafe !important; box-shadow: none !important; border-color: transparent !important;
+    .ong-range-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
     }
 
-    /* ── Section 1 layout ── */
-    .s1-layout {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 20px;
-      align-items: start;
+    .ong-range-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.73rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      border: 1px solid var(--ong-border);
+      background: transparent;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: 0.15s;
     }
-    .stat-cards-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+
+    .ong-range-btn.active {
+      background: var(--ong-yellow);
+      border-color: var(--ong-yellow);
+      color: var(--ong-dark);
     }
-    .stat-card-item {
-      background: rgba(255,255,255,0.88);
-      border: 1px solid var(--border);
-      border-top: 3px solid transparent;
-      border-radius: 12px;
-      padding: 14px 16px;
+
+    .ong-range-btn:hover:not(.active) { color: var(--ong-dark); }
+
+    .ong-date-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
     }
-    .stat-card-label {
-      font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; color: var(--muted); margin: 0 0 8px;
+
+    .ong-date-wrap input {
+      padding: 6px 12px 6px 28px;
+      border-radius: 6px;
+      border: 1px solid var(--ong-border);
+      background: white;
+      font-size: 0.73rem;
+      font-family: var(--font-mono);
+      color: var(--ong-dark);
+      cursor: pointer;
+      width: 210px;
+      outline: none;
     }
-    .stat-card-value {
-      font-size: 1.6rem; font-weight: 800; color: var(--text);
-      margin: 0; line-height: 1;
-    }
+
+    .ong-date-wrap input:focus { border-color: var(--ong-yellow); }
+    .ong-date-icon { position: absolute; left: 8px; font-size: 0.78rem; pointer-events: none; }
+    .ong-divider { width: 1px; height: 18px; background: var(--ong-border); margin: 0 2px; }
 
     /* ── Toggles ── */
-    .toggle-row {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-    }
-    .toggle-row-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--muted);
-      white-space: nowrap; min-width: 52px;
-    }
-    .toggle-group { display: flex; flex-wrap: wrap; gap: 8px; }
-    .toggle-btn {
-      padding: 5px 14px; border-radius: 999px; font-size: 0.78rem;
-      font-weight: 600; border: 1.5px solid var(--border);
-      background: transparent; color: var(--muted);
-      cursor: pointer; transition: 0.15s ease;
-    }
-    .toggle-btn.active { color: #fff; border-color: transparent; }
-    .period-btn {
-      padding: 5px 14px; border-radius: 999px; font-size: 0.78rem;
-      font-weight: 600; border: 1.5px solid var(--border);
-      background: transparent; color: var(--muted);
-      cursor: pointer; transition: 0.15s ease;
-    }
-    .period-btn.active {
-      background: var(--text); border-color: var(--text); color: #fff;
+    .ong-toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
-    /* ── Chart card ── */
-    .chart-card {
-      background: rgba(255,255,255,0.88);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
+    .ong-toggle-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      white-space: nowrap;
+      min-width: 52px;
     }
-    .chart-wrap { position: relative; height: 240px; }
 
-    @media (max-width: 768px) {
-      .s1-layout { grid-template-columns: 1fr; }
-      .stat-cards-grid { grid-template-columns: repeat(4, 1fr); }
+    .ong-toggle-group { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .ong-toggle-btn, .ong-period-btn {
+      padding: 5px 13px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      border: 1px solid var(--ong-border);
+      background: transparent;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .ong-period-btn.active {
+      background: var(--ong-dark);
+      border-color: var(--ong-dark);
+      color: #fefcf0;
+    }
+
+    /* Section 1 layout */
+    .ong-s1-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── Footer ── */
+    .ong-footer {
+      padding: 26px 0;
+      border-top: 1px solid var(--ong-border);
+      background: var(--ong-surface);
+    }
+
+    .ong-footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .ong-footer-inner p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ong-muted);
+    }
+
+    .ong-footer-inner a { color: var(--ong-muted); transition: color 0.15s; }
+    .ong-footer-inner a:hover { color: var(--ong-dark); }
+
+    /* ── Flatpickr overrides ── */
+    .flatpickr-calendar {
+      border-radius: 10px !important;
+      box-shadow: 0 8px 28px rgba(28,26,14,0.12) !important;
+      border: 1px solid var(--ong-border) !important;
+    }
+
+    .flatpickr-day.selected,
+    .flatpickr-day.startRange,
+    .flatpickr-day.endRange {
+      background: var(--ong-yellow) !important;
+      border-color: var(--ong-yellow) !important;
+      color: var(--ong-dark) !important;
+    }
+
+    .flatpickr-day.inRange {
+      background: rgba(245,200,66,0.18) !important;
+      box-shadow: none !important;
+      border-color: transparent !important;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .ong-hero { grid-template-columns: 1fr; }
+      .ong-hero-right { height: 340px; }
+      .ong-s1-layout { grid-template-columns: 1fr; }
+      .ong-stat-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .ong-hero-left { padding: 44px 28px; }
+      .ong-strip { grid-template-columns: repeat(2, 1fr); }
+      .ong-stat-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <div style="border-bottom: 1px solid var(--border); padding: 16px 0; background: rgba(255,255,255,0.5);">
+  <!-- ── Sticky Nav ── -->
+  <div class="ong-nav-wrap">
     <div class="container">
-      <nav class="nav" style="margin-bottom: 0;">
-        <div class="brand"><a href="/">Darren Ding</a></div>
-        <div class="nav-links">
+      <nav class="ong-nav">
+        <div class="ong-nav-brand">
+          <span class="ong-nav-title">óngredients <span class="ong-nav-x">×</span> Influu</span>
+          <div class="ong-nav-vr"></div>
+          <span class="ong-nav-sub">Affiliate Analytics Dashboard</span>
+        </div>
+        <div class="ong-nav-links">
+          <a href="/">← Portfolio</a>
           <a href="mailto:drz20020919@gmail.com">Email</a>
           <a href="https://www.linkedin.com/in/darrending/" target="_blank">LinkedIn</a>
-          <a href="/asset/Darren_Resume_latest.pdf" target="_blank">Resume</a>
         </div>
       </nav>
     </div>
   </div>
 
-  <!-- ── Section 1: Invitation Funnel ── -->
-  <section class="dash-section" style="padding-top: 32px;">
-    <div class="container">
-      <p class="dash-section-label">Section 01</p>
-      <h2 class="dash-section-title">Invitation Funnel</h2>
+  <!-- ── Brand Hero ── -->
+  <div class="ong-hero">
+    <div class="ong-hero-left">
+      <img
+        class="ong-wordmark"
+        src="/asset/Ongredients%20logo.png"
+        alt="óngredients — True óngredients, a Better Life"
+      />
+    </div>
+    <div class="ong-hero-right">
+      <img
+        class="ong-hero-img"
+        src="/asset/Ongredietns%20EX%20Lotion%20Product%20Images/%EC%B9%B4%EB%B0%8D%EB%A1%9C%EC%85%98EX%20%EB%AC%BC%EB%B0%A9%EC%9A%B8%20%EC%97%B0%EC%B6%9C%EC%BB%B7.jpg%EC%9D%98%20%EC%82%AC%EB%B3%B8.jpg"
+        alt="Ongredients Skin Barrier Calming Lotion EX — water splash campaign"
+      />
+    </div>
+  </div>
 
-      <!-- Date range selector -->
-      <div class="range-row">
-        <div class="date-picker-wrap">
-          <span class="date-picker-icon">📅</span>
+  <!-- ── Product Image Strip ── -->
+  <div class="ong-strip">
+    <div class="ong-strip-item">
+      <img src="/asset/selected%20images/1.jpg" alt="Ongredients lifestyle 1" style="object-position: center top;" />
+    </div>
+    <div class="ong-strip-item">
+      <img src="/asset/selected%20images/2.jpg" alt="Ongredients lifestyle 2" style="object-position: center top;" />
+    </div>
+    <div class="ong-strip-item">
+      <img src="/asset/selected%20images/3.jpg" alt="Ongredients lifestyle 3" style="object-position: center top;" />
+    </div>
+    <div class="ong-strip-item">
+      <img src="/asset/selected%20images/4.jpg" alt="Ongredients lifestyle 4" style="object-position: center top;" />
+    </div>
+  </div>
+
+  <!-- ── Section 01: Invitation Funnel ── -->
+  <section class="ong-section" style="padding-top:52px;">
+    <div class="container">
+      <div class="ong-section-marker">
+        <span class="ong-section-num">01</span>
+        <span class="ong-section-tick"></span>
+        <span class="ong-section-tag">Funnel</span>
+      </div>
+      <h2 class="ong-section-title">Invitation Funnel</h2>
+
+      <div class="ong-range-row">
+        <div class="ong-date-wrap">
+          <span class="ong-date-icon">📅</span>
           <input type="text" id="date-range-input" placeholder="Select date range" readonly />
         </div>
-        <div class="range-divider"></div>
-        <button class="range-btn" data-days="7">Last 7 Days</button>
-        <button class="range-btn" data-days="14">Last 14 Days</button>
-        <button class="range-btn active" data-days="30">Last 30 Days</button>
+        <div class="ong-divider"></div>
+        <button class="ong-range-btn" data-days="7">Last 7d</button>
+        <button class="ong-range-btn" data-days="14">Last 14d</button>
+        <button class="ong-range-btn active" data-days="30">Last 30d</button>
       </div>
 
-      <div class="s1-layout">
-        <!-- Stat summary cards -->
-        <div class="stat-cards-grid" style="padding-top: 90px;">
-          <div class="stat-card-item" style="border-top-color:#1d4ed8;">
-            <p class="stat-card-label">Invitations Sent</p>
-            <p class="stat-card-value" id="stat-sent">—</p>
+      <div class="ong-s1-layout">
+        <!-- Stat cards -->
+        <div class="ong-stat-grid" style="padding-top:90px;">
+          <div class="ong-stat-card" style="border-top-color:#3b82f6;">
+            <p class="ong-stat-label">Invitations Sent</p>
+            <p class="ong-stat-value" id="stat-sent">—</p>
           </div>
-          <div class="stat-card-item" style="border-top-color:#3b82f6;">
-            <p class="stat-card-label">Sample Requested</p>
-            <p class="stat-card-value" id="stat-req">—</p>
+          <div class="ong-stat-card" style="border-top-color:#60a5fa;">
+            <p class="ong-stat-label">Sample Requested</p>
+            <p class="ong-stat-value" id="stat-req">—</p>
           </div>
-          <div class="stat-card-item" style="border-top-color:#22c55e;">
-            <p class="stat-card-label">Sample Approved</p>
-            <p class="stat-card-value" id="stat-approved">—</p>
+          <div class="ong-stat-card" style="border-top-color:#22c55e;">
+            <p class="ong-stat-label">Sample Approved</p>
+            <p class="ong-stat-value" id="stat-approved">—</p>
           </div>
-          <div class="stat-card-item" style="border-top-color:#f59e0b;">
-            <p class="stat-card-label">Video Posted</p>
-            <p class="stat-card-value" id="stat-posted">—</p>
+          <div class="ong-stat-card" style="border-top-color:#f5c842;">
+            <p class="ong-stat-label">Video Posted</p>
+            <p class="ong-stat-value" id="stat-posted">—</p>
           </div>
         </div>
 
-        <!-- Chart column -->
+        <!-- Chart -->
         <div>
-          <div class="toggle-row">
-            <span class="toggle-row-label">Period</span>
-            <div class="toggle-group">
-              <button class="period-btn active" data-period="daily">Daily</button>
-              <button class="period-btn" data-period="weekly">Weekly</button>
-              <button class="period-btn" data-period="monthly">Monthly</button>
+          <div class="ong-toggle-row">
+            <span class="ong-toggle-label">Period</span>
+            <div class="ong-toggle-group">
+              <button class="ong-period-btn active" data-period="daily">Daily</button>
+              <button class="ong-period-btn" data-period="weekly">Weekly</button>
+              <button class="ong-period-btn" data-period="monthly">Monthly</button>
             </div>
           </div>
-          <div class="toggle-row" style="margin-bottom:14px;">
-            <span class="toggle-row-label">Metrics</span>
-            <div class="toggle-group" id="toggles-1">
-              <button class="toggle-btn active" data-chart="chart1" data-index="0" style="background:#1d4ed8;border-color:#1d4ed8;">Invitations Sent</button>
-              <button class="toggle-btn" data-chart="chart1" data-index="1" data-color="#3b82f6">Sample Requested</button>
-              <button class="toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Approved</button>
-              <button class="toggle-btn" data-chart="chart1" data-index="3" data-color="#f59e0b">Video Posted</button>
+          <div class="ong-toggle-row" style="margin-bottom:14px;">
+            <span class="ong-toggle-label">Metrics</span>
+            <div class="ong-toggle-group" id="toggles-1">
+              <button class="ong-toggle-btn active" data-chart="chart1" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Invitations Sent</button>
+              <button class="ong-toggle-btn" data-chart="chart1" data-index="1" data-color="#60a5fa">Sample Requested</button>
+              <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Approved</button>
+              <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#d4a800">Video Posted</button>
             </div>
           </div>
-          <div class="chart-card">
-            <div class="chart-wrap"><canvas id="chart1"></canvas></div>
+          <div class="ong-chart-card">
+            <div class="ong-chart-wrap"><canvas id="chart1"></canvas></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Section 2: Video Performance ── -->
-  <section class="dash-section">
+  <!-- ── Section 02: Video Performance ── -->
+  <section class="ong-section">
     <div class="container">
-      <p class="dash-section-label">Section 02</p>
-      <h2 class="dash-section-title">Video Performance</h2>
-      <div class="toggle-group" style="margin-bottom:16px;" id="toggles-2">
-        <button class="toggle-btn active" data-chart="chart2" data-index="0" style="background:#1d4ed8;border-color:#1d4ed8;">Avg. CTR</button>
-        <button class="toggle-btn" data-chart="chart2" data-index="1" data-color="#8b5cf6">Avg. CTOR</button>
+      <div class="ong-section-marker">
+        <span class="ong-section-num">02</span>
+        <span class="ong-section-tick"></span>
+        <span class="ong-section-tag">Performance</span>
       </div>
-      <div class="chart-card">
-        <div class="chart-wrap"><canvas id="chart2"></canvas></div>
+      <h2 class="ong-section-title">Video Performance</h2>
+      <div class="ong-toggle-group" style="margin-bottom:16px;" id="toggles-2">
+        <button class="ong-toggle-btn active" data-chart="chart2" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Avg. CTR</button>
+        <button class="ong-toggle-btn" data-chart="chart2" data-index="1" data-color="#a78bfa">Avg. CTOR</button>
+      </div>
+      <div class="ong-chart-card">
+        <div class="ong-chart-wrap"><canvas id="chart2"></canvas></div>
       </div>
     </div>
   </section>
 
-  <!-- ── Section 3: GMV ── -->
-  <section class="dash-section">
+  <!-- ── Section 03: GMV ── -->
+  <section class="ong-section">
     <div class="container">
-      <p class="dash-section-label">Section 03</p>
-      <h2 class="dash-section-title">GMV</h2>
-      <div class="toggle-group" style="margin-bottom:16px;" id="toggles-3">
-        <button class="toggle-btn active" data-chart="chart3" data-index="0" style="background:#f59e0b;border-color:#f59e0b;">Daily</button>
-        <button class="toggle-btn" data-chart="chart3" data-index="1" data-color="#1d4ed8">Weekly</button>
-        <button class="toggle-btn" data-chart="chart3" data-index="2" data-color="#22c55e">Monthly</button>
+      <div class="ong-section-marker">
+        <span class="ong-section-num">03</span>
+        <span class="ong-section-tick"></span>
+        <span class="ong-section-tag">Revenue</span>
       </div>
-      <div class="chart-card">
-        <div class="chart-wrap"><canvas id="chart3"></canvas></div>
+      <h2 class="ong-section-title">GMV</h2>
+      <div class="ong-toggle-group" style="margin-bottom:16px;" id="toggles-3">
+        <button class="ong-toggle-btn active" data-chart="chart3" data-index="0" style="background:#d4a800;border-color:#d4a800;color:#fff;">Daily</button>
+        <button class="ong-toggle-btn" data-chart="chart3" data-index="1" data-color="#3b82f6">Weekly</button>
+        <button class="ong-toggle-btn" data-chart="chart3" data-index="2" data-color="#22c55e">Monthly</button>
+      </div>
+      <div class="ong-chart-card">
+        <div class="ong-chart-wrap"><canvas id="chart3"></canvas></div>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2026 Darren Ding</p>
-      <p><a href="/" style="color:var(--muted);">← Back to Portfolio</a></p>
+  <!-- ── Footer ── -->
+  <footer class="ong-footer">
+    <div class="container ong-footer-inner">
+      <p>© 2026 Darren Ding · óngredients × Influu Affiliate Dashboard</p>
+      <p><a href="/">← Back to Portfolio</a></p>
     </div>
   </footer>
 
   <script>
-    /* ── Data loaded from JSON ── */
+    /* ── Data ── */
     let rawInv = [];
 
-    /* ── Aggregation helpers ── */
     function fmtDate(str) {
       const d = new Date(str);
-      return d.toLocaleString('default',{month:'short'}) + ' ' + d.getDate();
+      return d.toLocaleString('default', { month: 'short' }) + ' ' + d.getDate();
     }
     function weekKey(str) {
       const d = new Date(str);
       const day = d.getDay();
       const diff = day === 0 ? -6 : 1 - day;
       const mon = new Date(d); mon.setDate(d.getDate() + diff);
-      return 'Wk ' + fmtDate(mon.toISOString().slice(0,10));
+      return 'Wk ' + fmtDate(mon.toISOString().slice(0, 10));
     }
     function monthKey(str) {
       const d = new Date(str);
-      return d.toLocaleString('default',{month:'short',year:'numeric'});
+      return d.toLocaleString('default', { month: 'short', year: 'numeric' });
     }
 
     function aggregate(rows, period) {
@@ -293,7 +751,7 @@
       const groups = {}, order = [];
       rows.forEach(r => {
         const k = keyFn(r.date);
-        if (!groups[k]) { groups[k] = {sent:0,req:0,approved:0,posted:0}; order.push(k); }
+        if (!groups[k]) { groups[k] = { sent: 0, req: 0, approved: 0, posted: 0 }; order.push(k); }
         groups[k].sent     += r.sent;
         groups[k].req      += r.req;
         groups[k].approved += r.approved;
@@ -308,168 +766,180 @@
       };
     }
 
-    /* ── Load data then init ── */
+    /* ── Chart defaults ── */
+    Chart.defaults.color = '#9a9070';
+    Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+    Chart.defaults.font.size = 11;
+
+    /* ── Load data ── */
     fetch('/data/ongredients/invitation.json')
       .then(r => r.json())
       .then(data => { rawInv = data; init(); });
 
     function init() {
+      let currentStart  = new Date('2026-03-26');
+      let currentEnd    = new Date('2026-04-24');
+      let currentPeriod = 'daily';
 
-    /* ── State ── */
-    let currentStart = new Date('2026-03-26');
-    let currentEnd   = new Date('2026-04-24');
-    let currentPeriod1 = 'daily';
+      function getRows() {
+        return rawInv.filter(r => {
+          const d = new Date(r.date);
+          return d >= currentStart && d <= currentEnd;
+        });
+      }
 
-    function getRows() {
-      return rawInv.filter(r => {
-        const d = new Date(r.date);
-        return d >= currentStart && d <= currentEnd;
-      });
-    }
+      function updateSection1() {
+        const rows = getRows();
+        const agg  = aggregate(rows, currentPeriod);
 
-    function updateSection1() {
-      const rows = getRows();
-      const agg  = aggregate(rows, currentPeriod1);
+        const c = charts.chart1;
+        c.data.labels           = agg.labels;
+        c.data.datasets[0].data = agg.sent;
+        c.data.datasets[1].data = agg.req;
+        c.data.datasets[2].data = agg.approved;
+        c.data.datasets[3].data = agg.posted;
+        c.update();
 
-      const c = charts.chart1;
-      c.data.labels          = agg.labels;
-      c.data.datasets[0].data = agg.sent;
-      c.data.datasets[1].data = agg.req;
-      c.data.datasets[2].data = agg.approved;
-      c.data.datasets[3].data = agg.posted;
-      c.update();
+        const tot = rows.reduce((a, r) => ({
+          sent:     a.sent     + r.sent,
+          req:      a.req      + r.req,
+          approved: a.approved + r.approved,
+          posted:   a.posted   + r.posted,
+        }), { sent: 0, req: 0, approved: 0, posted: 0 });
 
-      const tot = rows.reduce((a,r) => ({
-        sent:     a.sent     + r.sent,
-        req:      a.req      + r.req,
-        approved: a.approved + r.approved,
-        posted:   a.posted   + r.posted,
-      }), {sent:0,req:0,approved:0,posted:0});
+        document.getElementById('stat-sent').textContent     = tot.sent.toLocaleString();
+        document.getElementById('stat-req').textContent      = tot.req.toLocaleString();
+        document.getElementById('stat-approved').textContent = tot.approved.toLocaleString();
+        document.getElementById('stat-posted').textContent   = tot.posted.toLocaleString();
+      }
 
-      document.getElementById('stat-sent').textContent     = tot.sent.toLocaleString();
-      document.getElementById('stat-req').textContent      = tot.req.toLocaleString();
-      document.getElementById('stat-approved').textContent = tot.approved.toLocaleString();
-      document.getElementById('stat-posted').textContent   = tot.posted.toLocaleString();
-    }
-
-    /* ── Chart factory ── */
-    function makeChart(id, datasets, initLabels) {
-      const ctx = document.getElementById(id).getContext('2d');
-      return new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: initLabels || [],
-          datasets: datasets.map((d,i) => ({
-            label: d.label,
-            data: d.data || [],
-            borderColor: d.color,
-            backgroundColor: d.color + '18',
-            borderWidth: 2.5,
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            tension: 0.4,
-            fill: false,
-            hidden: i !== 0,
-          }))
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { mode:'index', intersect:false },
-          plugins: {
-            legend: { display:false },
-            tooltip: {
-              backgroundColor:'#1a1a1a', titleColor:'#fff',
-              bodyColor:'rgba(255,255,255,0.75)', padding:12, cornerRadius:8,
-            }
+      function makeChart(id, datasets) {
+        const ctx = document.getElementById(id).getContext('2d');
+        return new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: datasets.map((d, i) => ({
+              label: d.label,
+              data: d.data || [],
+              borderColor: d.color,
+              backgroundColor: d.color + '14',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 6,
+              pointBackgroundColor: d.color,
+              tension: 0.4,
+              fill: false,
+              hidden: i !== 0,
+            }))
           },
-          scales: {
-            x: { grid:{color:'rgba(0,0,0,0.04)'}, ticks:{color:'#9ca3af',font:{size:11}} },
-            y: { grid:{color:'rgba(0,0,0,0.04)'}, ticks:{color:'#9ca3af',font:{size:11}}, beginAtZero:true }
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#1c1a0e',
+                borderColor: 'rgba(200,160,0,0.2)',
+                borderWidth: 1,
+                titleColor: '#fefcf0',
+                bodyColor: '#9a9070',
+                padding: 12,
+                cornerRadius: 8,
+              }
+            },
+            scales: {
+              x: {
+                grid: { color: 'rgba(200,160,0,0.07)' },
+                border: { color: 'rgba(200,160,0,0.12)' },
+                ticks: { color: '#9a9070' }
+              },
+              y: {
+                grid: { color: 'rgba(200,160,0,0.07)' },
+                border: { color: 'transparent' },
+                ticks: { color: '#9a9070' },
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      }
+
+      const charts = {
+        chart1: makeChart('chart1', [
+          { label: 'Invitations Sent', color: '#3b82f6' },
+          { label: 'Sample Requested', color: '#60a5fa' },
+          { label: 'Sample Approved',  color: '#22c55e' },
+          { label: 'Video Posted',     color: '#d4a800' },
+        ]),
+        chart2: makeChart('chart2', [
+          { label: 'Avg. CTR',  color: '#3b82f6' },
+          { label: 'Avg. CTOR', color: '#a78bfa' },
+        ]),
+        chart3: makeChart('chart3', [
+          { label: 'Daily GMV',   color: '#d4a800' },
+          { label: 'Weekly GMV',  color: '#3b82f6' },
+          { label: 'Monthly GMV', color: '#22c55e' },
+        ]),
+      };
+
+      updateSection1();
+
+      /* ── Flatpickr ── */
+      const fp = flatpickr('#date-range-input', {
+        mode: 'range',
+        dateFormat: 'M j, Y',
+        defaultDate: ['2026-03-26', '2026-04-24'],
+        onChange(selectedDates) {
+          if (selectedDates.length === 2) {
+            document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
+            currentStart = selectedDates[0];
+            currentEnd   = selectedDates[1];
+            updateSection1();
           }
         }
       });
-    }
 
-    const charts = {
-      chart1: makeChart('chart1', [
-        {label:'Invitations Sent', color:'#1d4ed8'},
-        {label:'Sample Requested', color:'#3b82f6'},
-        {label:'Sample Approved',  color:'#22c55e'},
-        {label:'Video Posted',     color:'#f59e0b'},
-      ]),
-      chart2: makeChart('chart2', [
-        {label:'Avg. CTR',  color:'#1d4ed8'},
-        {label:'Avg. CTOR', color:'#8b5cf6'},
-      ]),
-      chart3: makeChart('chart3', [
-        {label:'Daily GMV',   color:'#f59e0b'},
-        {label:'Weekly GMV',  color:'#1d4ed8'},
-        {label:'Monthly GMV', color:'#22c55e'},
-      ]),
-    };
-
-    /* ── Init Section 1 ── */
-    updateSection1();
-
-    /* ── Flatpickr date range picker ── */
-    const fp = flatpickr('#date-range-input', {
-      mode: 'range',
-      dateFormat: 'M j, Y',
-      defaultDate: ['2026-03-26', '2026-04-24'],
-      onChange: function(selectedDates) {
-        if (selectedDates.length === 2) {
-          document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
-          currentStart = selectedDates[0];
-          currentEnd   = selectedDates[1];
+      document.querySelectorAll('.ong-range-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const days = parseInt(btn.dataset.days);
+          const end   = new Date('2026-04-24');
+          const start = new Date(end);
+          start.setDate(end.getDate() - days + 1);
+          currentStart = start;
+          currentEnd   = end;
+          fp.setDate([start, end]);
           updateSection1();
-        }
-      }
-    });
-
-    /* ── Preset range buttons ── */
-    document.querySelectorAll('.range-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const days = parseInt(btn.dataset.days);
-        const end   = new Date('2026-04-24');
-        const start = new Date(end);
-        start.setDate(end.getDate() - days + 1);
-        currentStart = start;
-        currentEnd   = end;
-        fp.setDate([start, end]);
-        updateSection1();
+        });
       });
-    });
 
-    /* ── Period buttons ── */
-    document.querySelectorAll('.period-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentPeriod1 = btn.dataset.period;
-        updateSection1();
+      document.querySelectorAll('.ong-period-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.ong-period-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentPeriod = btn.dataset.period;
+          updateSection1();
+        });
       });
-    });
 
-    /* ── Metric toggle buttons ── */
-    document.querySelectorAll('.toggle-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const chart = charts[btn.dataset.chart];
-        const index = parseInt(btn.dataset.index);
-        const color = btn.dataset.color || btn.style.background;
-        const isActive = btn.classList.toggle('active');
-        btn.style.background  = isActive ? color : 'transparent';
-        btn.style.borderColor = isActive ? color : '';
-        btn.style.color       = isActive ? '#fff' : '';
-        chart.data.datasets[index].hidden = !isActive;
-        chart.update();
+      document.querySelectorAll('.ong-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const chart  = charts[btn.dataset.chart];
+          const index  = parseInt(btn.dataset.index);
+          const color  = btn.dataset.color || btn.style.background;
+          const active = btn.classList.toggle('active');
+          btn.style.background  = active ? color : 'transparent';
+          btn.style.borderColor = active ? color : '';
+          btn.style.color       = active ? '#fff' : '';
+          chart.data.datasets[index].hidden = !active;
+          chart.update();
+        });
       });
-    });
 
     } // end init()
   </script>
-
 </body>
 </html>
