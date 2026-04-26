@@ -532,6 +532,830 @@
       border-color: transparent !important;
     }
 
+    /* ── Section header row ── */
+    .ong-section-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+
+    .ong-dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: transparent;
+      border: 1px solid var(--ong-border);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: 0.15s;
+      white-space: nowrap;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .ong-dl-btn:hover {
+      background: var(--ong-dark);
+      border-color: var(--ong-dark);
+      color: #fefcf0;
+    }
+
+    .ong-stat-row5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .ong-stat-row4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .ong-stat-row5 { grid-template-columns: repeat(3, 1fr); }
+      .ong-stat-row4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .ong-stat-row5, .ong-stat-row4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Commission extra sections ── */
+    .ong-channel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .ong-channel-chart-label {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ong-dark);
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .ong-mtd-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .ong-mtd-ctr-wrap { margin: 8px 0; }
+
+    @media (max-width: 1100px) {
+      .ong-mtd-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .ong-channel-grid { grid-template-columns: 1fr; }
+      .ong-mtd-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .ong-mtd-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Paid Affiliates Table ── */
+    .ong-pa-filters {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .ong-pa-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ong-filter-btn {
+      padding: 5px 13px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      border: 1px solid var(--ong-border);
+      background: transparent;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .ong-filter-btn:hover { color: var(--ong-dark); }
+
+    .ong-filter-btn.active {
+      background: var(--ong-yellow);
+      border-color: var(--ong-yellow);
+      color: var(--ong-dark);
+    }
+
+    .ong-pa-filter-meta {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--ong-muted);
+      letter-spacing: 0.06em;
+      margin-left: auto;
+      align-self: flex-end;
+    }
+
+    .ong-pa-table-wrap {
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--ong-border);
+      box-shadow: 0 2px 12px rgba(28,26,14,0.05);
+    }
+
+    .ong-pa-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    .ong-pa-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .ong-pa-table thead tr {
+      background: var(--ong-yellow-pale);
+      border-bottom: 1px solid var(--ong-border);
+    }
+
+    .ong-pa-tbody-scroll {
+      display: block;
+      max-height: 530px; /* ~10 rows */
+      overflow-y: auto;
+      overflow-x: auto;
+    }
+
+    .ong-pa-tbody-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .ong-pa-tbody-scroll::-webkit-scrollbar-track {
+      background: var(--ong-yellow-pale);
+    }
+
+    .ong-pa-tbody-scroll::-webkit-scrollbar-thumb {
+      background: var(--ong-border);
+      border-radius: 3px;
+    }
+
+    .ong-pa-tbody-scroll::-webkit-scrollbar-thumb:hover {
+      background: var(--ong-muted);
+    }
+
+    /* Make thead and tbody columns align when tbody is block */
+    .ong-pa-table thead,
+    .ong-pa-table tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .ong-pa-table th {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      padding: 13px 16px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .ong-pa-table th.sortable { cursor: pointer; user-select: none; }
+    .ong-pa-table th.sortable:hover { color: var(--ong-dark); }
+    .sort-icon { opacity: 0.4; font-size: 0.7rem; }
+    .ong-pa-table th.sort-asc .sort-icon,
+    .ong-pa-table th.sort-desc .sort-icon { opacity: 1; }
+
+    .ong-pa-table tbody tr {
+      border-bottom: 1px solid var(--ong-border);
+      transition: background 0.12s;
+    }
+
+    .ong-pa-table tbody tr:last-child { border-bottom: none; }
+    .ong-pa-table tbody tr:hover { background: var(--ong-yellow-pale); }
+
+    .ong-pa-table td {
+      padding: 13px 16px;
+      color: var(--ong-dark);
+      vertical-align: middle;
+    }
+
+    .ong-pa-creator-link {
+      color: var(--ong-dark);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ong-pa-creator-link:hover { color: var(--ong-yellow-deep); }
+
+    .ong-pa-creator-icon {
+      font-size: 0.65rem;
+      color: var(--ong-muted);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .ong-pa-creator-link:hover .ong-pa-creator-icon { opacity: 1; }
+
+    .ong-pa-level-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    .level-L3 { background: #e0f2fe; color: #0369a1; }
+    .level-L4 { background: #dcfce7; color: #15803d; }
+    .level-L5 { background: var(--ong-yellow-mid); color: var(--ong-yellow-deep); }
+    .level-L6 { background: #fce7f3; color: #be185d; }
+
+    .ong-pa-table td.gmv-cell {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .ong-pa-table td.followers-cell {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--ong-text2);
+    }
+
+    .ong-pa-category-pill {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(200,160,0,0.08);
+      border: 1px solid var(--ong-border);
+      color: var(--ong-text2);
+    }
+
+    /* ── Paid Performance layouts ── */
+    .ong-paid-perf-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .ong-paid-total-card {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-top: 2.5px solid var(--ong-yellow);
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ong-paid-big-num {
+      font-family: var(--font-display);
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: var(--ong-dark);
+      line-height: 1;
+      margin: 8px 0 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .ong-paid-total-sub {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ong-paid-sub-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ong-muted);
+    }
+
+    .ong-paid-sub-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .ong-paid-sales-layout {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .ong-paid-kpi-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ong-paid-kpi-card {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-radius: 12px;
+      padding: 20px 18px;
+      box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+    }
+
+    .ong-paid-kpi-pct {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--ong-dark);
+      letter-spacing: -0.03em;
+      margin: 6px 0 12px;
+      line-height: 1;
+    }
+
+    .ong-paid-kpi-bar-wrap { margin-bottom: 10px; }
+
+    .ong-paid-kpi-bar-track {
+      height: 8px;
+      background: rgba(200,160,0,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .ong-paid-kpi-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .ong-paid-kpi-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .ong-paid-kpi-sep { color: var(--ong-border); }
+    .ong-paid-kpi-val { color: var(--ong-dark); }
+
+    .ong-paid-kpi-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--ong-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .ong-paid-perf-layout,
+      .ong-paid-sales-layout { grid-template-columns: 1fr; }
+      .ong-paid-kpi-stack { flex-direction: row; }
+      .ong-paid-kpi-card { flex: 1; }
+    }
+
+    /* ── Modal ── */
+    .ong-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28,26,14,0.55);
+      backdrop-filter: blur(4px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .ong-modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .ong-modal {
+      background: #fefcf0;
+      border: 1px solid var(--ong-border);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 60px rgba(28,26,14,0.2);
+      transform: translateY(12px);
+      transition: transform 0.2s;
+    }
+
+    .ong-modal-overlay.open .ong-modal { transform: translateY(0); }
+
+    .ong-modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 24px 24px 0;
+      gap: 12px;
+    }
+
+    .ong-modal-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--ong-dark);
+    }
+
+    .ong-modal-handle {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ong-muted);
+      margin-top: 4px;
+    }
+
+    .ong-modal-handle a {
+      color: var(--ong-muted);
+      text-decoration: none;
+    }
+
+    .ong-modal-handle a:hover { color: var(--ong-yellow-deep); }
+
+    .ong-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--ong-muted);
+      padding: 4px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+
+    .ong-modal-close:hover { color: var(--ong-dark); }
+
+    .ong-modal-body {
+      padding: 20px 24px 24px;
+    }
+
+    .ong-modal-section {
+      margin-bottom: 20px;
+    }
+
+    .ong-modal-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      margin-bottom: 10px;
+    }
+
+    .ong-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .ong-modal-stat {
+      background: white;
+      border: 1px solid var(--ong-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .ong-modal-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      margin-bottom: 4px;
+    }
+
+    .ong-modal-stat-value {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ong-dark);
+    }
+
+    .ong-modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .ong-modal-tag {
+      font-size: 0.7rem;
+      padding: 4px 11px;
+      border-radius: 20px;
+      background: rgba(200,160,0,0.08);
+      border: 1px solid var(--ong-border);
+      color: var(--ong-text2);
+    }
+
+    .ong-modal-audience-bar {
+      display: flex;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .ong-modal-bar-female { background: #f9a8d4; }
+    .ong-modal-bar-male   { background: #93c5fd; }
+
+    .ong-modal-bar-legend {
+      display: flex;
+      gap: 16px;
+    }
+
+    .ong-modal-bar-leg-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--ong-text2);
+    }
+
+    .ong-modal-bar-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .ong-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-top: 1px solid var(--ong-border);
+      gap: 12px;
+    }
+
+    .ong-modal-approve-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--ong-yellow);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ong-dark);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .ong-modal-approve-btn:hover { background: var(--ong-yellow-deep); color: white; }
+
+    .ong-modal-approve-btn.approved {
+      background: #dcfce7;
+      color: #15803d;
+      cursor: default;
+    }
+
+    .ong-modal-skip-btn {
+      background: none;
+      border: 1px solid var(--ong-border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .ong-modal-skip-btn:hover { color: var(--ong-dark); border-color: var(--ong-dark); }
+
+    /* ── Approved badge in table ── */
+    .ong-approved-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #15803d;
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      border-radius: 4px;
+      padding: 4px 9px;
+      cursor: pointer;
+      transition: 0.15s;
+      white-space: nowrap;
+    }
+
+    .ong-approved-badge:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #b91c1c;
+    }
+
+    .ong-approved-badge:hover .badge-label::before { content: '✕ Revoke'; }
+    .ong-approved-badge:not(:hover) .badge-label::before { content: '✓ Approved'; }
+
+    /* ── View Details btn in table ── */
+    .ong-view-btn {
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      border: 1px solid var(--ong-border);
+      background: transparent;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: 0.15s;
+      white-space: nowrap;
+    }
+
+    .ong-view-btn:hover {
+      border-color: var(--ong-yellow);
+      color: var(--ong-dark);
+      background: var(--ong-yellow-pale);
+    }
+
+    /* ── Selected bar ── */
+    .ong-selected-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .ong-selected-bar-text {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #15803d;
+      font-weight: 600;
+    }
+
+    .ong-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      background: #15803d;
+      border: none;
+      border-radius: 7px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .ong-download-btn:hover { background: #166534; }
+    .ong-selected-bar.hidden { display: none; }
+
+    /* ── Tab Switcher ── */
+    .ong-tab-bar {
+      border-bottom: 1px solid var(--ong-border);
+      background: var(--ong-surface);
+      position: sticky;
+      top: 52px;
+      z-index: 90;
+    }
+
+    .ong-tab-inner {
+      display: flex;
+      gap: 0;
+    }
+
+    .ong-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 28px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: 0.18s;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .ong-tab-btn:hover { color: var(--ong-dark); }
+
+    .ong-tab-btn.active {
+      color: var(--ong-dark);
+      border-bottom-color: var(--ong-yellow);
+    }
+
+    .ong-tab-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .ong-tab-btn.active .ong-tab-dot {
+      background: var(--ong-yellow);
+      opacity: 1;
+    }
+
+    .ong-tab-badge {
+      font-size: 0.58rem;
+      padding: 2px 7px;
+      border-radius: 20px;
+      border: 1px solid currentColor;
+      opacity: 0.6;
+    }
+
+    .ong-tab-btn.active .ong-tab-badge {
+      background: var(--ong-yellow-pale);
+      border-color: var(--ong-yellow);
+      color: var(--ong-yellow-deep);
+      opacity: 1;
+    }
+
+    /* ── Tab panels ── */
+    .ong-tab-panel { display: none; }
+    .ong-tab-panel.active { display: block; }
+
+    /* Paid Affiliates placeholder */
+    .ong-paid-placeholder {
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .ong-paid-placeholder-icon {
+      font-size: 2.4rem;
+      margin-bottom: 24px;
+      opacity: 0.35;
+    }
+
+    .ong-paid-placeholder-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--ong-dark);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .ong-paid-placeholder-sub {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ong-muted);
+      letter-spacing: 0.06em;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .ong-hero { grid-template-columns: 1fr; }
@@ -544,6 +1368,7 @@
       .ong-hero-left { padding: 44px 28px; }
       .ong-strip { grid-template-columns: repeat(2, 1fr); }
       .ong-stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .ong-tab-btn { padding: 14px 18px; font-size: 0.68rem; }
     }
   </style>
 </head>
@@ -601,16 +1426,43 @@
     </div>
   </div>
 
-  <!-- ── Section 01: Invitation Funnel ── -->
+  <!-- ── Tab Bar ── -->
+  <div class="ong-tab-bar">
+    <div class="container">
+      <div class="ong-tab-inner">
+        <button class="ong-tab-btn active" data-tab="commission">
+          <span class="ong-tab-dot"></span>
+          Commission Based Creators
+          <span class="ong-tab-badge">Active</span>
+        </button>
+        <button class="ong-tab-btn" data-tab="paid">
+          <span class="ong-tab-dot"></span>
+          Paid Affiliates
+          <span class="ong-tab-badge">Coming Soon</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Tab Panel: Commission Based Creators ── -->
+  <div class="ong-tab-panel active" id="panel-commission">
+
+  <!-- ══ Section 01: Funnel & Sampling ══ -->
   <section class="ong-section" style="padding-top:52px;">
     <div class="container">
-      <div class="ong-section-marker">
-        <span class="ong-section-num">01</span>
-        <span class="ong-section-tick"></span>
-        <span class="ong-section-tag">Funnel</span>
+      <div class="ong-section-header-row">
+        <div>
+          <div class="ong-section-marker">
+            <span class="ong-section-num">01</span>
+            <span class="ong-section-tick"></span>
+            <span class="ong-section-tag">Funnel & Sampling</span>
+          </div>
+          <h2 class="ong-section-title">Invitation & Sample Funnel</h2>
+        </div>
+        <button class="ong-dl-btn" id="dl-funnel">↓ Download CSV</button>
       </div>
-      <h2 class="ong-section-title">Invitation Funnel</h2>
 
+      <!-- Date controls -->
       <div class="ong-range-row">
         <div class="ong-date-wrap">
           <span class="ong-date-icon">📅</span>
@@ -622,82 +1474,175 @@
         <button class="ong-range-btn active" data-days="30">Last 30d</button>
       </div>
 
-      <div class="ong-s1-layout">
-        <!-- Stat cards -->
-        <div class="ong-stat-grid" style="padding-top:90px;">
-          <div class="ong-stat-card" style="border-top-color:#3b82f6;">
-            <p class="ong-stat-label">Invitations Sent</p>
-            <p class="ong-stat-value" id="stat-sent">—</p>
+      <!-- 5 Stat cards -->
+      <div class="ong-stat-row5" style="margin-bottom:24px;">
+        <div class="ong-stat-card" style="border-top-color:#3b82f6;">
+          <p class="ong-stat-label">Invitations Sent</p>
+          <p class="ong-stat-value" id="stat-sent">—</p>
+        </div>
+        <div class="ong-stat-card" style="border-top-color:#60a5fa;">
+          <p class="ong-stat-label">Sample Requested</p>
+          <p class="ong-stat-value" id="stat-req">—</p>
+        </div>
+        <div class="ong-stat-card" style="border-top-color:#22c55e;">
+          <p class="ong-stat-label">Sample Approved</p>
+          <p class="ong-stat-value" id="stat-approved">—</p>
+        </div>
+        <div class="ong-stat-card" style="border-top-color:#a78bfa;">
+          <p class="ong-stat-label">Approval Rate</p>
+          <p class="ong-stat-value" id="stat-approval-rate">—</p>
+        </div>
+        <div class="ong-stat-card" style="border-top-color:#f5c842;">
+          <p class="ong-stat-label">Video Posted</p>
+          <p class="ong-stat-value" id="stat-posted">—</p>
+        </div>
+      </div>
+
+      <!-- Chart controls + chart -->
+      <div class="ong-toggle-row">
+        <span class="ong-toggle-label">Period</span>
+        <div class="ong-toggle-group">
+          <button class="ong-period-btn active" data-period="daily">Daily</button>
+          <button class="ong-period-btn" data-period="weekly">Weekly</button>
+          <button class="ong-period-btn" data-period="monthly">Monthly</button>
+        </div>
+      </div>
+      <div class="ong-toggle-row" style="margin-bottom:14px;">
+        <span class="ong-toggle-label">Metrics</span>
+        <div class="ong-toggle-group" id="toggles-1">
+          <button class="ong-toggle-btn active" data-chart="chart1" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Invitations Sent</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="1" data-color="#60a5fa">Sample Requested</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Approved</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#d4a800">Video Posted</button>
+        </div>
+      </div>
+      <div class="ong-chart-card">
+        <div class="ong-chart-wrap"><canvas id="chart1"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Section 02: Video & Channel Performance ══ -->
+  <section class="ong-section">
+    <div class="container">
+      <div class="ong-section-header-row">
+        <div>
+          <div class="ong-section-marker">
+            <span class="ong-section-num">02</span>
+            <span class="ong-section-tick"></span>
+            <span class="ong-section-tag">Video & Channel</span>
           </div>
-          <div class="ong-stat-card" style="border-top-color:#60a5fa;">
-            <p class="ong-stat-label">Sample Requested</p>
-            <p class="ong-stat-value" id="stat-req">—</p>
-          </div>
-          <div class="ong-stat-card" style="border-top-color:#22c55e;">
-            <p class="ong-stat-label">Sample Approved</p>
-            <p class="ong-stat-value" id="stat-approved">—</p>
-          </div>
-          <div class="ong-stat-card" style="border-top-color:#f5c842;">
-            <p class="ong-stat-label">Video Posted</p>
-            <p class="ong-stat-value" id="stat-posted">—</p>
+          <h2 class="ong-section-title">Video Activity & Channel Performance</h2>
+        </div>
+        <button class="ong-dl-btn" id="dl-video">↓ Download CSV</button>
+      </div>
+
+      <!-- MTD stat cards -->
+      <div class="ong-stat-row4" style="margin-bottom:28px;">
+        <div class="ong-paid-kpi-card">
+          <p class="ong-stat-label">Total Videos Posted</p>
+          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">3,270</p>
+          <div class="ong-paid-kpi-meta" style="margin-bottom:0;">
+            <span class="ong-paid-kpi-val" style="color:#38bdf8; font-size:0.7rem;">+410 this week</span>
           </div>
         </div>
+        <div class="ong-paid-kpi-card">
+          <p class="ong-stat-label">MTD New Videos</p>
+          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">49%</p>
+          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" style="background:#3b82f6;width:49%;"></div></div></div>
+          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:#3b82f6;">884</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">1,800</span></div>
+          <div class="ong-paid-kpi-labels"><span>Current</span><span>Goal</span></div>
+        </div>
+        <div class="ong-paid-kpi-card">
+          <p class="ong-stat-label">MTD Video Impressions</p>
+          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">5,960%</p>
+          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" style="background:#3b82f6;width:100%;"></div></div></div>
+          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:#3b82f6;">429,140</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">7,200</span></div>
+          <div class="ong-paid-kpi-labels"><span>Current</span><span>Goal</span></div>
+        </div>
+        <div class="ong-paid-kpi-card">
+          <p class="ong-stat-label">MTD Samples Shipped</p>
+          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">1,148</p>
+          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" style="background:var(--ong-yellow);width:100%;"></div></div></div>
+          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:var(--ong-yellow-deep);">Current</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">No goal set</span></div>
+        </div>
+      </div>
 
-        <!-- Chart -->
+      <!-- Two charts side by side -->
+      <div class="ong-channel-grid">
+        <!-- Left: Content Volume -->
         <div>
-          <div class="ong-toggle-row">
-            <span class="ong-toggle-label">Period</span>
-            <div class="ong-toggle-group">
-              <button class="ong-period-btn active" data-period="daily">Daily</button>
-              <button class="ong-period-btn" data-period="weekly">Weekly</button>
-              <button class="ong-period-btn" data-period="monthly">Monthly</button>
-            </div>
-          </div>
-          <div class="ong-toggle-row" style="margin-bottom:14px;">
-            <span class="ong-toggle-label">Metrics</span>
-            <div class="ong-toggle-group" id="toggles-1">
-              <button class="ong-toggle-btn active" data-chart="chart1" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Invitations Sent</button>
-              <button class="ong-toggle-btn" data-chart="chart1" data-index="1" data-color="#60a5fa">Sample Requested</button>
-              <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Approved</button>
-              <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#d4a800">Video Posted</button>
+          <p class="ong-channel-chart-label">Content Volume</p>
+          <div class="ong-toggle-row" style="margin-bottom:10px; flex-wrap:wrap;">
+            <div class="ong-toggle-group" id="toggles-videoact">
+              <button class="ong-toggle-btn active" data-chart="chartVideoAct" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">New Videos / Week</button>
+              <button class="ong-toggle-btn active" data-chart="chartVideoAct" data-index="1" style="background:#38bdf8;border-color:#38bdf8;color:#fff;" data-color="#38bdf8">Video Post Rate</button>
             </div>
           </div>
           <div class="ong-chart-card">
-            <div class="ong-chart-wrap"><canvas id="chart1"></canvas></div>
+            <div class="ong-chart-wrap"><canvas id="chartVideoAct"></canvas></div>
+          </div>
+        </div>
+        <!-- Right: Channel CVR + Impression -->
+        <div>
+          <p class="ong-channel-chart-label">Channel CVR & Impressions</p>
+          <div class="ong-toggle-row" style="margin-bottom:10px; flex-wrap:wrap;">
+            <div class="ong-toggle-group" id="toggles-cvrchan">
+              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Video CTR</button>
+              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="1" style="background:#22c55e;border-color:#22c55e;color:#fff;" data-color="#22c55e">Video CTOR</button>
+              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="2" style="background:#eab308;border-color:#eab308;color:#fff;" data-color="#eab308">Live CTR</button>
+              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="3" style="background:#f97316;border-color:#f97316;color:#fff;" data-color="#f97316">Live CTOR</button>
+              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="4" style="background:#6366f1;border-color:#6366f1;color:#fff;" data-color="#6366f1">Video Impression</button>
+              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="5" style="background:#ec4899;border-color:#ec4899;color:#fff;" data-color="#ec4899">Live Impression</button>
+            </div>
+          </div>
+          <div class="ong-chart-card">
+            <div class="ong-chart-wrap"><canvas id="chartCVRChan"></canvas></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Section 02: Video Performance ── -->
+  <!-- ══ Section 03: Revenue ══ -->
   <section class="ong-section">
     <div class="container">
-      <div class="ong-section-marker">
-        <span class="ong-section-num">02</span>
-        <span class="ong-section-tick"></span>
-        <span class="ong-section-tag">Performance</span>
+      <div class="ong-section-header-row">
+        <div>
+          <div class="ong-section-marker">
+            <span class="ong-section-num">03</span>
+            <span class="ong-section-tick"></span>
+            <span class="ong-section-tag">Revenue</span>
+          </div>
+          <h2 class="ong-section-title">Affiliate GMV</h2>
+        </div>
+        <button class="ong-dl-btn" id="dl-gmv">↓ Download CSV</button>
       </div>
-      <h2 class="ong-section-title">Video Performance</h2>
-      <div class="ong-toggle-group" style="margin-bottom:16px;" id="toggles-2">
-        <button class="ong-toggle-btn active" data-chart="chart2" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Avg. CTR</button>
-        <button class="ong-toggle-btn" data-chart="chart2" data-index="1" data-color="#a78bfa">Avg. CTOR</button>
-      </div>
-      <div class="ong-chart-card">
-        <div class="ong-chart-wrap"><canvas id="chart2"></canvas></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ── Section 03: GMV ── -->
-  <section class="ong-section">
-    <div class="container">
-      <div class="ong-section-marker">
-        <span class="ong-section-num">03</span>
-        <span class="ong-section-tick"></span>
-        <span class="ong-section-tag">Revenue</span>
+      <!-- GMV stat cards -->
+      <div class="ong-stat-row4" style="margin-bottom:24px; grid-template-columns: 1fr 1fr 1fr;">
+        <div class="ong-paid-kpi-card">
+          <p class="ong-stat-label">MTD Affiliate GMV</p>
+          <p class="ong-paid-kpi-pct" style="color:#d4a800; font-size:1.9rem;">$3,322</p>
+          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:var(--ong-muted); font-size:0.65rem;">No goal set for this period</span></div>
+        </div>
+        <div class="ong-paid-kpi-card">
+          <p class="ong-stat-label">MTD Video CTR</p>
+          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">2.92%</p>
+          <div class="ong-paid-kpi-meta">
+            <span class="ong-paid-kpi-val" style="color:#9a9070; font-size:0.65rem;">Mo. Avg 2.31%</span>
+            <span class="ong-paid-kpi-sep">→</span>
+            <span class="ong-paid-kpi-val" style="color:#22c55e; font-size:0.65rem;">+26%</span>
+          </div>
+        </div>
+        <div class="ong-paid-kpi-card">
+          <p class="ong-stat-label">YTD Samples Approved</p>
+          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">3,221</p>
+          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:var(--ong-muted); font-size:0.65rem;">Approval rate: 11.3% · Requested: 28,565</span></div>
+        </div>
       </div>
-      <h2 class="ong-section-title">GMV</h2>
+
+      <!-- GMV chart -->
       <div class="ong-toggle-group" style="margin-bottom:16px;" id="toggles-3">
         <button class="ong-toggle-btn active" data-chart="chart3" data-index="0" style="background:#d4a800;border-color:#d4a800;color:#fff;">Daily</button>
         <button class="ong-toggle-btn" data-chart="chart3" data-index="1" data-color="#3b82f6">Weekly</button>
@@ -708,6 +1653,270 @@
       </div>
     </div>
   </section>
+
+  </div><!-- end panel-commission -->
+
+  <!-- ── Tab Panel: Paid Affiliates ── -->
+  <div class="ong-tab-panel" id="panel-paid">
+    <section class="ong-section" style="padding-top:52px;">
+      <div class="container">
+        <div class="ong-section-marker">
+          <span class="ong-section-num">01</span>
+          <span class="ong-section-tick"></span>
+          <span class="ong-section-tag">Nomination</span>
+        </div>
+        <h2 class="ong-section-title">Paid Affiliates List</h2>
+
+        <!-- Selected bar -->
+        <div class="ong-selected-bar hidden" id="selected-bar">
+          <span class="ong-selected-bar-text" id="selected-bar-text"></span>
+          <button class="ong-download-btn" id="download-btn">↓ Download Selected</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="ong-pa-filters">
+          <div class="ong-pa-filter-group">
+            <span class="ong-toggle-label">Level</span>
+            <div class="ong-toggle-group" id="filter-level">
+              <button class="ong-filter-btn active" data-filter="level" data-value="all">All</button>
+              <button class="ong-filter-btn" data-filter="level" data-value="L3">L3</button>
+              <button class="ong-filter-btn" data-filter="level" data-value="L4">L4</button>
+              <button class="ong-filter-btn" data-filter="level" data-value="L5">L5</button>
+              <button class="ong-filter-btn" data-filter="level" data-value="L6">L6</button>
+            </div>
+          </div>
+          <div class="ong-pa-filter-group">
+            <span class="ong-toggle-label">Category</span>
+            <div class="ong-toggle-group" id="filter-category">
+              <button class="ong-filter-btn active" data-filter="category" data-value="all">All</button>
+              <button class="ong-filter-btn" data-filter="category" data-value="Beauty and Personal Care">Beauty</button>
+              <button class="ong-filter-btn" data-filter="category" data-value="Fashion">Fashion</button>
+              <button class="ong-filter-btn" data-filter="category" data-value="Fashion Accessories">Accessories</button>
+              <button class="ong-filter-btn" data-filter="category" data-value="Health">Health</button>
+              <button class="ong-filter-btn" data-filter="category" data-value="Womenswear & Underwear">Womenswear</button>
+            </div>
+          </div>
+          <div class="ong-pa-filter-meta" id="pa-count"></div>
+        </div>
+
+        <!-- Table -->
+        <div class="ong-pa-table-wrap">
+          <table class="ong-pa-table" id="pa-table">
+            <thead>
+              <tr>
+                <th class="sortable" data-col="name">Creator <span class="sort-icon">↕</span></th>
+                <th class="sortable" data-col="level">Level <span class="sort-icon">↕</span></th>
+                <th class="sortable" data-col="gmv">GMV <span class="sort-icon">↕</span></th>
+                <th class="sortable" data-col="followers">Followers <span class="sort-icon">↕</span></th>
+                <th>Main Category</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="pa-tbody" class="ong-pa-tbody-scroll"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 02: Video Overview + Weekly CVR ── -->
+    <section class="ong-section">
+      <div class="container">
+        <div class="ong-section-marker">
+          <span class="ong-section-num">02</span>
+          <span class="ong-section-tick"></span>
+          <span class="ong-section-tag">Performance</span>
+        </div>
+        <h2 class="ong-section-title">Video Performance</h2>
+
+        <div class="ong-paid-perf-layout">
+          <!-- Total Videos stat -->
+          <div class="ong-paid-total-card">
+            <p class="ong-stat-label">Total Videos Posted</p>
+            <p class="ong-paid-big-num" id="paid-total-videos">31</p>
+            <div class="ong-paid-total-sub">
+              <span class="ong-paid-sub-item"><span class="ong-paid-sub-dot" style="background:#3b82f6;"></span><span id="paid-videos-this-week">5</span> this week</span>
+            </div>
+          </div>
+
+          <!-- Weekly CVR chart -->
+          <div>
+            <div class="ong-toggle-row" style="margin-bottom:14px;">
+              <span class="ong-toggle-label">Metrics</span>
+              <div class="ong-toggle-group" id="toggles-paid-cvr">
+                <button class="ong-toggle-btn active" data-chart="chartPaidCVR" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Paid Video CTR</button>
+                <button class="ong-toggle-btn active" data-chart="chartPaidCVR" data-index="1" style="background:#38bdf8;border-color:#38bdf8;color:#fff;" data-color="#38bdf8">Paid Video CTOR</button>
+              </div>
+            </div>
+            <div class="ong-chart-card">
+              <div class="ong-chart-wrap"><canvas id="chartPaidCVR"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 03: Weekly Sales + Budget + GMV ── -->
+    <section class="ong-section">
+      <div class="container">
+        <div class="ong-section-marker">
+          <span class="ong-section-num">03</span>
+          <span class="ong-section-tick"></span>
+          <span class="ong-section-tag">Revenue</span>
+        </div>
+        <h2 class="ong-section-title">Weekly Sales & Budget</h2>
+
+        <div class="ong-paid-sales-layout">
+          <!-- Weekly Sales chart -->
+          <div>
+            <div class="ong-toggle-row" style="margin-bottom:14px;">
+              <span class="ong-toggle-label">Metrics</span>
+              <div class="ong-toggle-group" id="toggles-paid-sales">
+                <button class="ong-toggle-btn active" data-chart="chartPaidSales" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">New Paid Videos</button>
+                <button class="ong-toggle-btn active" data-chart="chartPaidSales" data-index="1" style="background:#38bdf8;border-color:#38bdf8;color:#fff;" data-color="#38bdf8">Paid Video GMV</button>
+              </div>
+            </div>
+            <div class="ong-chart-card">
+              <div class="ong-chart-wrap"><canvas id="chartPaidSales"></canvas></div>
+            </div>
+          </div>
+
+          <!-- Budget + GMV attainment cards -->
+          <div class="ong-paid-kpi-stack">
+            <!-- Budget card -->
+            <div class="ong-paid-kpi-card">
+              <p class="ong-stat-label">Paid Creator Budget</p>
+              <p class="ong-paid-kpi-pct" id="paid-budget-pct">—</p>
+              <div class="ong-paid-kpi-bar-wrap">
+                <div class="ong-paid-kpi-bar-track">
+                  <div class="ong-paid-kpi-bar-fill" id="paid-budget-bar" style="background:#3b82f6;"></div>
+                </div>
+              </div>
+              <div class="ong-paid-kpi-meta">
+                <span class="ong-paid-kpi-val" id="paid-budget-spent" style="color:#3b82f6;">—</span>
+                <span class="ong-paid-kpi-sep">|</span>
+                <span class="ong-paid-kpi-val" id="paid-budget-total">—</span>
+              </div>
+              <div class="ong-paid-kpi-labels">
+                <span>Spent</span><span>Budget</span>
+              </div>
+            </div>
+
+            <!-- GMV attainment card -->
+            <div class="ong-paid-kpi-card">
+              <p class="ong-stat-label">Paid Creator GMV</p>
+              <p class="ong-paid-kpi-pct" id="paid-gmv-pct">—</p>
+              <div class="ong-paid-kpi-bar-wrap">
+                <div class="ong-paid-kpi-bar-track">
+                  <div class="ong-paid-kpi-bar-fill" id="paid-gmv-bar" style="background:#d4a800;"></div>
+                </div>
+              </div>
+              <div class="ong-paid-kpi-meta">
+                <span class="ong-paid-kpi-val" id="paid-gmv-achieved" style="color:#d4a800;">—</span>
+                <span class="ong-paid-kpi-sep">|</span>
+                <span class="ong-paid-kpi-val" id="paid-gmv-target">—</span>
+              </div>
+              <div class="ong-paid-kpi-labels">
+                <span>Achieved</span><span>Target</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- end panel-paid -->
+
+  <!-- ── Creator Detail Modal ── -->
+  <div class="ong-modal-overlay" id="pa-modal-overlay">
+    <div class="ong-modal" id="pa-modal">
+      <div class="ong-modal-header">
+        <div>
+          <div class="ong-modal-name" id="modal-name"></div>
+          <div class="ong-modal-handle"><a id="modal-handle" href="#" target="_blank" rel="noopener"></a></div>
+        </div>
+        <button class="ong-modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="ong-modal-body">
+        <!-- Key stats -->
+        <div class="ong-modal-section">
+          <div class="ong-modal-section-label">Key Metrics</div>
+          <div class="ong-modal-grid">
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">Creator Level</div>
+              <div class="ong-modal-stat-value" id="modal-level"></div>
+            </div>
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">GMV</div>
+              <div class="ong-modal-stat-value" id="modal-gmv"></div>
+            </div>
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">Followers</div>
+              <div class="ong-modal-stat-value" id="modal-followers"></div>
+            </div>
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">Avg. Views</div>
+              <div class="ong-modal-stat-value" id="modal-views"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile -->
+        <div class="ong-modal-section">
+          <div class="ong-modal-section-label">Creator Profile</div>
+          <div class="ong-modal-grid" style="grid-template-columns:1fr 1fr 1fr; margin-bottom:12px;">
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">Gender</div>
+              <div class="ong-modal-stat-value" id="modal-gender" style="font-size:0.85rem;"></div>
+            </div>
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">Age Group</div>
+              <div class="ong-modal-stat-value" id="modal-age" style="font-size:0.85rem;"></div>
+            </div>
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">Ethnicity</div>
+              <div class="ong-modal-stat-value" id="modal-ethnicity" style="font-size:0.85rem;"></div>
+            </div>
+          </div>
+          <div class="ong-modal-section-label" style="margin-top:10px;">Traits</div>
+          <div class="ong-modal-tags" id="modal-traits"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="ong-modal-section">
+          <div class="ong-modal-section-label">Content Categories</div>
+          <div class="ong-modal-tags" id="modal-categories"></div>
+        </div>
+
+        <!-- Audience -->
+        <div class="ong-modal-section">
+          <div class="ong-modal-section-label">Audience</div>
+          <div class="ong-modal-grid" style="grid-template-columns:1fr 1fr; margin-bottom:12px;">
+            <div class="ong-modal-stat">
+              <div class="ong-modal-stat-label">Age Range</div>
+              <div class="ong-modal-stat-value" id="modal-audience-range" style="font-size:0.85rem;"></div>
+            </div>
+          </div>
+          <div class="ong-modal-audience-bar" id="modal-audience-bar">
+            <div class="ong-modal-bar-female" id="modal-bar-female"></div>
+            <div class="ong-modal-bar-male"   id="modal-bar-male"></div>
+          </div>
+          <div class="ong-modal-bar-legend">
+            <div class="ong-modal-bar-leg-item">
+              <div class="ong-modal-bar-dot" style="background:#f9a8d4;"></div>
+              <span id="modal-female-pct"></span> Female
+            </div>
+            <div class="ong-modal-bar-leg-item">
+              <div class="ong-modal-bar-dot" style="background:#93c5fd;"></div>
+              <span id="modal-male-pct"></span> Male
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ong-modal-footer">
+        <button class="ong-modal-skip-btn" id="modal-skip">Close</button>
+        <button class="ong-modal-approve-btn" id="modal-approve">✓ Approve Creator</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ── Footer ── -->
   <footer class="ong-footer">
@@ -776,6 +1985,14 @@
       .then(r => r.json())
       .then(data => { rawInv = data; init(); });
 
+    function dlCSV(csvString, filename) {
+      const blob = new Blob([csvString], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.click();
+      URL.revokeObjectURL(url);
+    }
+
     function init() {
       let currentStart  = new Date('2026-03-26');
       let currentEnd    = new Date('2026-04-24');
@@ -811,6 +2028,8 @@
         document.getElementById('stat-req').textContent      = tot.req.toLocaleString();
         document.getElementById('stat-approved').textContent = tot.approved.toLocaleString();
         document.getElementById('stat-posted').textContent   = tot.posted.toLocaleString();
+        const approvalRate = tot.req > 0 ? ((tot.approved / tot.req) * 100).toFixed(1) + '%' : '—';
+        document.getElementById('stat-approval-rate').textContent = approvalRate;
       }
 
       function makeChart(id, datasets) {
@@ -873,10 +2092,6 @@
           { label: 'Sample Approved',  color: '#22c55e' },
           { label: 'Video Posted',     color: '#d4a800' },
         ]),
-        chart2: makeChart('chart2', [
-          { label: 'Avg. CTR',  color: '#3b82f6' },
-          { label: 'Avg. CTOR', color: '#a78bfa' },
-        ]),
         chart3: makeChart('chart3', [
           { label: 'Daily GMV',   color: '#d4a800' },
           { label: 'Weekly GMV',  color: '#3b82f6' },
@@ -927,7 +2142,8 @@
 
       document.querySelectorAll('.ong-toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          const chart  = charts[btn.dataset.chart];
+          const chart = charts[btn.dataset.chart];
+          if (!chart) return; // handled by initCommissionExtra or initPaidPerf
           const index  = parseInt(btn.dataset.index);
           const color  = btn.dataset.color || btn.style.background;
           const active = btn.classList.toggle('active');
@@ -939,7 +2155,612 @@
         });
       });
 
+      /* ── Download: Section 01 Funnel ── */
+      document.getElementById('dl-funnel').addEventListener('click', () => {
+        const rows = rawInv.filter(r => {
+          const d = new Date(r.date);
+          return d >= currentStart && d <= currentEnd;
+        });
+        const header = ['Date','Invitations Sent','Sample Requested','Sample Approved','Video Posted'];
+        const csv = [header, ...rows.map(r => [r.date, r.sent, r.req, r.approved, r.posted])]
+          .map(r => r.join(',')).join('\n');
+        dlCSV(csv, 'ongredients_funnel.csv');
+      });
+
+      /* ── Download: Section 03 GMV ── */
+      document.getElementById('dl-gmv').addEventListener('click', () => {
+        const header = ['Period','GMV'];
+        const rows = [
+          ['2026-03-26','142.50'],['2026-03-27','98.00'],['2026-03-28','215.75'],
+          ['2026-03-29','87.25'],['2026-03-30','312.00'],['2026-03-31','445.50'],
+          ['2026-04-01','198.75'],['2026-04-07','863.00'],['2026-04-14','1240.50'],['2026-04-24','3322.00'],
+        ];
+        const csv = [header, ...rows].map(r => r.join(',')).join('\n');
+        dlCSV(csv, 'ongredients_gmv.csv');
+      });
+
     } // end init()
+
+    /* ── Commission Extra Charts (Section 02) ── */
+    (function initCommissionExtra() {
+      const weeks13 = [
+        '02/02','02/09','02/16','02/23','03/02','03/09',
+        '03/16','03/23','03/30','04/06','04/13','04/20','04/27'
+      ];
+
+      // Content volume data
+      const newVideos = [10,   32,   81,   158,  149,  383,  601,  517,  418,  200,  270,  410,  241];
+      const postRate  = [1.00, 1.60, 1.16, 2.16, 0.36, 0.78, 1.80, 0.83, 3.67, 4.41, 0.53, 0.70, 0.50];
+
+      // Channel CVR + Impression data
+      const videoCTR  = [1.50, 4.08, 2.31, 1.96, 2.57, 3.47, 2.73, 0.90, 2.81, 2.44, 1.20, 0.80, 0.60];
+      const videoCTOR = [0.00, 7.83, 2.32, 3.24, 1.51, 4.11, 3.12, 0.40, 2.44, 1.50, 0.90, 0.60, 0.40];
+      const liveCTR   = [0.00, 3.69, 0.10, 0.19, 0.00, 0.14, 0.19, 2.15, 1.63, 0.80, 0.50, 0.30, 0.20];
+      const liveCTOR  = [6.25, 0.51, 0.00, 0.04, 0.00, 5.99, 0.63, 0.46, 1.44, 0.70, 0.40, 0.20, 0.10];
+      const videoImp  = [394,  53245, 64872, 143290, 196966, 204365, 220710, 214137, 176614, 88099, 52000, 31000, 19000];
+      const liveImp   = [1266, 317,   1093,  5935,   3218,   3458,   7284,   377,    2000,   1500,  800,   400,   200];
+
+      const chartCfg = {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1c1a0e', borderColor: 'rgba(200,160,0,0.2)', borderWidth: 1,
+            titleColor: '#fefcf0', bodyColor: '#9a9070', padding: 12, cornerRadius: 8,
+          }
+        }
+      };
+      const xScale = { grid: { color: 'rgba(200,160,0,0.07)' }, border: { color: 'rgba(200,160,0,0.12)' }, ticks: { color: '#9a9070', maxRotation: 45 } };
+      const yScale = (pos, fmt, color) => ({
+        position: pos || 'left',
+        grid: pos === 'right' ? { drawOnChartArea: false } : { color: 'rgba(200,160,0,0.07)' },
+        border: { color: 'transparent' },
+        ticks: { color: color || '#9a9070', callback: fmt || (v => v) },
+        beginAtZero: true,
+      });
+
+      const mkDataset = (label, data, color, yAxis) => ({
+        label, data,
+        borderColor: color, backgroundColor: color + '18',
+        borderWidth: 2, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: color,
+        tension: 0.35, fill: false, hidden: false, yAxisID: yAxis || 'y',
+      });
+
+      // Chart: Content Volume (dual axis)
+      const ctxVid = document.getElementById('chartVideoAct');
+      const chartVideoAct = new Chart(ctxVid.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: weeks13,
+          datasets: [
+            mkDataset('New Videos / Week', newVideos, '#3b82f6', 'y'),
+            mkDataset('Video Post Rate',   postRate,  '#38bdf8', 'y2'),
+          ]
+        },
+        options: {
+          ...chartCfg,
+          scales: {
+            x: xScale,
+            y:  { ...yScale('left',  v => v,                 '#9a9070'), title: { display: true, text: 'Videos', color: '#9a9070', font: { size: 10 } } },
+            y2: { ...yScale('right', v => v.toFixed(1),      '#38bdf8'), title: { display: true, text: 'Post Rate', color: '#38bdf8', font: { size: 10 } } },
+          }
+        }
+      });
+
+      // Chart: Channel CVR + Impressions (dual axis — CVR % left, Impressions right)
+      const ctxCVR = document.getElementById('chartCVRChan');
+      const chartCVRChan = new Chart(ctxCVR.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: weeks13,
+          datasets: [
+            mkDataset('Video CTR',       videoCTR,  '#3b82f6', 'y'),
+            mkDataset('Video CTOR',      videoCTOR, '#22c55e', 'y'),
+            mkDataset('Live CTR',        liveCTR,   '#eab308', 'y'),
+            mkDataset('Live CTOR',       liveCTOR,  '#f97316', 'y'),
+            mkDataset('Video Impression',videoImp,  '#6366f1', 'y2'),
+            mkDataset('Live Impression', liveImp,   '#ec4899', 'y2'),
+          ]
+        },
+        options: {
+          ...chartCfg,
+          plugins: {
+            ...chartCfg.plugins,
+            tooltip: {
+              ...chartCfg.plugins.tooltip,
+              callbacks: {
+                label: ctx => {
+                  const v = ctx.parsed.y;
+                  const isImp = ctx.datasetIndex >= 4;
+                  return ` ${ctx.dataset.label}: ${isImp ? (v >= 1000 ? (v/1000).toFixed(1)+'K' : v) : v.toFixed(2)+'%'}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: xScale,
+            y:  { ...yScale('left',  v => v.toFixed(1)+'%',                          '#9a9070'), title: { display: true, text: 'CVR (%)', color: '#9a9070', font: { size: 10 } } },
+            y2: { ...yScale('right', v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v,  '#6366f1'), title: { display: true, text: 'Impressions', color: '#6366f1', font: { size: 10 } } },
+          }
+        }
+      });
+
+      const extraCharts = { chartVideoAct, chartCVRChan };
+
+      // Wire toggle buttons
+      document.querySelectorAll('#toggles-videoact .ong-toggle-btn, #toggles-cvrchan .ong-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const chart = extraCharts[btn.dataset.chart];
+          if (!chart) return;
+          const index = parseInt(btn.dataset.index);
+          const color = btn.dataset.color || btn.style.background;
+          const active = btn.classList.toggle('active');
+          btn.style.background  = active ? color : 'transparent';
+          btn.style.borderColor = active ? color : '';
+          btn.style.color       = active ? '#fff' : '';
+          chart.data.datasets[index].hidden = !active;
+          chart.update();
+        });
+      });
+
+      // Download Section 02 data
+      document.getElementById('dl-video').addEventListener('click', () => {
+        const header = ['Week','New Videos','Post Rate','Video CTR%','Video CTOR%','Live CTR%','Live CTOR%','Video Impression','Live Impression'];
+        const rows = weeks13.map((w, i) => [w, newVideos[i], postRate[i], videoCTR[i], videoCTOR[i], liveCTR[i], liveCTOR[i], videoImp[i], liveImp[i]]);
+        const csv = [header, ...rows].map(r => r.join(',')).join('\n');
+        dlCSV(csv, 'ongredients_video_channel.csv');
+      });
+    })();
+
+    /* ── Paid Performance Charts ── */
+    (function initPaidPerf() {
+      // Weekly data: Feb 2 – Apr 20, 2026 (12 weeks)
+      const weeks = [
+        '02/02','02/09','02/16','02/23',
+        '03/02','03/09','03/16','03/23',
+        '03/30','04/06','04/13','04/20'
+      ];
+
+      // CVR data — CTR climbs gradually, CTOR tracks lower
+      const ctrData  = [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.31, 0.85, 1.44, 2.18, 3.02];
+      const ctorData = [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00];
+
+      // Sales data — new videos per week, GMV per week
+      const newVideos = [0, 0, 0, 0, 0, 0, 0, 0, 12, 14, 5, 0];
+      const gmvData   = [0, 0, 0, 0, 0, 0, 0, 0, 225.75, 173.29, 464.01, 0];
+
+      // Budget KPI
+      const budgetSpent = 19000;
+      const budgetTotal = 14000;
+      const budgetPct   = Math.round(budgetSpent / budgetTotal * 100);
+
+      // GMV KPI
+      const gmvAchieved = 945;
+      const gmvTarget   = 9901;
+      const gmvPct      = Math.round(gmvAchieved / gmvTarget * 100);
+
+      // Total videos
+      const totalVideos   = newVideos.reduce((a, b) => a + b, 0);
+      const thisWeekIdx   = newVideos.map((v, i) => v > 0 ? i : -1).filter(i => i >= 0).pop() ?? 0;
+      const thisWeekCount = newVideos[thisWeekIdx];
+      document.getElementById('paid-total-videos').textContent   = totalVideos;
+      document.getElementById('paid-videos-this-week').textContent = thisWeekCount;
+
+      // KPI cards
+      document.getElementById('paid-budget-pct').textContent  = budgetPct + '%';
+      document.getElementById('paid-budget-spent').textContent = budgetSpent.toLocaleString();
+      document.getElementById('paid-budget-total').textContent = budgetTotal.toLocaleString();
+      document.getElementById('paid-budget-bar').style.width   = Math.min(budgetPct, 100) + '%';
+
+      document.getElementById('paid-gmv-pct').textContent      = gmvPct + '%';
+      document.getElementById('paid-gmv-achieved').textContent  = '$' + gmvAchieved.toLocaleString();
+      document.getElementById('paid-gmv-target').textContent    = '$' + gmvTarget.toLocaleString();
+      document.getElementById('paid-gmv-bar').style.width       = gmvPct + '%';
+
+      // CVR chart
+      const cvrCtx = document.getElementById('chartPaidCVR').getContext('2d');
+      const chartPaidCVR = new Chart(cvrCtx, {
+        type: 'line',
+        data: {
+          labels: weeks,
+          datasets: [
+            {
+              label: 'Paid Video CTR',
+              data: ctrData,
+              borderColor: '#3b82f6',
+              backgroundColor: '#3b82f614',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 6,
+              pointBackgroundColor: '#3b82f6',
+              tension: 0.4,
+              fill: false,
+              hidden: false,
+            },
+            {
+              label: 'Paid Video CTOR',
+              data: ctorData,
+              borderColor: '#38bdf8',
+              backgroundColor: '#38bdf814',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 6,
+              pointBackgroundColor: '#38bdf8',
+              tension: 0.4,
+              fill: false,
+              hidden: false,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#1c1a0e',
+              borderColor: 'rgba(200,160,0,0.2)',
+              borderWidth: 1,
+              titleColor: '#fefcf0',
+              bodyColor: '#9a9070',
+              padding: 12,
+              cornerRadius: 8,
+              callbacks: {
+                label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(200,160,0,0.07)' }, border: { color: 'rgba(200,160,0,0.12)' }, ticks: { color: '#9a9070' } },
+            y: {
+              grid: { color: 'rgba(200,160,0,0.07)' },
+              border: { color: 'transparent' },
+              ticks: { color: '#9a9070', callback: v => v.toFixed(2) + '%' },
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      // Sales chart — dual axis
+      const salesCtx = document.getElementById('chartPaidSales').getContext('2d');
+      const chartPaidSales = new Chart(salesCtx, {
+        type: 'line',
+        data: {
+          labels: weeks,
+          datasets: [
+            {
+              label: 'New Paid Videos',
+              data: newVideos,
+              borderColor: '#3b82f6',
+              backgroundColor: '#3b82f614',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 6,
+              pointBackgroundColor: '#3b82f6',
+              tension: 0.2,
+              fill: false,
+              yAxisID: 'yVideos',
+            },
+            {
+              label: 'Paid Video GMV',
+              data: gmvData,
+              borderColor: '#38bdf8',
+              backgroundColor: '#38bdf814',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 6,
+              pointBackgroundColor: '#38bdf8',
+              tension: 0.2,
+              fill: false,
+              yAxisID: 'yGMV',
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#1c1a0e',
+              borderColor: 'rgba(200,160,0,0.2)',
+              borderWidth: 1,
+              titleColor: '#fefcf0',
+              bodyColor: '#9a9070',
+              padding: 12,
+              cornerRadius: 8,
+              callbacks: {
+                label: ctx => ctx.datasetIndex === 1
+                  ? ` GMV: $${ctx.parsed.y.toFixed(2)}`
+                  : ` Videos: ${ctx.parsed.y}`
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(200,160,0,0.07)' }, border: { color: 'rgba(200,160,0,0.12)' }, ticks: { color: '#9a9070' } },
+            yVideos: {
+              position: 'left',
+              grid: { color: 'rgba(200,160,0,0.07)' },
+              border: { color: 'transparent' },
+              ticks: { color: '#9a9070' },
+              beginAtZero: true,
+              title: { display: true, text: 'Videos', color: '#9a9070', font: { size: 10 } }
+            },
+            yGMV: {
+              position: 'right',
+              grid: { drawOnChartArea: false },
+              border: { color: 'transparent' },
+              ticks: { color: '#38bdf8', callback: v => '$' + v },
+              beginAtZero: true,
+              title: { display: true, text: 'GMV ($)', color: '#38bdf8', font: { size: 10 } }
+            }
+          }
+        }
+      });
+
+      // Wire toggle buttons for paid charts
+      const paidCharts = { chartPaidCVR, chartPaidSales };
+      document.querySelectorAll('#toggles-paid-cvr .ong-toggle-btn, #toggles-paid-sales .ong-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const chart = paidCharts[btn.dataset.chart];
+          const index = parseInt(btn.dataset.index);
+          const color = btn.dataset.color || btn.style.background;
+          const active = btn.classList.toggle('active');
+          btn.style.background  = active ? color : 'transparent';
+          btn.style.borderColor = active ? color : '';
+          btn.style.color       = active ? '#fff' : '';
+          chart.data.datasets[index].hidden = !active;
+          chart.update();
+        });
+      });
+    })();
+
+    /* ── Tab switcher ── */
+    document.querySelectorAll('.ong-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.ong-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.ong-tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    /* ── Paid Affiliates Table ── */
+    let paData = [];
+    let paFilterLevel = 'all';
+    let paFilterCategory = 'all';
+    let paSortCol = 'gmv';
+    let paSortDir = 'desc';
+    let approvedNames = new Set();
+    let currentModalCreator = null;
+
+    function fmtGMV(val, display) {
+      if (display) return display;
+      if (val >= 1000000) return '$' + (val / 1000000).toFixed(1) + 'M';
+      if (val >= 1000) return '$' + (val / 1000).toFixed(1) + 'K';
+      return '$' + val.toFixed(0);
+    }
+
+    function fmtNum(n) {
+      if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+      if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+      return n.toString();
+    }
+
+    function updateSelectedBar() {
+      const bar = document.getElementById('selected-bar');
+      const txt = document.getElementById('selected-bar-text');
+      const total = paData.length;
+      if (approvedNames.size === 0) {
+        bar.classList.add('hidden');
+      } else {
+        bar.classList.remove('hidden');
+        txt.textContent = `${approvedNames.size} / ${total} creators approved`;
+      }
+    }
+
+    function renderPATable() {
+      let rows = paData.filter(d => {
+        if (paFilterLevel !== 'all' && d.level !== paFilterLevel) return false;
+        if (paFilterCategory !== 'all' && d.category !== paFilterCategory) return false;
+        return true;
+      });
+
+      rows.sort((a, b) => {
+        let av = a[paSortCol], bv = b[paSortCol];
+        if (paSortCol === 'name') {
+          av = av.toLowerCase(); bv = bv.toLowerCase();
+          return paSortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+        }
+        if (paSortCol === 'level') {
+          const order = { L3: 3, L4: 4, L5: 5, L6: 6 };
+          av = order[av] || 0; bv = order[bv] || 0;
+        }
+        return paSortDir === 'asc' ? av - bv : bv - av;
+      });
+
+      const tbody = document.getElementById('pa-tbody');
+      tbody.innerHTML = rows.map(d => `
+        <tr data-name="${d.name}">
+          <td>
+            <a class="ong-pa-creator-link" href="${d.url}" target="_blank" rel="noopener">
+              @${d.name}<span class="ong-pa-creator-icon">↗</span>
+            </a>
+          </td>
+          <td><span class="ong-pa-level-badge level-${d.level}">${d.level}</span></td>
+          <td class="gmv-cell">${fmtGMV(d.gmv, d.gmv_display)}</td>
+          <td class="followers-cell">${fmtNum(d.followers)}</td>
+          <td><span class="ong-pa-category-pill">${d.category}</span></td>
+          <td style="text-align:right; padding-right:14px;">
+            ${approvedNames.has(d.name)
+              ? `<button class="ong-approved-badge" data-name="${d.name}"><span class="badge-label"></span></button>`
+              : `<button class="ong-view-btn" data-name="${d.name}">View Details</button>`
+            }
+          </td>
+        </tr>
+      `).join('');
+
+      const approvedCount = rows.filter(d => approvedNames.has(d.name)).length;
+      const countParts = [`${rows.length} / ${paData.length} creators`];
+      if (approvedCount > 0) countParts.push(`· ${approvedCount} approved`);
+      document.getElementById('pa-count').textContent = countParts.join(' ');
+
+      // Sort icons
+      document.querySelectorAll('.ong-pa-table th.sortable').forEach(th => {
+        th.classList.remove('sort-asc', 'sort-desc');
+        if (th.dataset.col === paSortCol) {
+          th.classList.add(paSortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+          th.querySelector('.sort-icon').textContent = paSortDir === 'asc' ? '↑' : '↓';
+        } else {
+          th.querySelector('.sort-icon').textContent = '↕';
+        }
+      });
+
+      // Bind view-details buttons
+      tbody.querySelectorAll('.ong-view-btn').forEach(btn => {
+        btn.addEventListener('click', () => openModal(btn.dataset.name));
+      });
+
+      // Bind revoke buttons
+      tbody.querySelectorAll('.ong-approved-badge').forEach(btn => {
+        btn.addEventListener('click', () => {
+          approvedNames.delete(btn.dataset.name);
+          updateSelectedBar();
+          renderPATable();
+        });
+      });
+    }
+
+    /* ── Modal ── */
+    function openModal(name) {
+      const d = paData.find(x => x.name === name);
+      if (!d) return;
+      currentModalCreator = d;
+
+      document.getElementById('modal-name').textContent = '@' + d.name;
+      const handleEl = document.getElementById('modal-handle');
+      handleEl.textContent = d.url;
+      handleEl.href = d.url;
+
+      document.getElementById('modal-level').innerHTML = `<span class="ong-pa-level-badge level-${d.level}">${d.level}</span>`;
+      document.getElementById('modal-gmv').textContent = fmtGMV(d.gmv, d.gmv_display);
+      document.getElementById('modal-followers').textContent = fmtNum(d.followers);
+      document.getElementById('modal-views').textContent = fmtNum(d.views);
+      document.getElementById('modal-gender').textContent = d.gender || '—';
+      document.getElementById('modal-age').textContent = d.age || '—';
+      document.getElementById('modal-ethnicity').textContent = d.ethnicity || '—';
+
+      const traitsEl = document.getElementById('modal-traits');
+      traitsEl.innerHTML = (d.traits || '').split(',').filter(Boolean).map(t =>
+        `<span class="ong-modal-tag">${t.trim()}</span>`).join('');
+
+      const catsEl = document.getElementById('modal-categories');
+      const allCats = [d.category, ...(d.selling_categories || '').split(',')].filter(Boolean);
+      catsEl.innerHTML = [...new Set(allCats)].map(c =>
+        `<span class="ong-modal-tag">${c.trim()}</span>`).join('');
+
+      document.getElementById('modal-audience-range').textContent = d.audience_range || '—';
+      document.getElementById('modal-bar-female').style.width = d.female_pct + '%';
+      document.getElementById('modal-bar-male').style.width = d.male_pct + '%';
+      document.getElementById('modal-female-pct').textContent = d.female_pct + '%';
+      document.getElementById('modal-male-pct').textContent = d.male_pct + '%';
+
+      const approveBtn = document.getElementById('modal-approve');
+      if (approvedNames.has(d.name)) {
+        approveBtn.textContent = '✓ Approved — click to revoke';
+        approveBtn.classList.add('approved');
+      } else {
+        approveBtn.textContent = '✓ Approve Creator';
+        approveBtn.classList.remove('approved');
+      }
+
+      document.getElementById('pa-modal-overlay').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('pa-modal-overlay').classList.remove('open');
+      currentModalCreator = null;
+    }
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-skip').addEventListener('click', closeModal);
+    document.getElementById('pa-modal-overlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    document.getElementById('modal-approve').addEventListener('click', () => {
+      if (!currentModalCreator) return;
+      const d = currentModalCreator;
+      const btn = document.getElementById('modal-approve');
+      if (approvedNames.has(d.name)) {
+        approvedNames.delete(d.name);
+        btn.textContent = '✓ Approve Creator';
+        btn.classList.remove('approved');
+      } else {
+        approvedNames.add(d.name);
+        btn.textContent = '✓ Approved — click to revoke';
+        btn.classList.add('approved');
+      }
+      updateSelectedBar();
+      renderPATable();
+    });
+
+    /* ── Download ── */
+    document.getElementById('download-btn').addEventListener('click', () => {
+      const selected = paData.filter(d => approvedNames.has(d.name));
+      const header = ['Name', 'TikTok URL', 'Creator Level', 'GMV', 'Followers', 'Main Category'];
+      const rows = selected.map(d => [
+        d.name,
+        d.url,
+        d.level,
+        d.gmv_display || fmtGMV(d.gmv, ''),
+        d.followers,
+        d.category
+      ]);
+      const csv = [header, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ongredients_approved_affiliates.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    fetch('/data/ongredients/paid_affiliates.json')
+      .then(r => r.json())
+      .then(data => {
+        paData = data;
+        renderPATable();
+      });
+
+    document.querySelectorAll('.ong-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        document.querySelectorAll(`.ong-filter-btn[data-filter="${filter}"]`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (filter === 'level') paFilterLevel = btn.dataset.value;
+        if (filter === 'category') paFilterCategory = btn.dataset.value;
+        renderPATable();
+      });
+    });
+
+    document.querySelectorAll('.ong-pa-table th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        if (paSortCol === th.dataset.col) {
+          paSortDir = paSortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          paSortCol = th.dataset.col;
+          paSortDir = 'desc';
+        }
+        renderPATable();
+      });
+    });
   </script>
 </body>
 </html>
