@@ -2405,19 +2405,24 @@
     /* ── Data ── */
     let rawInv = [];
 
+    function parseLocal(str) {
+      const [y, m, d] = str.split('-').map(Number);
+      return new Date(y, m - 1, d);
+    }
     function fmtDate(str) {
-      const d = new Date(str);
+      const d = parseLocal(str);
       return d.toLocaleString('default', { month: 'short' }) + ' ' + d.getDate();
     }
     function weekKey(str) {
-      const d = new Date(str);
+      const d = parseLocal(str);
       const day = d.getDay();
       const diff = day === 0 ? -6 : 1 - day;
       const mon = new Date(d); mon.setDate(d.getDate() + diff);
-      return 'Wk ' + fmtDate(mon.toISOString().slice(0, 10));
+      const yy = mon.getFullYear(), mm = String(mon.getMonth()+1).padStart(2,'0'), dd = String(mon.getDate()).padStart(2,'0');
+      return 'Wk ' + fmtDate(`${yy}-${mm}-${dd}`);
     }
     function monthKey(str) {
-      const d = new Date(str);
+      const d = parseLocal(str);
       return d.toLocaleString('default', { month: 'short', year: 'numeric' });
     }
 
@@ -2783,6 +2788,11 @@
       const firstDate = allDates[0];
       const lastDate  = allDates[allDates.length - 1];
 
+      // Precompute cumulative total videos per date
+      let _runTotal = 0;
+      const cumByDate = {};
+      videoDaily.forEach(r => { _runTotal += r.videos; cumByDate[r.date] = _runTotal; });
+
       // Default: last 30 days
       let s2End   = lastDate;
       let s2Start = new Date(lastDate);
@@ -2790,15 +2800,28 @@
 
       let currentPeriod2 = 'daily';
 
-      // Chart: Content Volume — clean single-line area
+      // Chart: Content Volume — New Videos (left) + Total Videos cumulative (right)
       const chartVideoAct = new Chart(document.getElementById('chartVideoAct').getContext('2d'), {
         type: 'line',
-        data: { labels: [], datasets: [ _lds('New Videos / Week', '#3b82f6') ] },
+        data: {
+          labels: [],
+          datasets: [
+            _lds('New Videos',   '#3b82f6', 'y'),
+            _lds('Total Videos', '#f5c842', 'y2'),
+          ]
+        },
         options: _baseOpts({
-          tooltip: { callbacks: { label: ctx => ` Videos: ${ctx.parsed.y}` } },
+          tooltip: {
+            callbacks: {
+              label: ctx => ctx.datasetIndex === 1
+                ? ` Total Videos: ${ctx.parsed.y.toLocaleString()}`
+                : ` New Videos: ${ctx.parsed.y}`
+            }
+          },
           scales: {
-            x: _xScale,
-            y: _yScale(v => v, '#9a9070'),
+            x:  _xScale,
+            y:  _yScale(v => v, '#3b82f6'),
+            y2: _yScaleR(v => v >= 1000 ? (v/1000).toFixed(1)+'K' : v, '#f5c842'),
           }
         }),
       });
@@ -2838,14 +2861,14 @@
       function fmtK(n) { return n >= 1000000 ? (n/1000000).toFixed(1)+'M' : n >= 1000 ? (n/1000).toFixed(0)+'K' : String(n); }
 
       function aggregateDaily(rows) {
-        return { labels: rows.map(r => r.label), data: rows };
+        return { labels: rows.map(r => r.label), data: rows.map(r => ({...r, total: cumByDate[r.date] || 0})) };
       }
 
       function aggregateWeekly(rows) {
         const g = {}, o = [];
         rows.forEach(r => {
           const k = weekKey(r.date);
-          if (!g[k]) { g[k] = { videos:0, impressions:0, gmv:0, orders:0, ctr_sum:0, ctr_n:0, clicks:0 }; o.push(k); }
+          if (!g[k]) { g[k] = { videos:0, impressions:0, gmv:0, orders:0, ctr_sum:0, ctr_n:0, clicks:0, lastTotal:0 }; o.push(k); }
           const entry = g[k];
           entry.videos      += r.videos;
           entry.impressions += r.impressions;
@@ -2854,12 +2877,13 @@
           entry.ctr_sum     += r.avg_ctr * r.videos;
           entry.ctr_n       += r.videos;
           entry.clicks      += r.impressions * r.avg_ctr / 100;
+          entry.lastTotal    = cumByDate[r.date] || entry.lastTotal;
         });
         return {
           labels: o,
           data: o.map(k => ({
             label: k, videos: g[k].videos, impressions: g[k].impressions,
-            gmv: g[k].gmv, orders: g[k].orders,
+            gmv: g[k].gmv, orders: g[k].orders, total: g[k].lastTotal,
             avg_ctr:  g[k].ctr_n  ? +(g[k].ctr_sum  / g[k].ctr_n).toFixed(2)  : 0,
             avg_ctor: g[k].clicks ? +(g[k].orders / g[k].clicks * 100).toFixed(2) : 0,
           }))
@@ -2870,7 +2894,7 @@
         const g = {}, o = [];
         rows.forEach(r => {
           const k = monthKey(r.date);
-          if (!g[k]) { g[k] = { videos:0, impressions:0, gmv:0, orders:0, ctr_sum:0, ctr_n:0, clicks:0 }; o.push(k); }
+          if (!g[k]) { g[k] = { videos:0, impressions:0, gmv:0, orders:0, ctr_sum:0, ctr_n:0, clicks:0, lastTotal:0 }; o.push(k); }
           const entry = g[k];
           entry.videos      += r.videos;
           entry.impressions += r.impressions;
@@ -2879,12 +2903,13 @@
           entry.ctr_sum     += r.avg_ctr * r.videos;
           entry.ctr_n       += r.videos;
           entry.clicks      += r.impressions * r.avg_ctr / 100;
+          entry.lastTotal    = cumByDate[r.date] || entry.lastTotal;
         });
         return {
           labels: o,
           data: o.map(k => ({
             label: k, videos: g[k].videos, impressions: g[k].impressions,
-            gmv: g[k].gmv, orders: g[k].orders,
+            gmv: g[k].gmv, orders: g[k].orders, total: g[k].lastTotal,
             avg_ctr:  g[k].ctr_n  ? +(g[k].ctr_sum  / g[k].ctr_n).toFixed(2)  : 0,
             avg_ctor: g[k].clicks ? +(g[k].orders / g[k].clicks * 100).toFixed(2) : 0,
           }))
@@ -2904,6 +2929,7 @@
         // Charts
         chartVideoAct.data.labels           = agg.labels;
         chartVideoAct.data.datasets[0].data = rows.map(r => r.videos);
+        chartVideoAct.data.datasets[1].data = rows.map(r => r.total);
         chartVideoAct.update();
 
         chartCVRChan.data.labels           = agg.labels;

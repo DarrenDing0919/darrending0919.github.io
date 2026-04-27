@@ -29,5 +29,5 @@
   {"date":"2026-04-24","sent":6080, "req":126, "approved":50, "posted":1},
   {"date":"2026-04-25","sent":3861, "req":193, "approved":0,  "posted":1},
   {"date":"2026-04-26","sent":407,  "req":116, "approved":0,  "posted":0},
-  {"date":"2026-04-27","sent":1,    "req":3,   "approved":0,  "posted":0}
+  {"date":"2026-04-27","sent":1,    "req":10,  "approved":353,"posted":0}
 ]
