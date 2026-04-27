@@ -591,6 +591,12 @@
       gap: 10px;
     }
 
+    .ong-stat-row7 {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+
     .ong-stat-row4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -598,11 +604,13 @@
     }
 
     @media (max-width: 1100px) {
+      .ong-stat-row7 { grid-template-columns: repeat(4, 1fr); }
       .ong-stat-row5 { grid-template-columns: repeat(3, 1fr); }
       .ong-stat-row4 { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 640px) {
+      .ong-stat-row7 { grid-template-columns: repeat(2, 1fr); }
       .ong-stat-row5, .ong-stat-row4 { grid-template-columns: repeat(2, 1fr); }
     }
 
@@ -1745,8 +1753,8 @@
         <button class="ong-range-btn active" data-days="30">Last 30d</button>
       </div>
 
-      <!-- 5 Stat cards -->
-      <div class="ong-stat-row5" style="margin-bottom:24px;">
+      <!-- 7 Stat cards -->
+      <div class="ong-stat-row7" style="margin-bottom:24px;">
         <div class="ong-stat-card" style="border-top-color:#3b82f6;">
           <p class="ong-stat-label">Invitations Sent</p>
           <p class="ong-stat-value" id="stat-sent">—</p>
@@ -1755,13 +1763,21 @@
           <p class="ong-stat-label">Sample Requested</p>
           <p class="ong-stat-value" id="stat-req">—</p>
         </div>
+        <div class="ong-stat-card" style="border-top-color:#a78bfa; opacity:0.5;">
+          <p class="ong-stat-label">Sample Approved</p>
+          <p class="ong-stat-value" style="font-size:0.85rem; color:var(--ong-muted);">Verifying</p>
+        </div>
+        <div class="ong-stat-card" style="border-top-color:#f97316;">
+          <p class="ong-stat-label">Ready to Ship</p>
+          <p class="ong-stat-value" id="stat-ready-to-ship">—</p>
+        </div>
         <div class="ong-stat-card" style="border-top-color:#22c55e;">
           <p class="ong-stat-label">Sample Shipped</p>
           <p class="ong-stat-value" id="stat-approved">—</p>
         </div>
-        <div class="ong-stat-card" style="border-top-color:#a78bfa;">
+        <div class="ong-stat-card" style="border-top-color:#94a3b8; opacity:0.5;">
           <p class="ong-stat-label">Approval Rate</p>
-          <p class="ong-stat-value" id="stat-approval-rate">—</p>
+          <p class="ong-stat-value" style="font-size:0.85rem; color:var(--ong-muted);">Verifying</p>
         </div>
         <div class="ong-stat-card" style="border-top-color:#f5c842;">
           <p class="ong-stat-label">Video Posted</p>
@@ -1783,8 +1799,9 @@
         <div class="ong-toggle-group" id="toggles-1">
           <button class="ong-toggle-btn active" data-chart="chart1" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Invitations Sent</button>
           <button class="ong-toggle-btn" data-chart="chart1" data-index="1" data-color="#60a5fa">Sample Requested</button>
-          <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Shipped</button>
-          <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#d4a800">Video Posted</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#f97316">Ready to Ship</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#22c55e">Sample Shipped</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="4" data-color="#d4a800">Video Posted</button>
         </div>
       </div>
       <div class="ong-chart-card">
@@ -2429,29 +2446,35 @@
     function aggregate(rows, period) {
       if (period === 'daily') {
         return {
-          labels:   rows.map(r => fmtDate(r.date)),
-          sent:     rows.map(r => r.sent),
-          req:      rows.map(r => r.req),
-          approved: rows.map(r => r.approved),
-          posted:   rows.map(r => r.posted),
+          labels:         rows.map(r => fmtDate(r.date)),
+          sent:           rows.map(r => r.sent),
+          req:            rows.map(r => r.req),
+          sample_approved:rows.map(r => r.sample_approved || 0),
+          ready_to_ship:  rows.map(r => r.ready_to_ship || 0),
+          approved:       rows.map(r => r.approved),
+          posted:         rows.map(r => r.posted),
         };
       }
       const keyFn = period === 'weekly' ? weekKey : monthKey;
       const groups = {}, order = [];
       rows.forEach(r => {
         const k = keyFn(r.date);
-        if (!groups[k]) { groups[k] = { sent: 0, req: 0, approved: 0, posted: 0 }; order.push(k); }
-        groups[k].sent     += r.sent;
-        groups[k].req      += r.req;
-        groups[k].approved += r.approved;
-        groups[k].posted   += r.posted;
+        if (!groups[k]) { groups[k] = { sent: 0, req: 0, sample_approved: 0, ready_to_ship: 0, approved: 0, posted: 0 }; order.push(k); }
+        groups[k].sent           += r.sent;
+        groups[k].req            += r.req;
+        groups[k].sample_approved+= r.sample_approved || 0;
+        groups[k].ready_to_ship  += r.ready_to_ship || 0;
+        groups[k].approved       += r.approved;
+        groups[k].posted         += r.posted;
       });
       return {
-        labels:   order,
-        sent:     order.map(k => groups[k].sent),
-        req:      order.map(k => groups[k].req),
-        approved: order.map(k => groups[k].approved),
-        posted:   order.map(k => groups[k].posted),
+        labels:         order,
+        sent:           order.map(k => groups[k].sent),
+        req:            order.map(k => groups[k].req),
+        sample_approved:order.map(k => groups[k].sample_approved),
+        ready_to_ship:  order.map(k => groups[k].ready_to_ship),
+        approved:       order.map(k => groups[k].approved),
+        posted:         order.map(k => groups[k].posted),
       };
     }
 
@@ -2572,23 +2595,24 @@
         c.data.labels           = agg.labels;
         c.data.datasets[0].data = agg.sent;
         c.data.datasets[1].data = agg.req;
-        c.data.datasets[2].data = agg.approved;
-        c.data.datasets[3].data = agg.posted;
+        c.data.datasets[2].data = agg.ready_to_ship;
+        c.data.datasets[3].data = agg.approved;
+        c.data.datasets[4].data = agg.posted;
         c.update();
 
         const tot = rows.reduce((a, r) => ({
-          sent:     a.sent     + r.sent,
-          req:      a.req      + r.req,
-          approved: a.approved + r.approved,
-          posted:   a.posted   + r.posted,
-        }), { sent: 0, req: 0, approved: 0, posted: 0 });
+          sent:          a.sent          + r.sent,
+          req:           a.req           + r.req,
+          ready_to_ship: a.ready_to_ship + (r.ready_to_ship || 0),
+          approved:      a.approved      + r.approved,
+          posted:        a.posted        + r.posted,
+        }), { sent: 0, req: 0, ready_to_ship: 0, approved: 0, posted: 0 });
 
-        document.getElementById('stat-sent').textContent     = tot.sent.toLocaleString();
-        document.getElementById('stat-req').textContent      = tot.req.toLocaleString();
-        document.getElementById('stat-approved').textContent = tot.approved.toLocaleString();
-        document.getElementById('stat-posted').textContent   = tot.posted.toLocaleString();
-        const approvalRate = tot.req > 0 ? ((tot.approved / tot.req) * 100).toFixed(1) + '%' : '—';
-        document.getElementById('stat-approval-rate').textContent = approvalRate;
+        document.getElementById('stat-sent').textContent          = tot.sent.toLocaleString();
+        document.getElementById('stat-req').textContent           = tot.req.toLocaleString();
+        document.getElementById('stat-ready-to-ship').textContent = tot.ready_to_ship.toLocaleString();
+        document.getElementById('stat-approved').textContent      = tot.approved.toLocaleString();
+        document.getElementById('stat-posted').textContent        = tot.posted.toLocaleString();
       }
 
       function makeChart(id, dsList) {
@@ -2604,7 +2628,8 @@
         chart1: makeChart('chart1', [
           { label: 'Invitations Sent', color: '#94a3b8' },
           { label: 'Sample Requested', color: '#60a5fa' },
-          { label: 'Sample Shipped',  color: '#22c55e' },
+          { label: 'Ready to Ship',    color: '#f97316' },
+          { label: 'Sample Shipped',   color: '#22c55e' },
           { label: 'Video Posted',     color: '#f5c842' },
         ]),
       };
