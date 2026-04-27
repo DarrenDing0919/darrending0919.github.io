@@ -416,6 +416,25 @@
 
     .ong-range-btn:hover:not(.active) { color: var(--ong-dark); }
 
+    .ong-range-btn-2, .ong-range-btn-3 {
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--ong-border);
+      background: transparent;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .ong-range-btn-2.active, .ong-range-btn-3.active {
+      background: var(--ong-yellow);
+      border-color: var(--ong-yellow);
+      color: var(--ong-dark);
+      font-weight: 600;
+    }
+    .ong-range-btn-2:hover:not(.active), .ong-range-btn-3:hover:not(.active) { color: var(--ong-dark); }
+
     .ong-date-wrap {
       position: relative;
       display: inline-flex;
@@ -460,7 +479,7 @@
 
     .ong-toggle-group { display: flex; flex-wrap: wrap; gap: 8px; }
 
-    .ong-toggle-btn, .ong-period-btn {
+    .ong-toggle-btn, .ong-period-btn, .ong-period-btn-2 {
       padding: 5px 13px;
       border-radius: 6px;
       font-size: 0.72rem;
@@ -473,7 +492,7 @@
       transition: 0.15s;
     }
 
-    .ong-period-btn.active {
+    .ong-period-btn.active, .ong-period-btn-2.active {
       background: var(--ong-dark);
       border-color: var(--ong-dark);
       color: #fefcf0;
@@ -1537,34 +1556,55 @@
         <button class="ong-dl-btn" id="dl-video">↓ Download CSV</button>
       </div>
 
-      <!-- MTD stat cards -->
+      <!-- Date controls -->
+      <div class="ong-range-row">
+        <div class="ong-date-wrap">
+          <span class="ong-date-icon">📅</span>
+          <input type="text" id="date-range-input-2" placeholder="Select date range" readonly />
+        </div>
+        <div class="ong-divider"></div>
+        <button class="ong-range-btn-2" data-days="7">Last 7d</button>
+        <button class="ong-range-btn-2" data-days="14">Last 14d</button>
+        <button class="ong-range-btn-2 active" data-days="30">Last 30d</button>
+      </div>
+      <div class="ong-toggle-row" style="margin-bottom:14px;">
+        <span class="ong-toggle-label">Period</span>
+        <div class="ong-toggle-group">
+          <button class="ong-period-btn-2 active" data-period2="daily">Daily</button>
+          <button class="ong-period-btn-2" data-period2="weekly">Weekly</button>
+          <button class="ong-period-btn-2" data-period2="monthly">Monthly</button>
+        </div>
+      </div>
+
+      <!-- Stat cards -->
       <div class="ong-stat-row4" style="margin-bottom:28px;">
         <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">Total Videos Posted</p>
-          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">3,270</p>
+          <p class="ong-stat-label">Total Videos (In Range)</p>
+          <p class="ong-paid-kpi-pct" id="stat2-total" style="font-size:1.9rem;">—</p>
           <div class="ong-paid-kpi-meta" style="margin-bottom:0;">
-            <span class="ong-paid-kpi-val" style="color:#38bdf8; font-size:0.7rem;">+410 this week</span>
+            <span class="ong-paid-kpi-val" id="stat2-last-week" style="color:#38bdf8; font-size:0.7rem;">—</span>
           </div>
         </div>
         <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">MTD New Videos</p>
-          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">49%</p>
-          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" style="background:#3b82f6;width:49%;"></div></div></div>
-          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:#3b82f6;">884</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">1,800</span></div>
-          <div class="ong-paid-kpi-labels"><span>Current</span><span>Goal</span></div>
+          <p class="ong-stat-label">New Videos (In Range)</p>
+          <p class="ong-paid-kpi-pct" id="stat2-videos-pct" style="font-size:1.9rem;">—</p>
+          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" id="stat2-videos-bar" style="background:#3b82f6;width:0%;"></div></div></div>
+          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" id="stat2-videos-current" style="color:#3b82f6;">—</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">GOAL</span></div>
+          <div class="ong-paid-kpi-labels"><span>Current</span><span>Goal (TBD)</span></div>
         </div>
         <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">MTD Video Impressions</p>
-          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">5,960%</p>
-          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" style="background:#3b82f6;width:100%;"></div></div></div>
-          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:#3b82f6;">429,140</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">7,200</span></div>
-          <div class="ong-paid-kpi-labels"><span>Current</span><span>Goal</span></div>
+          <p class="ong-stat-label">Video Impressions (In Range)</p>
+          <p class="ong-paid-kpi-pct" id="stat2-imp-pct" style="font-size:1.9rem;">—</p>
+          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" id="stat2-imp-bar" style="background:#6366f1;width:0%;"></div></div></div>
+          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" id="stat2-imp-current" style="color:#6366f1;">—</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">GOAL</span></div>
+          <div class="ong-paid-kpi-labels"><span>Current</span><span>Goal (TBD)</span></div>
         </div>
         <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">MTD Samples Shipped</p>
-          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">1,148</p>
-          <div class="ong-paid-kpi-bar-wrap"><div class="ong-paid-kpi-bar-track"><div class="ong-paid-kpi-bar-fill" style="background:var(--ong-yellow);width:100%;"></div></div></div>
-          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:var(--ong-yellow-deep);">Current</span><span class="ong-paid-kpi-sep">|</span><span class="ong-paid-kpi-val">No goal set</span></div>
+          <p class="ong-stat-label">Affiliate Orders (In Range)</p>
+          <p class="ong-paid-kpi-pct" id="stat2-orders" style="font-size:1.9rem;">—</p>
+          <div class="ong-paid-kpi-meta" style="margin-bottom:0;">
+            <span class="ong-paid-kpi-val" id="stat2-avg-ctr" style="color:var(--ong-yellow-deep); font-size:0.7rem;">—</span>
+          </div>
         </div>
       </div>
 
@@ -1576,7 +1616,6 @@
           <div class="ong-toggle-row" style="margin-bottom:10px; flex-wrap:wrap;">
             <div class="ong-toggle-group" id="toggles-videoact">
               <button class="ong-toggle-btn active" data-chart="chartVideoAct" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">New Videos / Week</button>
-              <button class="ong-toggle-btn active" data-chart="chartVideoAct" data-index="1" style="background:#38bdf8;border-color:#38bdf8;color:#fff;" data-color="#38bdf8">Video Post Rate</button>
             </div>
           </div>
           <div class="ong-chart-card">
@@ -1590,10 +1629,7 @@
             <div class="ong-toggle-group" id="toggles-cvrchan">
               <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Video CTR</button>
               <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="1" style="background:#22c55e;border-color:#22c55e;color:#fff;" data-color="#22c55e">Video CTOR</button>
-              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="2" style="background:#eab308;border-color:#eab308;color:#fff;" data-color="#eab308">Live CTR</button>
-              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="3" style="background:#f97316;border-color:#f97316;color:#fff;" data-color="#f97316">Live CTOR</button>
-              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="4" style="background:#6366f1;border-color:#6366f1;color:#fff;" data-color="#6366f1">Video Impression</button>
-              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="5" style="background:#ec4899;border-color:#ec4899;color:#fff;" data-color="#ec4899">Live Impression</button>
+              <button class="ong-toggle-btn active" data-chart="chartCVRChan" data-index="2" style="background:#6366f1;border-color:#6366f1;color:#fff;" data-color="#6366f1">Video Impression</button>
             </div>
           </div>
           <div class="ong-chart-card">
@@ -1619,11 +1655,23 @@
         <button class="ong-dl-btn" id="dl-gmv">↓ Download CSV</button>
       </div>
 
+      <!-- Date controls -->
+      <div class="ong-range-row">
+        <div class="ong-date-wrap">
+          <span class="ong-date-icon">📅</span>
+          <input type="text" id="date-range-input-3" placeholder="Select date range" readonly />
+        </div>
+        <div class="ong-divider"></div>
+        <button class="ong-range-btn-3" data-days="7">Last 7d</button>
+        <button class="ong-range-btn-3" data-days="14">Last 14d</button>
+        <button class="ong-range-btn-3 active" data-days="30">Last 30d</button>
+      </div>
+
       <!-- GMV stat cards -->
       <div class="ong-stat-row4" style="margin-bottom:24px; grid-template-columns: 1fr 1fr 1fr;">
         <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">MTD Affiliate GMV</p>
-          <p class="ong-paid-kpi-pct" style="color:#d4a800; font-size:1.9rem;">$3,322</p>
+          <p class="ong-stat-label" id="stat-gmv-label">In Range Affiliate GMV</p>
+          <p class="ong-paid-kpi-pct" id="stat-gmv" style="color:#d4a800; font-size:1.9rem;">$3,322</p>
           <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:var(--ong-muted); font-size:0.65rem;">No goal set for this period</span></div>
         </div>
         <div class="ong-paid-kpi-card">
@@ -1644,9 +1692,9 @@
 
       <!-- GMV chart -->
       <div class="ong-toggle-group" style="margin-bottom:16px;" id="toggles-3">
-        <button class="ong-toggle-btn active" data-chart="chart3" data-index="0" style="background:#d4a800;border-color:#d4a800;color:#fff;">Daily</button>
-        <button class="ong-toggle-btn" data-chart="chart3" data-index="1" data-color="#3b82f6">Weekly</button>
-        <button class="ong-toggle-btn" data-chart="chart3" data-index="2" data-color="#22c55e">Monthly</button>
+        <button class="ong-toggle-btn active" data-view3="daily" style="background:#f5c842;border-color:#f5c842;color:#1c1a0e;">Daily</button>
+        <button class="ong-toggle-btn" data-view3="weekly" data-color="#f5c842">Weekly</button>
+        <button class="ong-toggle-btn" data-view3="monthly" data-color="#f5c842">Monthly</button>
       </div>
       <div class="ong-chart-card">
         <div class="ong-chart-wrap"><canvas id="chart3"></canvas></div>
@@ -1980,10 +2028,89 @@
     Chart.defaults.font.family = "'IBM Plex Mono', monospace";
     Chart.defaults.font.size = 11;
 
+    /* ── Gradient fill plugin (runs before each update so gradients resize correctly) ── */
+    Chart.register({
+      id: 'brandGradient',
+      beforeUpdate(chart) {
+        chart.data.datasets.forEach(ds => {
+          if (!ds._gc) return;
+          const { ctx, chartArea } = chart;
+          if (!chartArea) return;
+          const g = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+          g.addColorStop(0,    ds._gc + '38');
+          g.addColorStop(0.65, ds._gc + '0a');
+          g.addColorStop(1,    ds._gc + '00');
+          ds.backgroundColor = g;
+        });
+      }
+    });
+
+    /* ── Shared brand chart helpers ── */
+    const _tip = {
+      backgroundColor: 'rgba(28,26,14,0.96)',
+      borderColor: 'rgba(245,200,66,0.18)',
+      borderWidth: 1,
+      titleColor: '#fefcf0',
+      bodyColor: '#9a9070',
+      padding: 14,
+      cornerRadius: 10,
+      boxPadding: 5,
+    };
+    const _xScale = {
+      grid: { display: false },
+      border: { display: false },
+      ticks: { color: '#9a9070', font: { size: 10 }, maxRotation: 45, maxTicksLimit: 12 }
+    };
+    const _yScale = (fmt, color) => ({
+      grid: { color: 'rgba(200,160,0,0.055)', drawBorder: false },
+      border: { display: false },
+      ticks: { color: color || '#9a9070', font: { size: 10 }, callback: fmt || (v => v) },
+      beginAtZero: true,
+    });
+    const _yScaleR = (fmt, color) => ({
+      position: 'right',
+      grid: { drawOnChartArea: false },
+      border: { display: false },
+      ticks: { color: color || '#9a9070', font: { size: 10 }, callback: fmt || (v => v) },
+      beginAtZero: true,
+    });
+    const _baseOpts = (extra) => {
+      const { tooltip, scales, ...rest } = extra || {};
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 500, easing: 'easeInOutCubic' },
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { display: false }, tooltip: { ..._tip, ...(tooltip || {}) } },
+        scales: scales || { x: _xScale, y: _yScale() },
+        ...rest,
+      };
+    };
+    /* line dataset factory — uses _gc for gradient fill */
+    const _lds = (label, color, yAxis, hidden) => ({
+      label, data: [],
+      borderColor: color, _gc: color,
+      backgroundColor: color + '20',
+      borderWidth: 1.5,
+      pointRadius: 0,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: '#fefcf0',
+      pointHoverBorderColor: color,
+      pointHoverBorderWidth: 2,
+      tension: 0.38, fill: true,
+      hidden: !!hidden,
+      yAxisID: yAxis || 'y',
+    });
+
     /* ── Load data ── */
-    fetch('/data/ongredients/invitation.json')
-      .then(r => r.json())
-      .then(data => { rawInv = data; init(); });
+    Promise.all([
+      fetch('/data/ongredients/invitation.json').then(r => r.json()),
+      fetch('/data/ongredients/video_daily.json').then(r => r.json()),
+    ]).then(([invData, videoData]) => {
+      rawInv = invData;
+      init(videoData);
+      initCommissionExtra(videoData);
+    });
 
     function dlCSV(csvString, filename) {
       const blob = new Blob([csvString], { type: 'text/csv' });
@@ -1993,7 +2120,7 @@
       URL.revokeObjectURL(url);
     }
 
-    function init() {
+    function init(videoDaily) {
       let currentStart  = new Date('2026-03-26');
       let currentEnd    = new Date('2026-04-24');
       let currentPeriod = 'daily';
@@ -2032,74 +2159,73 @@
         document.getElementById('stat-approval-rate').textContent = approvalRate;
       }
 
-      function makeChart(id, datasets) {
+      function makeChart(id, dsList) {
         const ctx = document.getElementById(id).getContext('2d');
         return new Chart(ctx, {
           type: 'line',
-          data: {
-            labels: [],
-            datasets: datasets.map((d, i) => ({
-              label: d.label,
-              data: d.data || [],
-              borderColor: d.color,
-              backgroundColor: d.color + '14',
-              borderWidth: 2,
-              pointRadius: 3,
-              pointHoverRadius: 6,
-              pointBackgroundColor: d.color,
-              tension: 0.4,
-              fill: false,
-              hidden: i !== 0,
-            }))
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: { mode: 'index', intersect: false },
-            plugins: {
-              legend: { display: false },
-              tooltip: {
-                backgroundColor: '#1c1a0e',
-                borderColor: 'rgba(200,160,0,0.2)',
-                borderWidth: 1,
-                titleColor: '#fefcf0',
-                bodyColor: '#9a9070',
-                padding: 12,
-                cornerRadius: 8,
-              }
-            },
-            scales: {
-              x: {
-                grid: { color: 'rgba(200,160,0,0.07)' },
-                border: { color: 'rgba(200,160,0,0.12)' },
-                ticks: { color: '#9a9070' }
-              },
-              y: {
-                grid: { color: 'rgba(200,160,0,0.07)' },
-                border: { color: 'transparent' },
-                ticks: { color: '#9a9070' },
-                beginAtZero: true
-              }
-            }
-          }
+          data: { labels: [], datasets: dsList.map((d, i) => _lds(d.label, d.color, d.yAxis, i !== 0)) },
+          options: _baseOpts(),
         });
       }
 
       const charts = {
         chart1: makeChart('chart1', [
-          { label: 'Invitations Sent', color: '#3b82f6' },
+          { label: 'Invitations Sent', color: '#94a3b8' },
           { label: 'Sample Requested', color: '#60a5fa' },
           { label: 'Sample Approved',  color: '#22c55e' },
-          { label: 'Video Posted',     color: '#d4a800' },
-        ]),
-        chart3: makeChart('chart3', [
-          { label: 'Daily GMV',   color: '#d4a800' },
-          { label: 'Weekly GMV',  color: '#3b82f6' },
-          { label: 'Monthly GMV', color: '#22c55e' },
+          { label: 'Video Posted',     color: '#f5c842' },
         ]),
       };
 
+      /* ── Section 03: GMV chart ── */
+      const chart3 = new Chart(document.getElementById('chart3').getContext('2d'), {
+        type: 'line',
+        data: { labels: [], datasets: [ _lds('GMV', '#f5c842', 'y') ] },
+        options: _baseOpts({
+          tooltip: { callbacks: { label: ctx => ` GMV: $${ctx.parsed.y.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}` } },
+          scales: {
+            x: _xScale,
+            y: _yScale(v => '$' + (v >= 1000 ? (v/1000).toFixed(0)+'K' : v), '#f5c842'),
+          }
+        }),
+      });
+
+      // Section 3: use real GMV from video_daily.json
+      const rawGMV = videoDaily.map(r => ({ date: r.date, gmv: r.gmv }));
+      const gmvLastDate  = new Date(rawGMV[rawGMV.length - 1].date);
+      const gmvFirstDate = new Date(rawGMV[0].date);
+
+      let currentView3 = 'daily';
+      let s3End   = gmvLastDate;
+      let s3Start = new Date(gmvLastDate);
+      s3Start.setDate(gmvLastDate.getDate() - 29);
+
+      function updateSection3() {
+        const filtered = rawGMV.filter(r => { const d = new Date(r.date); return d >= s3Start && d <= s3End; });
+        let labels, data, color;
+        if (currentView3 === 'daily') {
+          labels = filtered.map(r => fmtDate(r.date));
+          data   = filtered.map(r => r.gmv);
+          color  = '#d4a800';
+        } else if (currentView3 === 'weekly') {
+          const g = {}, o = [];
+          filtered.forEach(r => { const k = weekKey(r.date); if (!g[k]) { g[k] = 0; o.push(k); } g[k] += r.gmv; });
+          labels = o; data = o.map(k => +g[k].toFixed(2)); color = '#3b82f6';
+        } else {
+          const g = {}, o = [];
+          filtered.forEach(r => { const k = monthKey(r.date); if (!g[k]) { g[k] = 0; o.push(k); } g[k] += r.gmv; });
+          labels = o; data = o.map(k => +g[k].toFixed(2)); color = '#22c55e';
+        }
+        chart3.data.labels = labels;
+        chart3.data.datasets[0].data = data;
+        chart3.update();
+        const total = filtered.reduce((s, r) => s + r.gmv, 0);
+        const el = document.getElementById('stat-gmv');
+        if (el) el.textContent = '$' + total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+
       updateSection1();
+      updateSection3();
 
       /* ── Flatpickr ── */
       const fp = flatpickr('#date-range-input', {
@@ -2169,127 +2295,220 @@
 
       /* ── Download: Section 03 GMV ── */
       document.getElementById('dl-gmv').addEventListener('click', () => {
-        const header = ['Period','GMV'];
-        const rows = [
-          ['2026-03-26','142.50'],['2026-03-27','98.00'],['2026-03-28','215.75'],
-          ['2026-03-29','87.25'],['2026-03-30','312.00'],['2026-03-31','445.50'],
-          ['2026-04-01','198.75'],['2026-04-07','863.00'],['2026-04-14','1240.50'],['2026-04-24','3322.00'],
-        ];
-        const csv = [header, ...rows].map(r => r.join(',')).join('\n');
+        const header = ['Date','GMV'];
+        const filtered = rawGMV.filter(r => { const d = new Date(r.date); return d >= s3Start && d <= s3End; });
+        const csv = [header, ...filtered.map(r => [r.date, r.gmv.toFixed(2)])].map(r => r.join(',')).join('\n');
         dlCSV(csv, 'ongredients_gmv.csv');
+      });
+
+      /* ── Section 03: date range controls ── */
+      const fp3 = flatpickr('#date-range-input-3', {
+        mode: 'range',
+        dateFormat: 'M j, Y',
+        defaultDate: [s3Start, s3End],
+        minDate: gmvFirstDate,
+        maxDate: gmvLastDate,
+        onChange(selectedDates) {
+          if (selectedDates.length === 2) {
+            document.querySelectorAll('.ong-range-btn-3').forEach(b => b.classList.remove('active'));
+            s3Start = selectedDates[0];
+            s3End   = selectedDates[1];
+            updateSection3();
+          }
+        }
+      });
+
+      document.querySelectorAll('.ong-range-btn-3').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.ong-range-btn-3').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const days = parseInt(btn.dataset.days);
+          s3End   = gmvLastDate;
+          s3Start = new Date(gmvLastDate);
+          s3Start.setDate(gmvLastDate.getDate() - days + 1);
+          fp3.setDate([start, end]);
+          updateSection3();
+        });
+      });
+
+      document.querySelectorAll('#toggles-3 .ong-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (!btn.dataset.view3) return;
+          document.querySelectorAll('#toggles-3 .ong-toggle-btn').forEach(b => {
+            b.classList.remove('active');
+            const c = b.dataset.color || '#d4a800';
+            b.style.background = 'transparent'; b.style.borderColor = ''; b.style.color = '';
+          });
+          btn.classList.add('active');
+          const c = btn.dataset.color || '#d4a800';
+          btn.style.background = c; btn.style.borderColor = c; btn.style.color = c === '#f5c842' ? '#1c1a0e' : '#fff';
+          currentView3 = btn.dataset.view3;
+          updateSection3();
+        });
       });
 
     } // end init()
 
     /* ── Commission Extra Charts (Section 02) ── */
-    (function initCommissionExtra() {
-      const weeks13 = [
-        '02/02','02/09','02/16','02/23','03/02','03/09',
-        '03/16','03/23','03/30','04/06','04/13','04/20','04/27'
-      ];
+    function initCommissionExtra(videoDaily) {
+      // Parse dates once
+      const allDates  = videoDaily.map(r => new Date(r.date));
+      const firstDate = allDates[0];
+      const lastDate  = allDates[allDates.length - 1];
 
-      // Content volume data
-      const newVideos = [10,   32,   81,   158,  149,  383,  601,  517,  418,  200,  270,  410,  241];
-      const postRate  = [1.00, 1.60, 1.16, 2.16, 0.36, 0.78, 1.80, 0.83, 3.67, 4.41, 0.53, 0.70, 0.50];
+      // Default: last 30 days
+      let s2End   = lastDate;
+      let s2Start = new Date(lastDate);
+      s2Start.setDate(lastDate.getDate() - 29);
 
-      // Channel CVR + Impression data
-      const videoCTR  = [1.50, 4.08, 2.31, 1.96, 2.57, 3.47, 2.73, 0.90, 2.81, 2.44, 1.20, 0.80, 0.60];
-      const videoCTOR = [0.00, 7.83, 2.32, 3.24, 1.51, 4.11, 3.12, 0.40, 2.44, 1.50, 0.90, 0.60, 0.40];
-      const liveCTR   = [0.00, 3.69, 0.10, 0.19, 0.00, 0.14, 0.19, 2.15, 1.63, 0.80, 0.50, 0.30, 0.20];
-      const liveCTOR  = [6.25, 0.51, 0.00, 0.04, 0.00, 5.99, 0.63, 0.46, 1.44, 0.70, 0.40, 0.20, 0.10];
-      const videoImp  = [394,  53245, 64872, 143290, 196966, 204365, 220710, 214137, 176614, 88099, 52000, 31000, 19000];
-      const liveImp   = [1266, 317,   1093,  5935,   3218,   3458,   7284,   377,    2000,   1500,  800,   400,   200];
+      let currentPeriod2 = 'daily';
 
-      const chartCfg = {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: '#1c1a0e', borderColor: 'rgba(200,160,0,0.2)', borderWidth: 1,
-            titleColor: '#fefcf0', bodyColor: '#9a9070', padding: 12, cornerRadius: 8,
-          }
-        }
-      };
-      const xScale = { grid: { color: 'rgba(200,160,0,0.07)' }, border: { color: 'rgba(200,160,0,0.12)' }, ticks: { color: '#9a9070', maxRotation: 45 } };
-      const yScale = (pos, fmt, color) => ({
-        position: pos || 'left',
-        grid: pos === 'right' ? { drawOnChartArea: false } : { color: 'rgba(200,160,0,0.07)' },
-        border: { color: 'transparent' },
-        ticks: { color: color || '#9a9070', callback: fmt || (v => v) },
-        beginAtZero: true,
-      });
-
-      const mkDataset = (label, data, color, yAxis) => ({
-        label, data,
-        borderColor: color, backgroundColor: color + '18',
-        borderWidth: 2, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: color,
-        tension: 0.35, fill: false, hidden: false, yAxisID: yAxis || 'y',
-      });
-
-      // Chart: Content Volume (dual axis)
-      const ctxVid = document.getElementById('chartVideoAct');
-      const chartVideoAct = new Chart(ctxVid.getContext('2d'), {
+      // Chart: Content Volume — clean single-line area
+      const chartVideoAct = new Chart(document.getElementById('chartVideoAct').getContext('2d'), {
         type: 'line',
-        data: {
-          labels: weeks13,
-          datasets: [
-            mkDataset('New Videos / Week', newVideos, '#3b82f6', 'y'),
-            mkDataset('Video Post Rate',   postRate,  '#38bdf8', 'y2'),
-          ]
-        },
-        options: {
-          ...chartCfg,
+        data: { labels: [], datasets: [ _lds('New Videos / Week', '#3b82f6') ] },
+        options: _baseOpts({
+          tooltip: { callbacks: { label: ctx => ` Videos: ${ctx.parsed.y}` } },
           scales: {
-            x: xScale,
-            y:  { ...yScale('left',  v => v,                 '#9a9070'), title: { display: true, text: 'Videos', color: '#9a9070', font: { size: 10 } } },
-            y2: { ...yScale('right', v => v.toFixed(1),      '#38bdf8'), title: { display: true, text: 'Post Rate', color: '#38bdf8', font: { size: 10 } } },
+            x: _xScale,
+            y: _yScale(v => v, '#9a9070'),
           }
-        }
+        }),
       });
 
-      // Chart: Channel CVR + Impressions (dual axis — CVR % left, Impressions right)
-      const ctxCVR = document.getElementById('chartCVRChan');
-      const chartCVRChan = new Chart(ctxCVR.getContext('2d'), {
+      // Chart: Channel CVR & Impressions — dual axis
+      const chartCVRChan = new Chart(document.getElementById('chartCVRChan').getContext('2d'), {
         type: 'line',
         data: {
-          labels: weeks13,
+          labels: [],
           datasets: [
-            mkDataset('Video CTR',       videoCTR,  '#3b82f6', 'y'),
-            mkDataset('Video CTOR',      videoCTOR, '#22c55e', 'y'),
-            mkDataset('Live CTR',        liveCTR,   '#eab308', 'y'),
-            mkDataset('Live CTOR',       liveCTOR,  '#f97316', 'y'),
-            mkDataset('Video Impression',videoImp,  '#6366f1', 'y2'),
-            mkDataset('Live Impression', liveImp,   '#ec4899', 'y2'),
+            _lds('Video CTR',        '#3b82f6', 'y'),
+            _lds('Video CTOR',       '#22c55e', 'y'),
+            _lds('Video Impression', '#f5c842', 'y2'),
           ]
         },
-        options: {
-          ...chartCfg,
-          plugins: {
-            ...chartCfg.plugins,
-            tooltip: {
-              ...chartCfg.plugins.tooltip,
-              callbacks: {
-                label: ctx => {
-                  const v = ctx.parsed.y;
-                  const isImp = ctx.datasetIndex >= 4;
-                  return ` ${ctx.dataset.label}: ${isImp ? (v >= 1000 ? (v/1000).toFixed(1)+'K' : v) : v.toFixed(2)+'%'}`;
-                }
+        options: _baseOpts({
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const v = ctx.parsed.y;
+                return ctx.datasetIndex === 2
+                  ? ` ${ctx.dataset.label}: ${v >= 1000 ? (v/1000).toFixed(1)+'K' : v}`
+                  : ` ${ctx.dataset.label}: ${v.toFixed(2)}%`;
               }
             }
           },
           scales: {
-            x: xScale,
-            y:  { ...yScale('left',  v => v.toFixed(1)+'%',                          '#9a9070'), title: { display: true, text: 'CVR (%)', color: '#9a9070', font: { size: 10 } } },
-            y2: { ...yScale('right', v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v,  '#6366f1'), title: { display: true, text: 'Impressions', color: '#6366f1', font: { size: 10 } } },
+            x: _xScale,
+            y:  { ..._yScale(v => v.toFixed(1)+'%', '#9a9070') },
+            y2: { ..._yScaleR(v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v, '#f5c842') },
           }
-        }
+        }),
       });
 
       const extraCharts = { chartVideoAct, chartCVRChan };
 
-      // Wire toggle buttons
+      function fmtK(n) { return n >= 1000000 ? (n/1000000).toFixed(1)+'M' : n >= 1000 ? (n/1000).toFixed(0)+'K' : String(n); }
+
+      function aggregateDaily(rows) {
+        return { labels: rows.map(r => r.label), data: rows };
+      }
+
+      function aggregateWeekly(rows) {
+        const g = {}, o = [];
+        rows.forEach(r => {
+          const k = weekKey(r.date);
+          if (!g[k]) { g[k] = { videos:0, impressions:0, gmv:0, orders:0, ctr_sum:0, ctr_n:0, clicks:0 }; o.push(k); }
+          const entry = g[k];
+          entry.videos      += r.videos;
+          entry.impressions += r.impressions;
+          entry.gmv         += r.gmv;
+          entry.orders      += r.orders;
+          entry.ctr_sum     += r.avg_ctr * r.videos;
+          entry.ctr_n       += r.videos;
+          entry.clicks      += r.impressions * r.avg_ctr / 100;
+        });
+        return {
+          labels: o,
+          data: o.map(k => ({
+            label: k, videos: g[k].videos, impressions: g[k].impressions,
+            gmv: g[k].gmv, orders: g[k].orders,
+            avg_ctr:  g[k].ctr_n  ? +(g[k].ctr_sum  / g[k].ctr_n).toFixed(2)  : 0,
+            avg_ctor: g[k].clicks ? +(g[k].orders / g[k].clicks * 100).toFixed(2) : 0,
+          }))
+        };
+      }
+
+      function aggregateMonthly(rows) {
+        const g = {}, o = [];
+        rows.forEach(r => {
+          const k = monthKey(r.date);
+          if (!g[k]) { g[k] = { videos:0, impressions:0, gmv:0, orders:0, ctr_sum:0, ctr_n:0, clicks:0 }; o.push(k); }
+          const entry = g[k];
+          entry.videos      += r.videos;
+          entry.impressions += r.impressions;
+          entry.gmv         += r.gmv;
+          entry.orders      += r.orders;
+          entry.ctr_sum     += r.avg_ctr * r.videos;
+          entry.ctr_n       += r.videos;
+          entry.clicks      += r.impressions * r.avg_ctr / 100;
+        });
+        return {
+          labels: o,
+          data: o.map(k => ({
+            label: k, videos: g[k].videos, impressions: g[k].impressions,
+            gmv: g[k].gmv, orders: g[k].orders,
+            avg_ctr:  g[k].ctr_n  ? +(g[k].ctr_sum  / g[k].ctr_n).toFixed(2)  : 0,
+            avg_ctor: g[k].clicks ? +(g[k].orders / g[k].clicks * 100).toFixed(2) : 0,
+          }))
+        };
+      }
+
+      function updateSection2() {
+        const filtered = videoDaily.filter((r, i) => allDates[i] >= s2Start && allDates[i] <= s2End);
+
+        let agg;
+        if      (currentPeriod2 === 'weekly')  agg = aggregateWeekly(filtered);
+        else if (currentPeriod2 === 'monthly') agg = aggregateMonthly(filtered);
+        else                                   agg = aggregateDaily(filtered);
+
+        const rows = agg.data;
+
+        // Charts
+        chartVideoAct.data.labels           = agg.labels;
+        chartVideoAct.data.datasets[0].data = rows.map(r => r.videos);
+        chartVideoAct.update();
+
+        chartCVRChan.data.labels           = agg.labels;
+        chartCVRChan.data.datasets[0].data = rows.map(r => r.avg_ctr);
+        chartCVRChan.data.datasets[1].data = rows.map(r => r.avg_ctor);
+        chartCVRChan.data.datasets[2].data = rows.map(r => r.impressions);
+        chartCVRChan.update();
+
+        // Stat cards (always from raw daily filtered, period-agnostic)
+        const totalVideos = filtered.reduce((s, r) => s + r.videos, 0);
+        const totalImp    = filtered.reduce((s, r) => s + r.impressions, 0);
+        const totalOrders = filtered.reduce((s, r) => s + r.orders, 0);
+        const lastRow     = filtered[filtered.length - 1];
+        const totalVideoCTR = filtered.reduce((s,r) => s + r.avg_ctr * r.videos, 0);
+        const totalVideoN   = filtered.reduce((s,r) => s + r.videos, 0);
+        const avgCTR = totalVideoN ? (totalVideoCTR / totalVideoN).toFixed(2) : '—';
+
+        document.getElementById('stat2-total').textContent          = totalVideos.toLocaleString();
+        document.getElementById('stat2-last-week').textContent      = lastRow ? `+${lastRow.videos} last day` : '—';
+        document.getElementById('stat2-videos-current').textContent = totalVideos.toLocaleString();
+        document.getElementById('stat2-videos-pct').textContent     = totalVideos.toLocaleString();
+        document.getElementById('stat2-imp-current').textContent    = fmtK(totalImp);
+        document.getElementById('stat2-imp-pct').textContent        = fmtK(totalImp);
+        document.getElementById('stat2-orders').textContent         = totalOrders.toLocaleString();
+        document.getElementById('stat2-avg-ctr').textContent        = `Avg CTR ${avgCTR}%`;
+        document.getElementById('stat2-videos-bar').style.width     = '0%';
+        document.getElementById('stat2-imp-bar').style.width        = '0%';
+      }
+
+      updateSection2();
+
+      // Toggle buttons
       document.querySelectorAll('#toggles-videoact .ong-toggle-btn, #toggles-cvrchan .ong-toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const chart = extraCharts[btn.dataset.chart];
@@ -2305,14 +2524,54 @@
         });
       });
 
-      // Download Section 02 data
+      // Download CSV
       document.getElementById('dl-video').addEventListener('click', () => {
-        const header = ['Week','New Videos','Post Rate','Video CTR%','Video CTOR%','Live CTR%','Live CTOR%','Video Impression','Live Impression'];
-        const rows = weeks13.map((w, i) => [w, newVideos[i], postRate[i], videoCTR[i], videoCTOR[i], liveCTR[i], liveCTOR[i], videoImp[i], liveImp[i]]);
-        const csv = [header, ...rows].map(r => r.join(',')).join('\n');
+        const rows = videoDaily.filter((r, i) => allDates[i] >= s2Start && allDates[i] <= s2End);
+        const header = ['Date','New Videos','Video Impressions','Affiliate Orders','Avg CTR%','Avg CTOR%','GMV'];
+        const csv = [header, ...rows.map(r => [r.date, r.videos, r.impressions, r.orders, r.avg_ctr, r.avg_ctor, r.gmv])].map(r => r.join(',')).join('\n');
         dlCSV(csv, 'ongredients_video_channel.csv');
       });
-    })();
+
+      // Flatpickr
+      const minDate = videoDaily[0].date;
+      const maxDate = videoDaily[videoDaily.length - 1].date;
+      const fp2 = flatpickr('#date-range-input-2', {
+        mode: 'range', dateFormat: 'M j, Y',
+        defaultDate: [s2Start, s2End],
+        minDate, maxDate,
+        onChange(selectedDates) {
+          if (selectedDates.length === 2) {
+            document.querySelectorAll('.ong-range-btn-2').forEach(b => b.classList.remove('active'));
+            s2Start = selectedDates[0]; s2End = selectedDates[1];
+            updateSection2();
+          }
+        }
+      });
+
+      // Quick-range buttons
+      document.querySelectorAll('.ong-range-btn-2').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.ong-range-btn-2').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const days = parseInt(btn.dataset.days);
+          s2End   = lastDate;
+          s2Start = new Date(lastDate);
+          s2Start.setDate(lastDate.getDate() - days + 1);
+          fp2.setDate([s2Start, s2End]);
+          updateSection2();
+        });
+      });
+
+      // Period toggle
+      document.querySelectorAll('.ong-period-btn-2').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.ong-period-btn-2').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentPeriod2 = btn.dataset.period2;
+          updateSection2();
+        });
+      });
+    }
 
     /* ── Paid Performance Charts ── */
     (function initPaidPerf() {

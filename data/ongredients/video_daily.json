@@ -1,0 +1,2322 @@
+[
+  {
+    "date": "2025-08-11",
+    "label": "Aug 11",
+    "videos": 1,
+    "impressions": 3,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-08-13",
+    "label": "Aug 13",
+    "videos": 1,
+    "impressions": 168,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.96,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-08-20",
+    "label": "Aug 20",
+    "videos": 2,
+    "impressions": 12,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-08-23",
+    "label": "Aug 23",
+    "videos": 2,
+    "impressions": 166058,
+    "gmv": 3211.17,
+    "orders": 237,
+    "avg_ctr": 3.03,
+    "avg_ctor": 2.36
+  },
+  {
+    "date": "2025-08-24",
+    "label": "Aug 24",
+    "videos": 2,
+    "impressions": 5,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-08-25",
+    "label": "Aug 25",
+    "videos": 1,
+    "impressions": 1845,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.09,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-08-26",
+    "label": "Aug 26",
+    "videos": 7,
+    "impressions": 5874,
+    "gmv": 277.43,
+    "orders": 18,
+    "avg_ctr": 0.98,
+    "avg_ctor": 11.0
+  },
+  {
+    "date": "2025-08-27",
+    "label": "Aug 27",
+    "videos": 1,
+    "impressions": 8,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-08-28",
+    "label": "Aug 28",
+    "videos": 1,
+    "impressions": 2,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-08-29",
+    "label": "Aug 29",
+    "videos": 5,
+    "impressions": 504748,
+    "gmv": 5797.61,
+    "orders": 404,
+    "avg_ctr": 0.96,
+    "avg_ctor": 2.3
+  },
+  {
+    "date": "2025-08-30",
+    "label": "Aug 30",
+    "videos": 3,
+    "impressions": 86,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.74,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-08-31",
+    "label": "Aug 31",
+    "videos": 3,
+    "impressions": 244,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.63,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-09-01",
+    "label": "Sep 1",
+    "videos": 8,
+    "impressions": 3383,
+    "gmv": 218.48,
+    "orders": 11,
+    "avg_ctr": 4.47,
+    "avg_ctor": 3.06
+  },
+  {
+    "date": "2025-09-02",
+    "label": "Sep 2",
+    "videos": 1,
+    "impressions": 7,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-09-03",
+    "label": "Sep 3",
+    "videos": 3,
+    "impressions": 101,
+    "gmv": 0.0,
+    "orders": 1,
+    "avg_ctr": 3.3,
+    "avg_ctor": 15.52
+  },
+  {
+    "date": "2025-09-04",
+    "label": "Sep 4",
+    "videos": 3,
+    "impressions": 23,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 5.56,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-09-05",
+    "label": "Sep 5",
+    "videos": 4,
+    "impressions": 149,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.31,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-09-06",
+    "label": "Sep 6",
+    "videos": 1,
+    "impressions": 2,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-09-07",
+    "label": "Sep 7",
+    "videos": 2,
+    "impressions": 40293,
+    "gmv": 324.61,
+    "orders": 26,
+    "avg_ctr": 1.83,
+    "avg_ctor": 1.76
+  },
+  {
+    "date": "2025-09-08",
+    "label": "Sep 8",
+    "videos": 4,
+    "impressions": 16,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-09-09",
+    "label": "Sep 9",
+    "videos": 8,
+    "impressions": 269,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.76,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-09-10",
+    "label": "Sep 10",
+    "videos": 7,
+    "impressions": 93713,
+    "gmv": 1147.55,
+    "orders": 109,
+    "avg_ctr": 3.56,
+    "avg_ctor": 2.25
+  },
+  {
+    "date": "2025-09-11",
+    "label": "Sep 11",
+    "videos": 4,
+    "impressions": 17845,
+    "gmv": 163.29,
+    "orders": 16,
+    "avg_ctr": 0.83,
+    "avg_ctor": 4.65
+  },
+  {
+    "date": "2025-09-14",
+    "label": "Sep 14",
+    "videos": 1,
+    "impressions": 224,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-09-15",
+    "label": "Sep 15",
+    "videos": 1,
+    "impressions": 3,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-09-17",
+    "label": "Sep 17",
+    "videos": 1,
+    "impressions": 1588,
+    "gmv": 41.99,
+    "orders": 3,
+    "avg_ctr": 1.49,
+    "avg_ctor": 12.68
+  },
+  {
+    "date": "2025-09-20",
+    "label": "Sep 20",
+    "videos": 1,
+    "impressions": 55,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.11,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-09-24",
+    "label": "Sep 24",
+    "videos": 1,
+    "impressions": 36,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-09-27",
+    "label": "Sep 27",
+    "videos": 1,
+    "impressions": 14,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-09-28",
+    "label": "Sep 28",
+    "videos": 2,
+    "impressions": 16,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.38,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-09-29",
+    "label": "Sep 29",
+    "videos": 3,
+    "impressions": 32,
+    "gmv": 0.0,
+    "orders": 1,
+    "avg_ctr": 3.33,
+    "avg_ctor": 66.67
+  },
+  {
+    "date": "2025-10-04",
+    "label": "Oct 4",
+    "videos": 1,
+    "impressions": 119,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.38,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-10-06",
+    "label": "Oct 6",
+    "videos": 2,
+    "impressions": 121350,
+    "gmv": 1266.63,
+    "orders": 93,
+    "avg_ctr": 0.97,
+    "avg_ctor": 3.95
+  },
+  {
+    "date": "2025-10-07",
+    "label": "Oct 7",
+    "videos": 1,
+    "impressions": 7,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-08",
+    "label": "Oct 8",
+    "videos": 2,
+    "impressions": 5203,
+    "gmv": 67.38,
+    "orders": 6,
+    "avg_ctr": 11.91,
+    "avg_ctor": 1.61
+  },
+  {
+    "date": "2025-10-09",
+    "label": "Oct 9",
+    "videos": 7,
+    "impressions": 41943,
+    "gmv": 707.92,
+    "orders": 58,
+    "avg_ctr": 4.32,
+    "avg_ctor": 1.57
+  },
+  {
+    "date": "2025-10-10",
+    "label": "Oct 10",
+    "videos": 1,
+    "impressions": 6,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-11",
+    "label": "Oct 11",
+    "videos": 3,
+    "impressions": 7958,
+    "gmv": 82.27,
+    "orders": 8,
+    "avg_ctr": 10.22,
+    "avg_ctor": 0.83
+  },
+  {
+    "date": "2025-10-12",
+    "label": "Oct 12",
+    "videos": 3,
+    "impressions": 15,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-13",
+    "label": "Oct 13",
+    "videos": 1,
+    "impressions": 36,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 17.31,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-10-14",
+    "label": "Oct 14",
+    "videos": 3,
+    "impressions": 6,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 33.33,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-10-15",
+    "label": "Oct 15",
+    "videos": 1,
+    "impressions": 35775,
+    "gmv": 495.59,
+    "orders": 39,
+    "avg_ctr": 6.57,
+    "avg_ctor": 1.66
+  },
+  {
+    "date": "2025-10-17",
+    "label": "Oct 17",
+    "videos": 2,
+    "impressions": 2877,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 9.26,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-10-19",
+    "label": "Oct 19",
+    "videos": 2,
+    "impressions": 2,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-21",
+    "label": "Oct 21",
+    "videos": 3,
+    "impressions": 544,
+    "gmv": 35.03,
+    "orders": 2,
+    "avg_ctr": 1.26,
+    "avg_ctor": 9.77
+  },
+  {
+    "date": "2025-10-22",
+    "label": "Oct 22",
+    "videos": 1,
+    "impressions": 874,
+    "gmv": 34.83,
+    "orders": 1,
+    "avg_ctr": 1.67,
+    "avg_ctor": 6.85
+  },
+  {
+    "date": "2025-10-23",
+    "label": "Oct 23",
+    "videos": 1,
+    "impressions": 23,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 5.56,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-10-24",
+    "label": "Oct 24",
+    "videos": 1,
+    "impressions": 5,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-25",
+    "label": "Oct 25",
+    "videos": 1,
+    "impressions": 2,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-26",
+    "label": "Oct 26",
+    "videos": 1,
+    "impressions": 2,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-27",
+    "label": "Oct 27",
+    "videos": 5,
+    "impressions": 17,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-28",
+    "label": "Oct 28",
+    "videos": 2,
+    "impressions": 7,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 8.34,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-10-29",
+    "label": "Oct 29",
+    "videos": 3,
+    "impressions": 10,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-10-30",
+    "label": "Oct 30",
+    "videos": 3,
+    "impressions": 22,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.08,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-10-31",
+    "label": "Oct 31",
+    "videos": 7,
+    "impressions": 52,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-11-01",
+    "label": "Nov 1",
+    "videos": 3,
+    "impressions": 69,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.41,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-02",
+    "label": "Nov 2",
+    "videos": 6,
+    "impressions": 43,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.64,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-03",
+    "label": "Nov 3",
+    "videos": 9,
+    "impressions": 77,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.47,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-04",
+    "label": "Nov 4",
+    "videos": 13,
+    "impressions": 859,
+    "gmv": 0.0,
+    "orders": 2,
+    "avg_ctr": 2.09,
+    "avg_ctor": 8.63
+  },
+  {
+    "date": "2025-11-05",
+    "label": "Nov 5",
+    "videos": 11,
+    "impressions": 77066,
+    "gmv": 409.95,
+    "orders": 42,
+    "avg_ctr": 1.35,
+    "avg_ctor": 1.87
+  },
+  {
+    "date": "2025-11-06",
+    "label": "Nov 6",
+    "videos": 10,
+    "impressions": 645,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.95,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-07",
+    "label": "Nov 7",
+    "videos": 4,
+    "impressions": 31,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-11-08",
+    "label": "Nov 8",
+    "videos": 4,
+    "impressions": 5696,
+    "gmv": 82.19,
+    "orders": 7,
+    "avg_ctr": 3.12,
+    "avg_ctor": 2.56
+  },
+  {
+    "date": "2025-11-09",
+    "label": "Nov 9",
+    "videos": 4,
+    "impressions": 12962,
+    "gmv": 394.64,
+    "orders": 25,
+    "avg_ctr": 4.52,
+    "avg_ctor": 1.07
+  },
+  {
+    "date": "2025-11-10",
+    "label": "Nov 10",
+    "videos": 13,
+    "impressions": 80744,
+    "gmv": 2024.03,
+    "orders": 117,
+    "avg_ctr": 4.59,
+    "avg_ctor": 5.65
+  },
+  {
+    "date": "2025-11-11",
+    "label": "Nov 11",
+    "videos": 8,
+    "impressions": 268782,
+    "gmv": 1487.62,
+    "orders": 108,
+    "avg_ctr": 5.74,
+    "avg_ctor": 1.63
+  },
+  {
+    "date": "2025-11-12",
+    "label": "Nov 12",
+    "videos": 6,
+    "impressions": 3821,
+    "gmv": 180.82,
+    "orders": 8,
+    "avg_ctr": 4.73,
+    "avg_ctor": 2.68
+  },
+  {
+    "date": "2025-11-13",
+    "label": "Nov 13",
+    "videos": 5,
+    "impressions": 83,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.22,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-14",
+    "label": "Nov 14",
+    "videos": 6,
+    "impressions": 44,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.78,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-15",
+    "label": "Nov 15",
+    "videos": 4,
+    "impressions": 41,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-11-16",
+    "label": "Nov 16",
+    "videos": 6,
+    "impressions": 1748,
+    "gmv": 24.17,
+    "orders": 1,
+    "avg_ctr": 2.18,
+    "avg_ctor": 0.82
+  },
+  {
+    "date": "2025-11-17",
+    "label": "Nov 17",
+    "videos": 4,
+    "impressions": 1134,
+    "gmv": 29.94,
+    "orders": 2,
+    "avg_ctr": 0.99,
+    "avg_ctor": 9.76
+  },
+  {
+    "date": "2025-11-18",
+    "label": "Nov 18",
+    "videos": 7,
+    "impressions": 212,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 4.04,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-19",
+    "label": "Nov 19",
+    "videos": 4,
+    "impressions": 117478,
+    "gmv": 2297.5,
+    "orders": 218,
+    "avg_ctr": 4.31,
+    "avg_ctor": 2.5
+  },
+  {
+    "date": "2025-11-20",
+    "label": "Nov 20",
+    "videos": 12,
+    "impressions": 114831,
+    "gmv": 4112.15,
+    "orders": 276,
+    "avg_ctr": 4.11,
+    "avg_ctor": 4.79
+  },
+  {
+    "date": "2025-11-21",
+    "label": "Nov 21",
+    "videos": 10,
+    "impressions": 2101,
+    "gmv": 41.1,
+    "orders": 6,
+    "avg_ctr": 1.72,
+    "avg_ctor": 11.23
+  },
+  {
+    "date": "2025-11-22",
+    "label": "Nov 22",
+    "videos": 9,
+    "impressions": 1966,
+    "gmv": 14.7,
+    "orders": 1,
+    "avg_ctr": 0.73,
+    "avg_ctor": 4.08
+  },
+  {
+    "date": "2025-11-23",
+    "label": "Nov 23",
+    "videos": 7,
+    "impressions": 42,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.86,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-24",
+    "label": "Nov 24",
+    "videos": 10,
+    "impressions": 2664,
+    "gmv": 0.0,
+    "orders": 1,
+    "avg_ctr": 2.04,
+    "avg_ctor": 0.66
+  },
+  {
+    "date": "2025-11-25",
+    "label": "Nov 25",
+    "videos": 9,
+    "impressions": 66,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 3.15,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-26",
+    "label": "Nov 26",
+    "videos": 11,
+    "impressions": 106,
+    "gmv": 21.66,
+    "orders": 1,
+    "avg_ctr": 1.04,
+    "avg_ctor": 17.66
+  },
+  {
+    "date": "2025-11-27",
+    "label": "Nov 27",
+    "videos": 11,
+    "impressions": 68,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 8.14,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-28",
+    "label": "Nov 28",
+    "videos": 16,
+    "impressions": 3737,
+    "gmv": 88.57,
+    "orders": 9,
+    "avg_ctr": 1.44,
+    "avg_ctor": 4.41
+  },
+  {
+    "date": "2025-11-29",
+    "label": "Nov 29",
+    "videos": 10,
+    "impressions": 34,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.86,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-11-30",
+    "label": "Nov 30",
+    "videos": 19,
+    "impressions": 138,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.88,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-01",
+    "label": "Dec 1",
+    "videos": 19,
+    "impressions": 163,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.62,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-02",
+    "label": "Dec 2",
+    "videos": 8,
+    "impressions": 148,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.47,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-03",
+    "label": "Dec 3",
+    "videos": 23,
+    "impressions": 566,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.32,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-04",
+    "label": "Dec 4",
+    "videos": 18,
+    "impressions": 263,
+    "gmv": 0.0,
+    "orders": 3,
+    "avg_ctr": 1.66,
+    "avg_ctor": 14.62
+  },
+  {
+    "date": "2025-12-05",
+    "label": "Dec 5",
+    "videos": 17,
+    "impressions": 87219,
+    "gmv": 484.47,
+    "orders": 41,
+    "avg_ctr": 1.27,
+    "avg_ctor": 2.81
+  },
+  {
+    "date": "2025-12-06",
+    "label": "Dec 6",
+    "videos": 13,
+    "impressions": 100,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  },
+  {
+    "date": "2025-12-07",
+    "label": "Dec 7",
+    "videos": 13,
+    "impressions": 90,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.73,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-08",
+    "label": "Dec 8",
+    "videos": 17,
+    "impressions": 37997,
+    "gmv": 603.6,
+    "orders": 28,
+    "avg_ctr": 2.23,
+    "avg_ctor": 1.5
+  },
+  {
+    "date": "2025-12-09",
+    "label": "Dec 9",
+    "videos": 24,
+    "impressions": 9337,
+    "gmv": 509.15,
+    "orders": 26,
+    "avg_ctr": 4.42,
+    "avg_ctor": 4.81
+  },
+  {
+    "date": "2025-12-10",
+    "label": "Dec 10",
+    "videos": 22,
+    "impressions": 182,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.14,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-11",
+    "label": "Dec 11",
+    "videos": 18,
+    "impressions": 217,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.33,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-12",
+    "label": "Dec 12",
+    "videos": 18,
+    "impressions": 867,
+    "gmv": 9.37,
+    "orders": 2,
+    "avg_ctr": 6.3,
+    "avg_ctor": 5.55
+  },
+  {
+    "date": "2025-12-13",
+    "label": "Dec 13",
+    "videos": 17,
+    "impressions": 13062,
+    "gmv": 204.84,
+    "orders": 16,
+    "avg_ctr": 2.42,
+    "avg_ctor": 1.81
+  },
+  {
+    "date": "2025-12-14",
+    "label": "Dec 14",
+    "videos": 13,
+    "impressions": 11984,
+    "gmv": 470.45,
+    "orders": 33,
+    "avg_ctr": 1.94,
+    "avg_ctor": 6.09
+  },
+  {
+    "date": "2025-12-15",
+    "label": "Dec 15",
+    "videos": 50,
+    "impressions": 1429,
+    "gmv": 30.98,
+    "orders": 1,
+    "avg_ctr": 1.64,
+    "avg_ctor": 1.96
+  },
+  {
+    "date": "2025-12-16",
+    "label": "Dec 16",
+    "videos": 21,
+    "impressions": 1463,
+    "gmv": 0.0,
+    "orders": 3,
+    "avg_ctr": 1.53,
+    "avg_ctor": 6.26
+  },
+  {
+    "date": "2025-12-17",
+    "label": "Dec 17",
+    "videos": 21,
+    "impressions": 3448,
+    "gmv": 117.17,
+    "orders": 2,
+    "avg_ctr": 2.12,
+    "avg_ctor": 0.79
+  },
+  {
+    "date": "2025-12-18",
+    "label": "Dec 18",
+    "videos": 23,
+    "impressions": 28126,
+    "gmv": 313.68,
+    "orders": 19,
+    "avg_ctr": 7.01,
+    "avg_ctor": 3.09
+  },
+  {
+    "date": "2025-12-19",
+    "label": "Dec 19",
+    "videos": 19,
+    "impressions": 2391,
+    "gmv": 48.0,
+    "orders": 4,
+    "avg_ctr": 1.58,
+    "avg_ctor": 4.28
+  },
+  {
+    "date": "2025-12-20",
+    "label": "Dec 20",
+    "videos": 19,
+    "impressions": 4857,
+    "gmv": 156.57,
+    "orders": 8,
+    "avg_ctr": 1.76,
+    "avg_ctor": 5.21
+  },
+  {
+    "date": "2025-12-21",
+    "label": "Dec 21",
+    "videos": 11,
+    "impressions": 138,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.67,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-22",
+    "label": "Dec 22",
+    "videos": 22,
+    "impressions": 377,
+    "gmv": 0.0,
+    "orders": 1,
+    "avg_ctr": 0.44,
+    "avg_ctor": 33.78
+  },
+  {
+    "date": "2025-12-23",
+    "label": "Dec 23",
+    "videos": 13,
+    "impressions": 1581,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 3.79,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-24",
+    "label": "Dec 24",
+    "videos": 13,
+    "impressions": 1244,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.11,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-25",
+    "label": "Dec 25",
+    "videos": 6,
+    "impressions": 1358,
+    "gmv": 15.25,
+    "orders": 3,
+    "avg_ctr": 1.57,
+    "avg_ctor": 5.91
+  },
+  {
+    "date": "2025-12-26",
+    "label": "Dec 26",
+    "videos": 15,
+    "impressions": 291,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.1,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-27",
+    "label": "Dec 27",
+    "videos": 20,
+    "impressions": 1586,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.14,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-28",
+    "label": "Dec 28",
+    "videos": 19,
+    "impressions": 5786,
+    "gmv": 67.5,
+    "orders": 6,
+    "avg_ctr": 1.78,
+    "avg_ctor": 2.41
+  },
+  {
+    "date": "2025-12-29",
+    "label": "Dec 29",
+    "videos": 22,
+    "impressions": 337,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 4.57,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2025-12-30",
+    "label": "Dec 30",
+    "videos": 23,
+    "impressions": 22611,
+    "gmv": 304.12,
+    "orders": 22,
+    "avg_ctr": 2.37,
+    "avg_ctor": 5.04
+  },
+  {
+    "date": "2025-12-31",
+    "label": "Dec 31",
+    "videos": 16,
+    "impressions": 322,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.28,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-01",
+    "label": "Jan 1",
+    "videos": 19,
+    "impressions": 3281,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.41,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-02",
+    "label": "Jan 2",
+    "videos": 17,
+    "impressions": 221,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.56,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-03",
+    "label": "Jan 3",
+    "videos": 35,
+    "impressions": 2981,
+    "gmv": 55.3,
+    "orders": 3,
+    "avg_ctr": 2.38,
+    "avg_ctor": 4.63
+  },
+  {
+    "date": "2026-01-04",
+    "label": "Jan 4",
+    "videos": 33,
+    "impressions": 571,
+    "gmv": 18.0,
+    "orders": 2,
+    "avg_ctr": 3.57,
+    "avg_ctor": 4.81
+  },
+  {
+    "date": "2026-01-05",
+    "label": "Jan 5",
+    "videos": 36,
+    "impressions": 18141,
+    "gmv": 246.38,
+    "orders": 17,
+    "avg_ctr": 2.45,
+    "avg_ctor": 5.1
+  },
+  {
+    "date": "2026-01-06",
+    "label": "Jan 6",
+    "videos": 49,
+    "impressions": 4135,
+    "gmv": 24.99,
+    "orders": 1,
+    "avg_ctr": 1.69,
+    "avg_ctor": 0.35
+  },
+  {
+    "date": "2026-01-07",
+    "label": "Jan 7",
+    "videos": 38,
+    "impressions": 596,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 4.94,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-08",
+    "label": "Jan 8",
+    "videos": 35,
+    "impressions": 837,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.07,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-09",
+    "label": "Jan 9",
+    "videos": 40,
+    "impressions": 1197,
+    "gmv": 30.98,
+    "orders": 1,
+    "avg_ctr": 2.08,
+    "avg_ctor": 2.88
+  },
+  {
+    "date": "2026-01-10",
+    "label": "Jan 10",
+    "videos": 39,
+    "impressions": 1473,
+    "gmv": 68.05,
+    "orders": 4,
+    "avg_ctr": 4.46,
+    "avg_ctor": 6.26
+  },
+  {
+    "date": "2026-01-11",
+    "label": "Jan 11",
+    "videos": 47,
+    "impressions": 4528,
+    "gmv": 97.13,
+    "orders": 6,
+    "avg_ctr": 1.13,
+    "avg_ctor": 4.85
+  },
+  {
+    "date": "2026-01-12",
+    "label": "Jan 12",
+    "videos": 39,
+    "impressions": 3401,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 1.72,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-13",
+    "label": "Jan 13",
+    "videos": 48,
+    "impressions": 2193,
+    "gmv": 16.3,
+    "orders": 1,
+    "avg_ctr": 1.38,
+    "avg_ctor": 2.15
+  },
+  {
+    "date": "2026-01-14",
+    "label": "Jan 14",
+    "videos": 60,
+    "impressions": 1690,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 4.47,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-15",
+    "label": "Jan 15",
+    "videos": 47,
+    "impressions": 761278,
+    "gmv": 3824.85,
+    "orders": 272,
+    "avg_ctr": 2.01,
+    "avg_ctor": 4.14
+  },
+  {
+    "date": "2026-01-16",
+    "label": "Jan 16",
+    "videos": 31,
+    "impressions": 12326,
+    "gmv": 99.59,
+    "orders": 9,
+    "avg_ctr": 1.96,
+    "avg_ctor": 3.36
+  },
+  {
+    "date": "2026-01-17",
+    "label": "Jan 17",
+    "videos": 35,
+    "impressions": 3427,
+    "gmv": 13.74,
+    "orders": 1,
+    "avg_ctr": 1.88,
+    "avg_ctor": 4.13
+  },
+  {
+    "date": "2026-01-18",
+    "label": "Jan 18",
+    "videos": 24,
+    "impressions": 571,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.31,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-19",
+    "label": "Jan 19",
+    "videos": 41,
+    "impressions": 12910,
+    "gmv": 146.08,
+    "orders": 11,
+    "avg_ctr": 1.74,
+    "avg_ctor": 0.88
+  },
+  {
+    "date": "2026-01-20",
+    "label": "Jan 20",
+    "videos": 35,
+    "impressions": 28271,
+    "gmv": 535.9,
+    "orders": 43,
+    "avg_ctr": 2.2,
+    "avg_ctor": 1.38
+  },
+  {
+    "date": "2026-01-21",
+    "label": "Jan 21",
+    "videos": 34,
+    "impressions": 1627,
+    "gmv": 33.0,
+    "orders": 2,
+    "avg_ctr": 3.43,
+    "avg_ctor": 3.59
+  },
+  {
+    "date": "2026-01-22",
+    "label": "Jan 22",
+    "videos": 42,
+    "impressions": 2327,
+    "gmv": 39.68,
+    "orders": 3,
+    "avg_ctr": 1.85,
+    "avg_ctor": 3.69
+  },
+  {
+    "date": "2026-01-23",
+    "label": "Jan 23",
+    "videos": 32,
+    "impressions": 11718,
+    "gmv": 200.96,
+    "orders": 12,
+    "avg_ctr": 2.11,
+    "avg_ctor": 3.15
+  },
+  {
+    "date": "2026-01-24",
+    "label": "Jan 24",
+    "videos": 37,
+    "impressions": 29556,
+    "gmv": 53.99,
+    "orders": 4,
+    "avg_ctr": 3.64,
+    "avg_ctor": 0.17
+  },
+  {
+    "date": "2026-01-25",
+    "label": "Jan 25",
+    "videos": 9,
+    "impressions": 640,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 5.78,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-01-26",
+    "label": "Jan 26",
+    "videos": 17,
+    "impressions": 3172,
+    "gmv": 25.18,
+    "orders": 2,
+    "avg_ctr": 1.66,
+    "avg_ctor": 3.33
+  },
+  {
+    "date": "2026-01-27",
+    "label": "Jan 27",
+    "videos": 36,
+    "impressions": 7321,
+    "gmv": 0.0,
+    "orders": 2,
+    "avg_ctr": 2.79,
+    "avg_ctor": 0.72
+  },
+  {
+    "date": "2026-01-28",
+    "label": "Jan 28",
+    "videos": 38,
+    "impressions": 33843,
+    "gmv": 273.38,
+    "orders": 20,
+    "avg_ctr": 3.45,
+    "avg_ctor": 0.74
+  },
+  {
+    "date": "2026-01-29",
+    "label": "Jan 29",
+    "videos": 63,
+    "impressions": 15577,
+    "gmv": 122.33,
+    "orders": 8,
+    "avg_ctr": 6.28,
+    "avg_ctor": 2.42
+  },
+  {
+    "date": "2026-01-30",
+    "label": "Jan 30",
+    "videos": 28,
+    "impressions": 7774,
+    "gmv": 0.0,
+    "orders": 2,
+    "avg_ctr": 2.32,
+    "avg_ctor": 0.93
+  },
+  {
+    "date": "2026-01-31",
+    "label": "Jan 31",
+    "videos": 28,
+    "impressions": 10373,
+    "gmv": 80.85,
+    "orders": 3,
+    "avg_ctr": 1.88,
+    "avg_ctor": 1.14
+  },
+  {
+    "date": "2026-02-01",
+    "label": "Feb 1",
+    "videos": 45,
+    "impressions": 10947,
+    "gmv": 36.34,
+    "orders": 3,
+    "avg_ctr": 1.74,
+    "avg_ctor": 1.13
+  },
+  {
+    "date": "2026-02-02",
+    "label": "Feb 2",
+    "videos": 46,
+    "impressions": 71674,
+    "gmv": 1222.53,
+    "orders": 76,
+    "avg_ctr": 1.91,
+    "avg_ctor": 4.69
+  },
+  {
+    "date": "2026-02-03",
+    "label": "Feb 3",
+    "videos": 34,
+    "impressions": 8648,
+    "gmv": 17.23,
+    "orders": 1,
+    "avg_ctr": 2.57,
+    "avg_ctor": 0.38
+  },
+  {
+    "date": "2026-02-04",
+    "label": "Feb 4",
+    "videos": 33,
+    "impressions": 123144,
+    "gmv": 1350.03,
+    "orders": 64,
+    "avg_ctr": 2.97,
+    "avg_ctor": 2.57
+  },
+  {
+    "date": "2026-02-05",
+    "label": "Feb 5",
+    "videos": 38,
+    "impressions": 12458,
+    "gmv": 47.4,
+    "orders": 4,
+    "avg_ctr": 3.69,
+    "avg_ctor": 1.01
+  },
+  {
+    "date": "2026-02-06",
+    "label": "Feb 6",
+    "videos": 28,
+    "impressions": 6103,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.9,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-02-07",
+    "label": "Feb 7",
+    "videos": 34,
+    "impressions": 87954,
+    "gmv": 875.82,
+    "orders": 52,
+    "avg_ctr": 2.42,
+    "avg_ctor": 1.77
+  },
+  {
+    "date": "2026-02-08",
+    "label": "Feb 8",
+    "videos": 30,
+    "impressions": 40206,
+    "gmv": 874.39,
+    "orders": 72,
+    "avg_ctr": 2.9,
+    "avg_ctor": 4.56
+  },
+  {
+    "date": "2026-02-09",
+    "label": "Feb 9",
+    "videos": 38,
+    "impressions": 24120,
+    "gmv": 137.84,
+    "orders": 12,
+    "avg_ctr": 3.94,
+    "avg_ctor": 0.68
+  },
+  {
+    "date": "2026-02-10",
+    "label": "Feb 10",
+    "videos": 35,
+    "impressions": 9764,
+    "gmv": 152.35,
+    "orders": 10,
+    "avg_ctr": 5.16,
+    "avg_ctor": 3.3
+  },
+  {
+    "date": "2026-02-11",
+    "label": "Feb 11",
+    "videos": 49,
+    "impressions": 35724,
+    "gmv": 601.64,
+    "orders": 39,
+    "avg_ctr": 3.02,
+    "avg_ctor": 3.25
+  },
+  {
+    "date": "2026-02-12",
+    "label": "Feb 12",
+    "videos": 51,
+    "impressions": 13234,
+    "gmv": 62.04,
+    "orders": 3,
+    "avg_ctr": 4.59,
+    "avg_ctor": 0.88
+  },
+  {
+    "date": "2026-02-13",
+    "label": "Feb 13",
+    "videos": 36,
+    "impressions": 56231,
+    "gmv": 538.04,
+    "orders": 29,
+    "avg_ctr": 3.11,
+    "avg_ctor": 1.77
+  },
+  {
+    "date": "2026-02-14",
+    "label": "Feb 14",
+    "videos": 36,
+    "impressions": 6230,
+    "gmv": 12.18,
+    "orders": 2,
+    "avg_ctr": 2.62,
+    "avg_ctor": 0.98
+  },
+  {
+    "date": "2026-02-15",
+    "label": "Feb 15",
+    "videos": 38,
+    "impressions": 61613,
+    "gmv": 286.37,
+    "orders": 16,
+    "avg_ctr": 2.97,
+    "avg_ctor": 0.77
+  },
+  {
+    "date": "2026-02-16",
+    "label": "Feb 16",
+    "videos": 37,
+    "impressions": 95422,
+    "gmv": 903.56,
+    "orders": 74,
+    "avg_ctr": 2.66,
+    "avg_ctor": 2.41
+  },
+  {
+    "date": "2026-02-17",
+    "label": "Feb 17",
+    "videos": 33,
+    "impressions": 32081,
+    "gmv": 258.05,
+    "orders": 13,
+    "avg_ctr": 5.26,
+    "avg_ctor": 2.16
+  },
+  {
+    "date": "2026-02-18",
+    "label": "Feb 18",
+    "videos": 48,
+    "impressions": 13352,
+    "gmv": 24.73,
+    "orders": 1,
+    "avg_ctr": 2.6,
+    "avg_ctor": 0.33
+  },
+  {
+    "date": "2026-02-19",
+    "label": "Feb 19",
+    "videos": 42,
+    "impressions": 23065,
+    "gmv": 167.79,
+    "orders": 11,
+    "avg_ctr": 3.67,
+    "avg_ctor": 0.92
+  },
+  {
+    "date": "2026-02-20",
+    "label": "Feb 20",
+    "videos": 42,
+    "impressions": 8792,
+    "gmv": 48.64,
+    "orders": 3,
+    "avg_ctr": 2.22,
+    "avg_ctor": 1.14
+  },
+  {
+    "date": "2026-02-21",
+    "label": "Feb 21",
+    "videos": 42,
+    "impressions": 12638,
+    "gmv": 116.4,
+    "orders": 10,
+    "avg_ctr": 2.28,
+    "avg_ctor": 2.21
+  },
+  {
+    "date": "2026-02-22",
+    "label": "Feb 22",
+    "videos": 38,
+    "impressions": 27951,
+    "gmv": 396.32,
+    "orders": 15,
+    "avg_ctr": 2.51,
+    "avg_ctor": 1.02
+  },
+  {
+    "date": "2026-02-23",
+    "label": "Feb 23",
+    "videos": 25,
+    "impressions": 11781,
+    "gmv": 101.43,
+    "orders": 8,
+    "avg_ctr": 3.1,
+    "avg_ctor": 1.83
+  },
+  {
+    "date": "2026-02-24",
+    "label": "Feb 24",
+    "videos": 31,
+    "impressions": 19826,
+    "gmv": 207.68,
+    "orders": 17,
+    "avg_ctr": 2.82,
+    "avg_ctor": 2.15
+  },
+  {
+    "date": "2026-02-25",
+    "label": "Feb 25",
+    "videos": 30,
+    "impressions": 10307,
+    "gmv": 39.29,
+    "orders": 4,
+    "avg_ctr": 2.35,
+    "avg_ctor": 1.48
+  },
+  {
+    "date": "2026-02-26",
+    "label": "Feb 26",
+    "videos": 21,
+    "impressions": 5086,
+    "gmv": 109.08,
+    "orders": 3,
+    "avg_ctr": 2.56,
+    "avg_ctor": 2.06
+  },
+  {
+    "date": "2026-02-27",
+    "label": "Feb 27",
+    "videos": 18,
+    "impressions": 3409,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.51,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-02-28",
+    "label": "Feb 28",
+    "videos": 23,
+    "impressions": 52528,
+    "gmv": 1117.4,
+    "orders": 83,
+    "avg_ctr": 2.45,
+    "avg_ctor": 4.95
+  },
+  {
+    "date": "2026-03-01",
+    "label": "Mar 1",
+    "videos": 28,
+    "impressions": 5740,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.5,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-03-02",
+    "label": "Mar 2",
+    "videos": 34,
+    "impressions": 15204,
+    "gmv": 191.4,
+    "orders": 18,
+    "avg_ctr": 5.1,
+    "avg_ctor": 3.72
+  },
+  {
+    "date": "2026-03-03",
+    "label": "Mar 3",
+    "videos": 35,
+    "impressions": 6918,
+    "gmv": 20.99,
+    "orders": 2,
+    "avg_ctr": 5.2,
+    "avg_ctor": 1.71
+  },
+  {
+    "date": "2026-03-04",
+    "label": "Mar 4",
+    "videos": 18,
+    "impressions": 6034,
+    "gmv": 23.99,
+    "orders": 1,
+    "avg_ctr": 2.62,
+    "avg_ctor": 0.53
+  },
+  {
+    "date": "2026-03-05",
+    "label": "Mar 5",
+    "videos": 23,
+    "impressions": 9677,
+    "gmv": 40.48,
+    "orders": 3,
+    "avg_ctr": 2.1,
+    "avg_ctor": 1.47
+  },
+  {
+    "date": "2026-03-06",
+    "label": "Mar 6",
+    "videos": 23,
+    "impressions": 4101,
+    "gmv": 41.69,
+    "orders": 3,
+    "avg_ctr": 2.73,
+    "avg_ctor": 2.94
+  },
+  {
+    "date": "2026-03-07",
+    "label": "Mar 7",
+    "videos": 27,
+    "impressions": 6493,
+    "gmv": 70.49,
+    "orders": 6,
+    "avg_ctr": 2.97,
+    "avg_ctor": 3.28
+  },
+  {
+    "date": "2026-03-08",
+    "label": "Mar 8",
+    "videos": 32,
+    "impressions": 8405,
+    "gmv": 31.25,
+    "orders": 2,
+    "avg_ctr": 1.48,
+    "avg_ctor": 1.45
+  },
+  {
+    "date": "2026-03-09",
+    "label": "Mar 9",
+    "videos": 48,
+    "impressions": 19512,
+    "gmv": 71.65,
+    "orders": 7,
+    "avg_ctr": 5.07,
+    "avg_ctor": 1.14
+  },
+  {
+    "date": "2026-03-10",
+    "label": "Mar 10",
+    "videos": 32,
+    "impressions": 23104,
+    "gmv": 561.09,
+    "orders": 55,
+    "avg_ctr": 12.88,
+    "avg_ctor": 3.7
+  },
+  {
+    "date": "2026-03-11",
+    "label": "Mar 11",
+    "videos": 51,
+    "impressions": 13355,
+    "gmv": 75.48,
+    "orders": 3,
+    "avg_ctr": 4.98,
+    "avg_ctor": 0.64
+  },
+  {
+    "date": "2026-03-12",
+    "label": "Mar 12",
+    "videos": 41,
+    "impressions": 55758,
+    "gmv": 375.55,
+    "orders": 24,
+    "avg_ctr": 3.54,
+    "avg_ctor": 0.89
+  },
+  {
+    "date": "2026-03-13",
+    "label": "Mar 13",
+    "videos": 45,
+    "impressions": 14805,
+    "gmv": 226.26,
+    "orders": 17,
+    "avg_ctr": 2.67,
+    "avg_ctor": 2.84
+  },
+  {
+    "date": "2026-03-14",
+    "label": "Mar 14",
+    "videos": 42,
+    "impressions": 36207,
+    "gmv": 532.29,
+    "orders": 35,
+    "avg_ctr": 1.62,
+    "avg_ctor": 2.81
+  },
+  {
+    "date": "2026-03-15",
+    "label": "Mar 15",
+    "videos": 44,
+    "impressions": 13395,
+    "gmv": 59.78,
+    "orders": 9,
+    "avg_ctr": 3.17,
+    "avg_ctor": 2.48
+  },
+  {
+    "date": "2026-03-16",
+    "label": "Mar 16",
+    "videos": 40,
+    "impressions": 12730,
+    "gmv": 67.37,
+    "orders": 4,
+    "avg_ctr": 2.91,
+    "avg_ctor": 0.84
+  },
+  {
+    "date": "2026-03-17",
+    "label": "Mar 17",
+    "videos": 47,
+    "impressions": 59946,
+    "gmv": 790.91,
+    "orders": 70,
+    "avg_ctr": 2.84,
+    "avg_ctor": 2.26
+  },
+  {
+    "date": "2026-03-18",
+    "label": "Mar 18",
+    "videos": 38,
+    "impressions": 12460,
+    "gmv": 115.54,
+    "orders": 8,
+    "avg_ctr": 4.83,
+    "avg_ctor": 1.48
+  },
+  {
+    "date": "2026-03-19",
+    "label": "Mar 19",
+    "videos": 38,
+    "impressions": 9119,
+    "gmv": 35.48,
+    "orders": 2,
+    "avg_ctr": 1.77,
+    "avg_ctor": 1.24
+  },
+  {
+    "date": "2026-03-20",
+    "label": "Mar 20",
+    "videos": 27,
+    "impressions": 16728,
+    "gmv": 147.79,
+    "orders": 14,
+    "avg_ctr": 2.52,
+    "avg_ctor": 3.18
+  },
+  {
+    "date": "2026-03-21",
+    "label": "Mar 21",
+    "videos": 41,
+    "impressions": 10038,
+    "gmv": 14.66,
+    "orders": 3,
+    "avg_ctr": 2.97,
+    "avg_ctor": 0.83
+  },
+  {
+    "date": "2026-03-22",
+    "label": "Mar 22",
+    "videos": 34,
+    "impressions": 50690,
+    "gmv": 658.53,
+    "orders": 33,
+    "avg_ctr": 2.87,
+    "avg_ctor": 1.62
+  },
+  {
+    "date": "2026-03-23",
+    "label": "Mar 23",
+    "videos": 39,
+    "impressions": 13793,
+    "gmv": 186.43,
+    "orders": 20,
+    "avg_ctr": 3.09,
+    "avg_ctor": 2.63
+  },
+  {
+    "date": "2026-03-24",
+    "label": "Mar 24",
+    "videos": 33,
+    "impressions": 82283,
+    "gmv": 2017.94,
+    "orders": 184,
+    "avg_ctr": 3.54,
+    "avg_ctor": 4.03
+  },
+  {
+    "date": "2026-03-25",
+    "label": "Mar 25",
+    "videos": 23,
+    "impressions": 6890,
+    "gmv": 63.53,
+    "orders": 6,
+    "avg_ctr": 2.98,
+    "avg_ctor": 2.94
+  },
+  {
+    "date": "2026-03-26",
+    "label": "Mar 26",
+    "videos": 22,
+    "impressions": 94432,
+    "gmv": 621.4,
+    "orders": 64,
+    "avg_ctr": 2.42,
+    "avg_ctor": 2.97
+  },
+  {
+    "date": "2026-03-27",
+    "label": "Mar 27",
+    "videos": 29,
+    "impressions": 13689,
+    "gmv": 44.55,
+    "orders": 6,
+    "avg_ctr": 2.87,
+    "avg_ctor": 0.76
+  },
+  {
+    "date": "2026-03-28",
+    "label": "Mar 28",
+    "videos": 22,
+    "impressions": 17924,
+    "gmv": 220.89,
+    "orders": 15,
+    "avg_ctr": 4.02,
+    "avg_ctor": 1.13
+  },
+  {
+    "date": "2026-03-29",
+    "label": "Mar 29",
+    "videos": 11,
+    "impressions": 4333,
+    "gmv": 16.27,
+    "orders": 1,
+    "avg_ctr": 1.34,
+    "avg_ctor": 2.12
+  },
+  {
+    "date": "2026-03-30",
+    "label": "Mar 30",
+    "videos": 20,
+    "impressions": 6056,
+    "gmv": 117.49,
+    "orders": 8,
+    "avg_ctr": 3.59,
+    "avg_ctor": 2.93
+  },
+  {
+    "date": "2026-03-31",
+    "label": "Mar 31",
+    "videos": 33,
+    "impressions": 147506,
+    "gmv": 1706.08,
+    "orders": 144,
+    "avg_ctr": 4.72,
+    "avg_ctor": 3.86
+  },
+  {
+    "date": "2026-04-01",
+    "label": "Apr 1",
+    "videos": 17,
+    "impressions": 5239,
+    "gmv": 85.5,
+    "orders": 8,
+    "avg_ctr": 3.76,
+    "avg_ctor": 3.09
+  },
+  {
+    "date": "2026-04-02",
+    "label": "Apr 2",
+    "videos": 16,
+    "impressions": 37476,
+    "gmv": 819.52,
+    "orders": 77,
+    "avg_ctr": 3.69,
+    "avg_ctor": 5.93
+  },
+  {
+    "date": "2026-04-03",
+    "label": "Apr 3",
+    "videos": 27,
+    "impressions": 7239,
+    "gmv": 198.0,
+    "orders": 15,
+    "avg_ctr": 3.71,
+    "avg_ctor": 3.98
+  },
+  {
+    "date": "2026-04-04",
+    "label": "Apr 4",
+    "videos": 18,
+    "impressions": 17709,
+    "gmv": 123.0,
+    "orders": 11,
+    "avg_ctr": 3.4,
+    "avg_ctor": 1.23
+  },
+  {
+    "date": "2026-04-05",
+    "label": "Apr 5",
+    "videos": 18,
+    "impressions": 5991,
+    "gmv": 145.5,
+    "orders": 8,
+    "avg_ctr": 4.98,
+    "avg_ctor": 2.63
+  },
+  {
+    "date": "2026-04-06",
+    "label": "Apr 6",
+    "videos": 29,
+    "impressions": 148013,
+    "gmv": 3449.84,
+    "orders": 289,
+    "avg_ctr": 2.21,
+    "avg_ctor": 4.84
+  },
+  {
+    "date": "2026-04-07",
+    "label": "Apr 7",
+    "videos": 27,
+    "impressions": 8259,
+    "gmv": 217.46,
+    "orders": 6,
+    "avg_ctr": 3.35,
+    "avg_ctor": 1.53
+  },
+  {
+    "date": "2026-04-08",
+    "label": "Apr 8",
+    "videos": 15,
+    "impressions": 60489,
+    "gmv": 1407.71,
+    "orders": 118,
+    "avg_ctr": 4.17,
+    "avg_ctor": 3.02
+  },
+  {
+    "date": "2026-04-09",
+    "label": "Apr 9",
+    "videos": 22,
+    "impressions": 4463,
+    "gmv": 33.0,
+    "orders": 2,
+    "avg_ctr": 2.9,
+    "avg_ctor": 1.17
+  },
+  {
+    "date": "2026-04-10",
+    "label": "Apr 10",
+    "videos": 17,
+    "impressions": 7227,
+    "gmv": 147.0,
+    "orders": 13,
+    "avg_ctr": 5.03,
+    "avg_ctor": 3.0
+  },
+  {
+    "date": "2026-04-11",
+    "label": "Apr 11",
+    "videos": 24,
+    "impressions": 5972,
+    "gmv": 51.0,
+    "orders": 5,
+    "avg_ctr": 2.22,
+    "avg_ctor": 2.26
+  },
+  {
+    "date": "2026-04-12",
+    "label": "Apr 12",
+    "videos": 17,
+    "impressions": 9248,
+    "gmv": 227.5,
+    "orders": 14,
+    "avg_ctr": 4.41,
+    "avg_ctor": 2.87
+  },
+  {
+    "date": "2026-04-13",
+    "label": "Apr 13",
+    "videos": 14,
+    "impressions": 4957,
+    "gmv": 77.45,
+    "orders": 3,
+    "avg_ctr": 5.3,
+    "avg_ctor": 0.49
+  },
+  {
+    "date": "2026-04-14",
+    "label": "Apr 14",
+    "videos": 22,
+    "impressions": 9232,
+    "gmv": 123.0,
+    "orders": 11,
+    "avg_ctr": 2.79,
+    "avg_ctor": 1.54
+  },
+  {
+    "date": "2026-04-15",
+    "label": "Apr 15",
+    "videos": 8,
+    "impressions": 4038,
+    "gmv": 0.0,
+    "orders": 1,
+    "avg_ctr": 1.58,
+    "avg_ctor": 1.35
+  },
+  {
+    "date": "2026-04-16",
+    "label": "Apr 16",
+    "videos": 12,
+    "impressions": 4384,
+    "gmv": 74.4,
+    "orders": 5,
+    "avg_ctr": 7.45,
+    "avg_ctor": 2.56
+  },
+  {
+    "date": "2026-04-17",
+    "label": "Apr 17",
+    "videos": 9,
+    "impressions": 2605,
+    "gmv": 59.49,
+    "orders": 3,
+    "avg_ctr": 2.59,
+    "avg_ctor": 5.18
+  },
+  {
+    "date": "2026-04-18",
+    "label": "Apr 18",
+    "videos": 8,
+    "impressions": 7556,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.14,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-04-19",
+    "label": "Apr 19",
+    "videos": 15,
+    "impressions": 1393,
+    "gmv": 46.5,
+    "orders": 3,
+    "avg_ctr": 5.19,
+    "avg_ctor": 4.52
+  },
+  {
+    "date": "2026-04-20",
+    "label": "Apr 20",
+    "videos": 30,
+    "impressions": 8390,
+    "gmv": 49.5,
+    "orders": 3,
+    "avg_ctr": 4.7,
+    "avg_ctor": 1.28
+  },
+  {
+    "date": "2026-04-21",
+    "label": "Apr 21",
+    "videos": 11,
+    "impressions": 1841,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 3.85,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-04-22",
+    "label": "Apr 22",
+    "videos": 15,
+    "impressions": 5169,
+    "gmv": 23.45,
+    "orders": 1,
+    "avg_ctr": 4.78,
+    "avg_ctor": 0.36
+  },
+  {
+    "date": "2026-04-23",
+    "label": "Apr 23",
+    "videos": 22,
+    "impressions": 8215,
+    "gmv": 67.32,
+    "orders": 3,
+    "avg_ctr": 4.81,
+    "avg_ctor": 0.68
+  },
+  {
+    "date": "2026-04-24",
+    "label": "Apr 24",
+    "videos": 16,
+    "impressions": 1936,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 4.48,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-04-25",
+    "label": "Apr 25",
+    "videos": 18,
+    "impressions": 1250,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 2.44,
+    "avg_ctor": 0.0
+  },
+  {
+    "date": "2026-04-26",
+    "label": "Apr 26",
+    "videos": 1,
+    "impressions": 0,
+    "gmv": 0.0,
+    "orders": 0,
+    "avg_ctr": 0.0,
+    "avg_ctor": 0
+  }
+]
