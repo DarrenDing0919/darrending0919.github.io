@@ -99,7 +99,6 @@
       grid-template-columns: 1fr 1fr;
       height: calc(100vh - 52px);
       min-height: 480px;
-      max-height: 800px;
       overflow: hidden;
       border-bottom: 1px solid var(--ong-border);
     }
@@ -255,7 +254,7 @@
       overflow: hidden;
       background-image: url("/asset/Ongredietns%20EX%20Lotion%20Product%20Images/%EC%B9%B4%EB%B0%8D%EB%A1%9C%EC%85%98EX%20%EB%AC%BC%EB%B0%A9%EC%9A%B8%20%EC%97%B0%EC%B6%9C%EC%BB%B7.jpg%EC%9D%98%20%EC%82%AC%EB%B3%B8.jpg");
       background-size: cover;
-      background-position: center 45%;
+      background-position: center center;
       background-color: #e8d840;
     }
 
@@ -1389,6 +1388,254 @@
       .ong-stat-grid { grid-template-columns: repeat(2, 1fr); }
       .ong-tab-btn { padding: 14px 18px; font-size: 0.68rem; }
     }
+
+    /* ══ Content & Strategy Tab ══ */
+
+    /* Agent config cards */
+    .ong-cs-agent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .ong-cs-agent-card {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+    }
+    .ong-cs-agent-num {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ong-muted);
+      margin-bottom: 4px;
+    }
+    .ong-cs-agent-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ong-dark);
+      margin: 0 0 14px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .ong-cs-agent-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+    }
+    .ong-cs-agent-table tr { border-bottom: 1px solid var(--ong-border); }
+    .ong-cs-agent-table tr:last-child { border-bottom: none; }
+    .ong-cs-agent-table td { padding: 6px 0; vertical-align: top; }
+    .ong-cs-agent-table td:first-child { color: var(--ong-muted); width: 50%; }
+    .ong-cs-agent-table td:last-child { color: var(--ong-dark); font-weight: 500; text-align: right; }
+    .ong-cs-version-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .ong-cs-version-a { background: #1c1a0e; color: #f5c842; }
+    .ong-cs-version-b { background: #fff4d0; color: #c89800; border: 1px solid rgba(200,160,0,0.3); }
+    .ong-cs-version-pending { background: rgba(154,144,112,0.1); color: var(--ong-muted); border: 1px solid var(--ong-border); }
+
+    /* Message sequence */
+    .ong-cs-msg-seq { display: flex; flex-direction: column; gap: 12px; }
+    .ong-cs-msg-card {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+    }
+    .ong-cs-msg-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .ong-cs-msg-header:hover { background: var(--ong-yellow-pale); }
+    .ong-cs-msg-step {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ong-muted);
+      flex-shrink: 0;
+      width: 60px;
+    }
+    .ong-cs-msg-title {
+      font-family: var(--font-sans);
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: var(--ong-dark);
+      flex: 1;
+    }
+    .ong-cs-msg-timing {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      color: var(--ong-muted);
+      flex-shrink: 0;
+    }
+    .ong-cs-msg-chevron {
+      color: var(--ong-muted);
+      font-size: 0.7rem;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .ong-cs-msg-card.open .ong-cs-msg-chevron { transform: rotate(180deg); }
+    .ong-cs-msg-body {
+      display: none;
+      padding: 20px 24px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--ong-text2);
+      border-top: 1px solid var(--ong-border);
+    }
+    .ong-cs-msg-card.open .ong-cs-msg-body { display: block; }
+    .ong-cs-msg-body p { margin: 0 0 10px; }
+    .ong-cs-msg-body p:last-child { margin-bottom: 0; }
+    .ong-cs-msg-invite-box {
+      background: var(--ong-yellow-pale);
+      border: 1px solid var(--ong-border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--ong-dark);
+    }
+
+    /* A/B test section */
+    .ong-cs-ab-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .ong-cs-ab-card {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+    }
+    .ong-cs-ab-header { padding: 18px 20px; border-bottom: 1px solid var(--ong-border); }
+    .ong-cs-ab-header-a { background: #1c1a0e; }
+    .ong-cs-ab-header-b { background: #fffce0; }
+    .ong-cs-ab-ver {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 5px;
+    }
+    .ong-cs-ab-header-a .ong-cs-ab-ver { color: rgba(245,200,66,0.55); }
+    .ong-cs-ab-header-b .ong-cs-ab-ver { color: var(--ong-muted); }
+    .ong-cs-ab-angle {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+    .ong-cs-ab-header-a .ong-cs-ab-angle { color: #f5c842; }
+    .ong-cs-ab-header-b .ong-cs-ab-angle { color: var(--ong-dark); }
+    .ong-cs-ab-body { padding: 16px 20px; }
+    .ong-cs-ab-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--ong-border);
+      gap: 10px;
+    }
+    .ong-cs-ab-row:last-child { border-bottom: none; }
+    .ong-cs-ab-key {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      color: var(--ong-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      flex-shrink: 0;
+    }
+    .ong-cs-ab-val {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--ong-dark);
+      text-align: right;
+    }
+
+    /* Metrics table */
+    .ong-cs-metrics-wrap {
+      background: var(--ong-surface);
+      border: 1px solid var(--ong-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+    }
+    .ong-cs-metrics-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+    .ong-cs-metrics-table thead { background: var(--ong-yellow-pale); }
+    .ong-cs-metrics-table th {
+      padding: 10px 16px;
+      text-align: left;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--ong-yellow-deep);
+      border-bottom: 1px solid var(--ong-border);
+    }
+    .ong-cs-metrics-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--ong-border);
+      color: var(--ong-dark);
+    }
+    .ong-cs-metrics-table tr:last-child td { border-bottom: none; }
+    .ong-cs-metrics-table tr:hover td { background: var(--ong-yellow-pale); }
+    .ong-cs-pending {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      background: rgba(154,144,112,0.1);
+      border: 1px solid var(--ong-border);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+    .ong-cs-desc {
+      font-family: var(--font-sans);
+      font-size: 0.83rem;
+      line-height: 1.7;
+      color: var(--ong-text2);
+      margin: 0 0 28px;
+    }
+
+    @media (max-width: 900px) {
+      .ong-cs-agent-grid { grid-template-columns: 1fr; }
+      .ong-cs-ab-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1459,6 +1706,11 @@
           Paid Affiliates
           <span class="ong-tab-badge">Coming Soon</span>
         </button>
+        <button class="ong-tab-btn" data-tab="content">
+          <span class="ong-tab-dot"></span>
+          Content &amp; Strategy
+          <span class="ong-tab-badge">Active</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1474,7 +1726,7 @@
           <div class="ong-section-marker">
             <span class="ong-section-num">01</span>
             <span class="ong-section-tick"></span>
-            <span class="ong-section-tag">Funnel & Sampling</span>
+            <span class="ong-section-tag">Creator Reachout</span>
           </div>
           <h2 class="ong-section-title">Invitation & Sample Funnel</h2>
         </div>
@@ -1504,7 +1756,7 @@
           <p class="ong-stat-value" id="stat-req">—</p>
         </div>
         <div class="ong-stat-card" style="border-top-color:#22c55e;">
-          <p class="ong-stat-label">Sample Approved</p>
+          <p class="ong-stat-label">Sample Shipped</p>
           <p class="ong-stat-value" id="stat-approved">—</p>
         </div>
         <div class="ong-stat-card" style="border-top-color:#a78bfa;">
@@ -1531,7 +1783,7 @@
         <div class="ong-toggle-group" id="toggles-1">
           <button class="ong-toggle-btn active" data-chart="chart1" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Invitations Sent</button>
           <button class="ong-toggle-btn" data-chart="chart1" data-index="1" data-color="#60a5fa">Sample Requested</button>
-          <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Approved</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Shipped</button>
           <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#d4a800">Video Posted</button>
         </div>
       </div>
@@ -1549,7 +1801,7 @@
           <div class="ong-section-marker">
             <span class="ong-section-num">02</span>
             <span class="ong-section-tick"></span>
-            <span class="ong-section-tag">Video & Channel</span>
+            <span class="ong-section-tag">Video Analysis</span>
           </div>
           <h2 class="ong-section-title">Video Activity & Channel Performance</h2>
         </div>
@@ -1851,6 +2103,203 @@
     </section>
   </div><!-- end panel-paid -->
 
+  <!-- ══ Tab Panel: Content & Strategy ══ -->
+  <div class="ong-tab-panel" id="panel-content">
+
+    <!-- ══ Section 01: Reach-out Messages & Guidelines ══ -->
+    <section class="ong-section" style="padding-top:52px;">
+      <div class="container">
+        <div class="ong-section-header-row">
+          <div>
+            <div class="ong-section-marker">
+              <span class="ong-section-num">01</span>
+              <span class="ong-section-tick"></span>
+              <span class="ong-section-tag">Outreach</span>
+            </div>
+            <h2 class="ong-section-title">Reach-out Messages &amp; Guidelines</h2>
+          </div>
+        </div>
+
+        <p class="ong-cs-desc">Three EUKA AI outreach agents are deployed targeting distinct GMV tiers within Beauty &amp; Personal Care. Each agent runs the same message sequence — one initial message and two follow-ups — while serving different one pager versions to support the A/B test.</p>
+
+        <!-- Agent Config Cards -->
+        <div class="ong-cs-agent-grid">
+
+          <!-- Agent 1 -->
+          <div class="ong-cs-agent-card">
+            <p class="ong-cs-agent-num">Agent 01</p>
+            <p class="ong-cs-agent-name">Influu Agent1 EX Lotion BPC</p>
+            <table class="ong-cs-agent-table">
+              <tr><td>GMV Range</td><td>$1K – $10K</td></tr>
+              <tr><td>Category</td><td>Beauty &amp; Personal Care</td></tr>
+              <tr><td>Post Fulfill Rate</td><td>50 – 100%</td></tr>
+              <tr><td>Engagement Rate</td><td>&gt; 2%</td></tr>
+              <tr><td>Creator Pool</td><td>3,000 – 5,000</td></tr>
+              <tr><td>Target Reply Rate</td><td>8 – 15%</td></tr>
+              <tr><td>One Pager</td><td><span class="ong-cs-version-badge ong-cs-version-a">Version A</span></td></tr>
+            </table>
+          </div>
+
+          <!-- Agent 2 -->
+          <div class="ong-cs-agent-card">
+            <p class="ong-cs-agent-num">Agent 02</p>
+            <p class="ong-cs-agent-name">Influu Agent2 EX Lotion BPC</p>
+            <table class="ong-cs-agent-table">
+              <tr><td>GMV Range</td><td>$10K – $50K</td></tr>
+              <tr><td>Category</td><td>Beauty &amp; Personal Care</td></tr>
+              <tr><td>Post Fulfill Rate</td><td>50 – 100%</td></tr>
+              <tr><td>Engagement Rate</td><td>&gt; 2%</td></tr>
+              <tr><td>Creator Pool</td><td>500 – 1,000</td></tr>
+              <tr><td>Target Reply Rate</td><td>10 – 18%</td></tr>
+              <tr><td>One Pager</td><td><span class="ong-cs-version-badge ong-cs-version-b">Version B</span></td></tr>
+            </table>
+          </div>
+
+          <!-- Agent 3 -->
+          <div class="ong-cs-agent-card">
+            <p class="ong-cs-agent-num">Agent 03</p>
+            <p class="ong-cs-agent-name">Influu Agent3 EX Lotion BPC — Premium</p>
+            <table class="ong-cs-agent-table">
+              <tr><td>GMV Range</td><td>$50K – $2M</td></tr>
+              <tr><td>Category</td><td>Beauty &amp; Personal Care</td></tr>
+              <tr><td>Post Fulfill Rate</td><td>70 – 100%</td></tr>
+              <tr><td>Engagement Rate</td><td>&gt; 3%</td></tr>
+              <tr><td>Creator Pool</td><td>50 – 200</td></tr>
+              <tr><td>Approach</td><td>Manual review</td></tr>
+              <tr><td>One Pager</td><td><span class="ong-cs-version-badge ong-cs-version-pending">Pending A/B</span></td></tr>
+            </table>
+          </div>
+
+        </div><!-- end agent grid -->
+
+        <!-- Message Sequence -->
+        <div style="margin-bottom:12px;">
+          <p class="ong-stat-label" style="margin-bottom:0;">Message Sequence</p>
+        </div>
+        <div class="ong-cs-msg-seq">
+
+          <!-- Target Invite -->
+          <div class="ong-cs-msg-card">
+            <div class="ong-cs-msg-header" onclick="this.closest('.ong-cs-msg-card').classList.toggle('open')">
+              <span class="ong-cs-msg-step">Invite</span>
+              <span class="ong-cs-msg-title">Target Invite — Preview Text</span>
+              <span class="ong-cs-msg-timing">Shown before creator opens message</span>
+              <span class="ong-cs-msg-chevron">▾</span>
+            </div>
+            <div class="ong-cs-msg-body">
+              <div class="ong-cs-msg-invite-box">✨ Be among the first to try Ongredients' newly upgraded Skin Barrier Calming Lotion EX — the latest evolution of a product line trusted by 8M+ customers worldwide 🌎<br><br>The upgraded formula delivers 2.47x better skin transparency &amp; 1.58x stronger barrier repair 🧴✨<br><br>We'd love to send you a gift — no pressure, just your honest experience 💕😊</div>
+            </div>
+          </div>
+
+          <!-- Initial Message -->
+          <div class="ong-cs-msg-card">
+            <div class="ong-cs-msg-header" onclick="this.closest('.ong-cs-msg-card').classList.toggle('open')">
+              <span class="ong-cs-msg-step">Initial</span>
+              <span class="ong-cs-msg-title">Initial Message</span>
+              <span class="ong-cs-msg-timing">Day 0</span>
+              <span class="ong-cs-msg-chevron">▾</span>
+            </div>
+            <div class="ong-cs-msg-body">
+              <p><strong>✨ 8 million sold globally. Now upgraded — and even better. ✨</strong></p>
+              <p>Hi [creator first name],</p>
+              <p>We're reaching out because we think you might genuinely love what we just launched 🎉</p>
+              <p>Ongredients' Skin Barrier Calming Lotion is a product line with 8M units sold worldwide 🌎 — loved by creators as a simple, effective skin-prep step before filming or makeup 🎬✨</p>
+              <p>And now, we've just released the upgraded version: Skin Barrier Calming Lotion EX 🆕</p>
+              <p>The new formula is a meaningful step up 🧴:<br>
+              🧡 Peptides upgraded from 9 → 12 types, plus added Hibiscus Collagen for deeper barrier support<br>
+              🚀 New Oliosome TECA technology — a next-gen delivery system that gets active ingredients deeper into skin vs. traditional formulas<br>
+              📊 Clinical results show 2.47x improvement in skin transparency and 1.58x stronger barrier repair compared to the original</p>
+              <p>💌 We'd love to send you the EX version as a gift — no pressure on how you share it. If it fits your routine and you feel inspired, we'd be excited to hear your thoughts in your own voice 🌿</p>
+              <p>Let us know if you'd like to receive it 😊</p>
+              <p>Best,<br>Ongredients Team</p>
+            </div>
+          </div>
+
+          <!-- Follow-up 1 -->
+          <div class="ong-cs-msg-card">
+            <div class="ong-cs-msg-header" onclick="this.closest('.ong-cs-msg-card').classList.toggle('open')">
+              <span class="ong-cs-msg-step">Follow-up 1</span>
+              <span class="ong-cs-msg-title">First Follow-up</span>
+              <span class="ong-cs-msg-timing">+1 day</span>
+              <span class="ong-cs-msg-chevron">▾</span>
+            </div>
+            <div class="ong-cs-msg-body">
+              <p>Hi [creator first name] 👋</p>
+              <p>Just wanted to make sure our message didn't get lost in your inbox!</p>
+              <p>We're gifting a select group of creators the newly launched Skin Barrier Calming Lotion EX to try — and we'd love for you to be one of them 🌿</p>
+              <p>No catch. Just a product we think you'll genuinely enjoy — and if you love it, your audience probably will too ✨</p>
+              <p>Would you like us to send one your way? Just say the word and we'll get it out to you 😊</p>
+              <p>Best,<br>Ongredients Team</p>
+            </div>
+          </div>
+
+          <!-- Follow-up 2 -->
+          <div class="ong-cs-msg-card">
+            <div class="ong-cs-msg-header" onclick="this.closest('.ong-cs-msg-card').classList.toggle('open')">
+              <span class="ong-cs-msg-step">Follow-up 2</span>
+              <span class="ong-cs-msg-title">Final Follow-up</span>
+              <span class="ong-cs-msg-timing">+4 days</span>
+              <span class="ong-cs-msg-chevron">▾</span>
+            </div>
+            <div class="ong-cs-msg-body">
+              <p>Hi [creator first name],</p>
+              <p>Last nudge from us, we promise 😊</p>
+              <p>We're closing our first wave of creator gifting for the Skin Barrier Calming Lotion EX shortly — and we still have a spot for you.</p>
+              <p>The product is brand new, the space isn't crowded yet, and creators who get in early tend to see the biggest results 📈 With 8M+ customers already loving the original and 131% GMV growth on US TikTok Shop in the past 28 days, the audience is already primed and buying.</p>
+              <p>If you'd like to try it — just reply with your shipping address and we'll send it right over 📦✨</p>
+              <p>Best,<br>Ongredients Team</p>
+            </div>
+          </div>
+
+        </div><!-- end msg seq -->
+      </div>
+    </section>
+
+    <!-- ══ Section 02: A/B Testing ══ -->
+    <section class="ong-section">
+      <div class="container">
+        <div class="ong-section-header-row">
+          <div>
+            <div class="ong-section-marker">
+              <span class="ong-section-num">02</span>
+              <span class="ong-section-tick"></span>
+              <span class="ong-section-tag">A/B Testing</span>
+            </div>
+            <h2 class="ong-section-title">A/B Testing — One Pager Versions</h2>
+          </div>
+        </div>
+
+        <p class="ong-cs-desc">Version A (Sales focus) is sent via Agent 1 to $1K–$10K creators. Version B (Product focus) is sent via Agent 2 to $10K–$50K creators. After 2 weeks, the version with the higher reply rate wins and gets assigned to Agent 3.</p>
+
+        <div class="ong-cs-ab-grid">
+
+          <div class="ong-cs-ab-card">
+            <div class="ong-cs-ab-header ong-cs-ab-header-a">
+              <p class="ong-cs-ab-ver">Version A · Agent 1 · $1K–$10K GMV</p>
+              <p class="ong-cs-ab-angle">Sales &amp; Commission Focus</p>
+            </div>
+            <div style="padding:20px;">
+              <img src="/Content%26Strategy/calming_lotion_ex_onepager_v1.png" alt="One Pager Version A" style="width:100%;border-radius:6px;display:block;" />
+            </div>
+          </div>
+
+          <div class="ong-cs-ab-card">
+            <div class="ong-cs-ab-header ong-cs-ab-header-b">
+              <p class="ong-cs-ab-ver">Version B · Agent 2 · $10K–$50K GMV</p>
+              <p class="ong-cs-ab-angle">Product &amp; Ingredient Focus</p>
+            </div>
+            <div style="padding:20px;">
+              <img src="/Content%26Strategy/calming_lotion_ex_onepager_v2.png" alt="One Pager Version B" style="width:100%;border-radius:6px;display:block;" />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- end panel-content -->
+
   <!-- ── Creator Detail Modal ── -->
   <div class="ong-modal-overlay" id="pa-modal-overlay">
     <div class="ong-modal" id="pa-modal">
@@ -2099,8 +2548,8 @@
     }
 
     function init(videoDaily) {
-      let currentStart  = new Date('2026-03-26');
-      let currentEnd    = new Date('2026-04-24');
+      let currentStart  = new Date('2026-03-28');
+      let currentEnd    = new Date('2026-04-27');
       let currentPeriod = 'daily';
 
       function getRows() {
@@ -2150,7 +2599,7 @@
         chart1: makeChart('chart1', [
           { label: 'Invitations Sent', color: '#94a3b8' },
           { label: 'Sample Requested', color: '#60a5fa' },
-          { label: 'Sample Approved',  color: '#22c55e' },
+          { label: 'Sample Shipped',  color: '#22c55e' },
           { label: 'Video Posted',     color: '#f5c842' },
         ]),
       };
@@ -2209,7 +2658,7 @@
       const fp = flatpickr('#date-range-input', {
         mode: 'range',
         dateFormat: 'M j, Y',
-        defaultDate: ['2026-03-26', '2026-04-24'],
+        defaultDate: ['2026-03-28', '2026-04-27'],
         onChange(selectedDates) {
           if (selectedDates.length === 2) {
             document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
@@ -2225,7 +2674,7 @@
           document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           const days = parseInt(btn.dataset.days);
-          const end   = new Date('2026-04-24');
+          const end   = new Date('2026-04-27');
           const start = new Date(end);
           start.setDate(end.getDate() - days + 1);
           currentStart = start;
@@ -2265,7 +2714,7 @@
           const d = new Date(r.date);
           return d >= currentStart && d <= currentEnd;
         });
-        const header = ['Date','Invitations Sent','Sample Requested','Sample Approved','Video Posted'];
+        const header = ['Date','Invitations Sent','Sample Requested','Sample Shipped','Video Posted'];
         const csv = [header, ...rows.map(r => [r.date, r.sent, r.req, r.approved, r.posted])]
           .map(r => r.join(',')).join('\n');
         dlCSV(csv, 'ongredients_funnel.csv');
