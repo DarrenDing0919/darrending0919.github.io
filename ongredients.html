@@ -1579,11 +1579,8 @@
       <!-- Stat cards -->
       <div class="ong-stat-row4" style="margin-bottom:28px;">
         <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">Total Videos (In Range)</p>
+          <p class="ong-stat-label">Total Videos (Cumulative)</p>
           <p class="ong-paid-kpi-pct" id="stat2-total" style="font-size:1.9rem;">—</p>
-          <div class="ong-paid-kpi-meta" style="margin-bottom:0;">
-            <span class="ong-paid-kpi-val" id="stat2-last-week" style="color:#38bdf8; font-size:0.7rem;">—</span>
-          </div>
         </div>
         <div class="ong-paid-kpi-card">
           <p class="ong-stat-label">New Videos (In Range)</p>
@@ -1613,11 +1610,6 @@
         <!-- Left: Content Volume -->
         <div>
           <p class="ong-channel-chart-label">Content Volume</p>
-          <div class="ong-toggle-row" style="margin-bottom:10px; flex-wrap:wrap;">
-            <div class="ong-toggle-group" id="toggles-videoact">
-              <button class="ong-toggle-btn active" data-chart="chartVideoAct" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">New Videos / Week</button>
-            </div>
-          </div>
           <div class="ong-chart-card">
             <div class="ong-chart-wrap"><canvas id="chartVideoAct"></canvas></div>
           </div>
@@ -1668,25 +1660,11 @@
       </div>
 
       <!-- GMV stat cards -->
-      <div class="ong-stat-row4" style="margin-bottom:24px; grid-template-columns: 1fr 1fr 1fr;">
+      <div class="ong-stat-row4" style="margin-bottom:24px; grid-template-columns: 1fr;">
         <div class="ong-paid-kpi-card">
           <p class="ong-stat-label" id="stat-gmv-label">In Range Affiliate GMV</p>
           <p class="ong-paid-kpi-pct" id="stat-gmv" style="color:#d4a800; font-size:1.9rem;">$3,322</p>
           <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:var(--ong-muted); font-size:0.65rem;">No goal set for this period</span></div>
-        </div>
-        <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">MTD Video CTR</p>
-          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">2.92%</p>
-          <div class="ong-paid-kpi-meta">
-            <span class="ong-paid-kpi-val" style="color:#9a9070; font-size:0.65rem;">Mo. Avg 2.31%</span>
-            <span class="ong-paid-kpi-sep">→</span>
-            <span class="ong-paid-kpi-val" style="color:#22c55e; font-size:0.65rem;">+26%</span>
-          </div>
-        </div>
-        <div class="ong-paid-kpi-card">
-          <p class="ong-stat-label">YTD Samples Approved</p>
-          <p class="ong-paid-kpi-pct" style="font-size:1.9rem;">3,221</p>
-          <div class="ong-paid-kpi-meta"><span class="ong-paid-kpi-val" style="color:var(--ong-muted); font-size:0.65rem;">Approval rate: 11.3% · Requested: 28,565</span></div>
         </div>
       </div>
 
@@ -2326,7 +2304,7 @@
           s3End   = gmvLastDate;
           s3Start = new Date(gmvLastDate);
           s3Start.setDate(gmvLastDate.getDate() - days + 1);
-          fp3.setDate([start, end]);
+          fp3.setDate([s3Start, s3End]);
           updateSection3();
         });
       });
@@ -2486,18 +2464,17 @@
         chartCVRChan.update();
 
         // Stat cards (always from raw daily filtered, period-agnostic)
-        const totalVideos = filtered.reduce((s, r) => s + r.videos, 0);
+        const newVideosInRange = filtered.reduce((s, r) => s + r.videos, 0);
+        const totalVideosCumulative = videoDaily.filter((r, i) => allDates[i] <= s2End).reduce((s, r) => s + r.videos, 0);
         const totalImp    = filtered.reduce((s, r) => s + r.impressions, 0);
         const totalOrders = filtered.reduce((s, r) => s + r.orders, 0);
-        const lastRow     = filtered[filtered.length - 1];
         const totalVideoCTR = filtered.reduce((s,r) => s + r.avg_ctr * r.videos, 0);
-        const totalVideoN   = filtered.reduce((s,r) => s + r.videos, 0);
+        const totalVideoN   = newVideosInRange;
         const avgCTR = totalVideoN ? (totalVideoCTR / totalVideoN).toFixed(2) : '—';
 
-        document.getElementById('stat2-total').textContent          = totalVideos.toLocaleString();
-        document.getElementById('stat2-last-week').textContent      = lastRow ? `+${lastRow.videos} last day` : '—';
-        document.getElementById('stat2-videos-current').textContent = totalVideos.toLocaleString();
-        document.getElementById('stat2-videos-pct').textContent     = totalVideos.toLocaleString();
+        document.getElementById('stat2-total').textContent          = totalVideosCumulative.toLocaleString();
+        document.getElementById('stat2-videos-current').textContent = newVideosInRange.toLocaleString();
+        document.getElementById('stat2-videos-pct').textContent     = newVideosInRange.toLocaleString();
         document.getElementById('stat2-imp-current').textContent    = fmtK(totalImp);
         document.getElementById('stat2-imp-pct').textContent        = fmtK(totalImp);
         document.getElementById('stat2-orders').textContent         = totalOrders.toLocaleString();
