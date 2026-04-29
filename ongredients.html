@@ -2577,7 +2577,7 @@
 
     function init(videoDaily) {
       let currentStart  = new Date('2026-03-28');
-      let currentEnd    = new Date('2026-04-27');
+      let currentEnd    = new Date('2026-04-28');
       let currentPeriod = 'daily';
 
       function getRows() {
@@ -2688,7 +2688,7 @@
       const fp = flatpickr('#date-range-input', {
         mode: 'range',
         dateFormat: 'M j, Y',
-        defaultDate: ['2026-03-28', '2026-04-27'],
+        defaultDate: ['2026-03-28', '2026-04-28'],
         onChange(selectedDates) {
           if (selectedDates.length === 2) {
             document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
@@ -2704,7 +2704,7 @@
           document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           const days = parseInt(btn.dataset.days);
-          const end   = new Date('2026-04-27');
+          const end   = new Date('2026-04-28');
           const start = new Date(end);
           start.setDate(end.getDate() - days + 1);
           currentStart = start;
