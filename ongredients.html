@@ -840,6 +840,91 @@
       color: var(--ong-text2);
     }
 
+    /* ── Group divider row ── */
+    .ong-pa-group-divider td {
+      background: var(--ong-yellow-pale);
+      padding: 8px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      border-bottom: 1px solid var(--ong-border);
+      cursor: default;
+    }
+    .ong-pa-group-divider:hover { background: transparent !important; }
+    .ong-pa-group-divider td { background: var(--ong-yellow-pale) !important; }
+
+    .ong-pa-confirmed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 5px;
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .ong-pa-confirmed-badge:hover { background: #bbf7d0; }
+
+    .ong-pa-summary-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding: 14px 18px;
+      background: var(--ong-yellow-pale);
+      border: 1px solid var(--ong-border);
+      border-radius: 10px;
+    }
+    .ong-pa-summary-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ong-pa-summary-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ong-pa-summary-label {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      color: var(--ong-muted);
+      letter-spacing: 0.06em;
+    }
+    .ong-pa-summary-count {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ong-dark);
+      line-height: 1;
+    }
+    .ong-pa-summary-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--ong-border);
+    }
+
+    .ong-modal-notes-box {
+      background: var(--ong-yellow-pale);
+      border: 1px solid var(--ong-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 0.8rem;
+      color: var(--ong-text2);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
     /* ── Paid Performance layouts ── */
     .ong-paid-perf-layout {
       display: grid;
@@ -1962,6 +2047,25 @@
         </div>
         <h2 class="ong-section-title">Paid Affiliates List</h2>
 
+        <!-- Summary bar -->
+        <div class="ong-pa-summary-bar">
+          <div class="ong-pa-summary-item">
+            <div class="ong-pa-summary-dot" style="background:#16a34a;"></div>
+            <div>
+              <div class="ong-pa-summary-count" id="pa-confirmed-count">15</div>
+              <div class="ong-pa-summary-label">CONFIRMED DEALS</div>
+            </div>
+          </div>
+          <div class="ong-pa-summary-divider"></div>
+          <div class="ong-pa-summary-item">
+            <div class="ong-pa-summary-dot" style="background:#94a3b8;"></div>
+            <div>
+              <div class="ong-pa-summary-count" id="pa-backup-count">29</div>
+              <div class="ong-pa-summary-label">BACKUP OPTIONS</div>
+            </div>
+          </div>
+        </div>
+
         <!-- Selected bar -->
         <div class="ong-selected-bar hidden" id="selected-bar">
           <span class="ong-selected-bar-text" id="selected-bar-text"></span>
@@ -1970,6 +2074,14 @@
 
         <!-- Filters -->
         <div class="ong-pa-filters">
+          <div class="ong-pa-filter-group">
+            <span class="ong-toggle-label">Group</span>
+            <div class="ong-toggle-group" id="filter-group">
+              <button class="ong-filter-btn active" data-filter="group" data-value="all">All</button>
+              <button class="ong-filter-btn" data-filter="group" data-value="confirmed">✓ Confirmed</button>
+              <button class="ong-filter-btn" data-filter="group" data-value="backup">Backup</button>
+            </div>
+          </div>
           <div class="ong-pa-filter-group">
             <span class="ong-toggle-label">Level</span>
             <div class="ong-toggle-group" id="filter-level">
@@ -2352,6 +2464,12 @@
         </div>
 
         <!-- Profile -->
+        <!-- Notes -->
+        <div class="ong-modal-section" id="modal-notes-section" style="display:none;">
+          <div class="ong-modal-section-label">Why We Recommend</div>
+          <div class="ong-modal-notes-box" id="modal-notes"></div>
+        </div>
+
         <div class="ong-modal-section">
           <div class="ong-modal-section-label">Creator Profile</div>
           <div class="ong-modal-grid" style="grid-template-columns:1fr 1fr 1fr; margin-bottom:12px;">
@@ -3270,6 +3388,7 @@
     let paData = [];
     let paFilterLevel = 'all';
     let paFilterCategory = 'all';
+    let paFilterGroup = 'all';
     let paSortCol = 'gmv';
     let paSortDir = 'desc';
     let approvedNames = new Set();
@@ -3304,10 +3423,15 @@
       let rows = paData.filter(d => {
         if (paFilterLevel !== 'all' && d.level !== paFilterLevel) return false;
         if (paFilterCategory !== 'all' && d.category !== paFilterCategory) return false;
+        if (paFilterGroup !== 'all' && d.group !== paFilterGroup) return false;
         return true;
       });
 
       rows.sort((a, b) => {
+        // Always sort within groups (confirmed first, then backup)
+        if (a.group !== b.group) {
+          return a.group === 'confirmed' ? -1 : 1;
+        }
         let av = a[paSortCol], bv = b[paSortCol];
         if (paSortCol === 'name') {
           av = av.toLowerCase(); bv = bv.toLowerCase();
@@ -3321,30 +3445,56 @@
       });
 
       const tbody = document.getElementById('pa-tbody');
-      tbody.innerHTML = rows.map(d => `
-        <tr data-name="${d.name}">
-          <td>
-            <a class="ong-pa-creator-link" href="${d.url}" target="_blank" rel="noopener">
-              @${d.name}<span class="ong-pa-creator-icon">↗</span>
-            </a>
-          </td>
-          <td><span class="ong-pa-level-badge level-${d.level}">${d.level}</span></td>
-          <td class="gmv-cell">${fmtGMV(d.gmv, d.gmv_display)}</td>
-          <td class="followers-cell">${fmtNum(d.followers)}</td>
-          <td><span class="ong-pa-category-pill">${d.category}</span></td>
-          <td style="text-align:right; padding-right:14px;">
-            ${approvedNames.has(d.name)
-              ? `<button class="ong-approved-badge" data-name="${d.name}"><span class="badge-label"></span></button>`
-              : `<button class="ong-view-btn" data-name="${d.name}">View Details</button>`
-            }
-          </td>
-        </tr>
-      `).join('');
+      const confirmedInView = rows.filter(d => d.group === 'confirmed');
+      const backupInView = rows.filter(d => d.group === 'backup');
 
-      const approvedCount = rows.filter(d => approvedNames.has(d.name)).length;
+      function rowHTML(d) {
+        const isConfirmed = d.group === 'confirmed';
+        const actionCell = isConfirmed
+          ? `<button class="ong-pa-confirmed-badge" data-name="${d.name}">✓ Deal Confirmed</button>`
+          : (approvedNames.has(d.name)
+              ? `<button class="ong-approved-badge" data-name="${d.name}"><span class="badge-label"></span></button>`
+              : `<button class="ong-view-btn" data-name="${d.name}">View Details</button>`);
+        return `
+          <tr data-name="${d.name}" data-group="${d.group}">
+            <td>
+              <a class="ong-pa-creator-link" href="${d.url}" target="_blank" rel="noopener">
+                @${d.name}<span class="ong-pa-creator-icon">↗</span>
+              </a>
+            </td>
+            <td><span class="ong-pa-level-badge level-${d.level}">${d.level}</span></td>
+            <td class="gmv-cell">${fmtGMV(d.gmv, d.gmv_display)}</td>
+            <td class="followers-cell">${fmtNum(d.followers)}</td>
+            <td><span class="ong-pa-category-pill">${d.category || '—'}</span></td>
+            <td style="text-align:right; padding-right:14px;">${actionCell}</td>
+          </tr>`;
+      }
+
+      let html = '';
+      if (paFilterGroup === 'all') {
+        if (confirmedInView.length > 0) {
+          html += `<tr class="ong-pa-group-divider"><td colspan="6">✓ Confirmed Deals — ${confirmedInView.length} creators</td></tr>`;
+          html += confirmedInView.map(rowHTML).join('');
+        }
+        if (backupInView.length > 0) {
+          html += `<tr class="ong-pa-group-divider"><td colspan="6">Backup Options — ${backupInView.length} creators</td></tr>`;
+          html += backupInView.map(rowHTML).join('');
+        }
+      } else {
+        html = rows.map(rowHTML).join('');
+      }
+      tbody.innerHTML = html;
+
+      const approvedCount = rows.filter(d => d.group === 'backup' && approvedNames.has(d.name)).length;
       const countParts = [`${rows.length} / ${paData.length} creators`];
       if (approvedCount > 0) countParts.push(`· ${approvedCount} approved`);
       document.getElementById('pa-count').textContent = countParts.join(' ');
+
+      // Update summary counts
+      const totalConfirmed = paData.filter(d => d.group === 'confirmed').length;
+      const totalBackup = paData.filter(d => d.group === 'backup').length;
+      document.getElementById('pa-confirmed-count').textContent = totalConfirmed;
+      document.getElementById('pa-backup-count').textContent = totalBackup;
 
       // Sort icons
       document.querySelectorAll('.ong-pa-table th.sortable').forEach(th => {
@@ -3357,8 +3507,8 @@
         }
       });
 
-      // Bind view-details buttons
-      tbody.querySelectorAll('.ong-view-btn').forEach(btn => {
+      // Bind view-details buttons (backup) and confirmed badges
+      tbody.querySelectorAll('.ong-view-btn, .ong-pa-confirmed-badge').forEach(btn => {
         btn.addEventListener('click', () => openModal(btn.dataset.name));
       });
 
@@ -3406,13 +3556,32 @@
       document.getElementById('modal-female-pct').textContent = d.female_pct + '%';
       document.getElementById('modal-male-pct').textContent = d.male_pct + '%';
 
-      const approveBtn = document.getElementById('modal-approve');
-      if (approvedNames.has(d.name)) {
-        approveBtn.textContent = '✓ Approved — click to revoke';
-        approveBtn.classList.add('approved');
+      // Notes
+      const notesSection = document.getElementById('modal-notes-section');
+      const notesEl = document.getElementById('modal-notes');
+      if (d.notes) {
+        notesEl.textContent = d.notes;
+        notesSection.style.display = '';
       } else {
-        approveBtn.textContent = '✓ Approve Creator';
-        approveBtn.classList.remove('approved');
+        notesSection.style.display = 'none';
+      }
+
+      // Approve button — hidden for confirmed creators
+      const approveBtn = document.getElementById('modal-approve');
+      const skipBtn = document.getElementById('modal-skip');
+      if (d.group === 'confirmed') {
+        approveBtn.style.display = 'none';
+        skipBtn.textContent = 'Close';
+      } else {
+        approveBtn.style.display = '';
+        skipBtn.textContent = 'Close';
+        if (approvedNames.has(d.name)) {
+          approveBtn.textContent = '✓ Approved — click to revoke';
+          approveBtn.classList.add('approved');
+        } else {
+          approveBtn.textContent = '✓ Approve Creator';
+          approveBtn.classList.remove('approved');
+        }
       }
 
       document.getElementById('pa-modal-overlay').classList.add('open');
@@ -3482,6 +3651,7 @@
         btn.classList.add('active');
         if (filter === 'level') paFilterLevel = btn.dataset.value;
         if (filter === 'category') paFilterCategory = btn.dataset.value;
+        if (filter === 'group') paFilterGroup = btn.dataset.value;
         renderPATable();
       });
     });
