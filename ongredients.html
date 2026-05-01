@@ -801,6 +801,15 @@
       transition: opacity 0.15s;
     }
 
+    .ong-pa-comment-indicator {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 0.72rem;
+      cursor: default;
+      vertical-align: middle;
+      opacity: 0.8;
+    }
+
     .ong-pa-creator-link:hover .ong-pa-creator-icon { opacity: 1; }
 
     .ong-pa-level-badge {
@@ -874,6 +883,24 @@
     }
     .ong-pa-confirmed-badge:hover { background: #bbf7d0; }
 
+    .ong-pa-rejected-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 5px;
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .ong-pa-rejected-badge:hover { background: #fecaca; }
+
     .ong-pa-summary-bar {
       display: flex;
       align-items: center;
@@ -923,6 +950,70 @@
       color: var(--ong-text2);
       line-height: 1.55;
       font-style: italic;
+    }
+
+    .ong-modal-comment-textarea {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--ong-yellow-pale);
+      border: 1px solid var(--ong-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--ong-dark);
+      line-height: 1.55;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .ong-modal-comment-textarea:focus {
+      border-color: var(--ong-yellow-deep);
+      background: white;
+    }
+    .ong-modal-comment-textarea::placeholder {
+      color: var(--ong-muted);
+      font-style: italic;
+    }
+
+    .ong-modal-comment-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .ong-modal-save-comment-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      background: var(--ong-yellow-pale);
+      border: 1px solid var(--ong-border);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--ong-dark);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .ong-modal-save-comment-btn:hover {
+      background: var(--ong-yellow);
+      border-color: var(--ong-yellow);
+    }
+
+    .ong-modal-saved-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #15803d;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .ong-modal-saved-indicator.visible {
+      opacity: 1;
     }
 
     /* ── Paid Performance layouts ── */
@@ -1275,6 +1366,36 @@
     }
 
     .ong-modal-skip-btn:hover { color: var(--ong-dark); border-color: var(--ong-dark); }
+
+    .ong-modal-footer-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .ong-modal-reject-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b91c1c;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .ong-modal-reject-btn:hover { background: #fecaca; color: #991b1b; }
+    .ong-modal-reject-btn.restored {
+      background: #dcfce7;
+      color: #15803d;
+      border-color: #bbf7d0;
+    }
 
     /* ── Approved badge in table ── */
     .ong-approved-badge {
@@ -1705,6 +1826,35 @@
     }
     .ong-cs-metrics-table tr:last-child td { border-bottom: none; }
     .ong-cs-metrics-table tr:hover td { background: var(--ong-yellow-pale); }
+    /* ── Sub-tabs inside Content & Strategy ── */
+    .ong-sub-tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--ong-border);
+      margin-bottom: 28px;
+    }
+    .ong-sub-tab-btn {
+      padding: 14px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: 0.18s;
+    }
+    .ong-sub-tab-btn:hover { color: var(--ong-dark); }
+    .ong-sub-tab-btn.active {
+      color: var(--ong-dark);
+      border-bottom-color: var(--ong-yellow);
+    }
+    .ong-sub-panel { display: none; }
+    .ong-sub-panel.active { display: block; }
+
     .ong-cs-pending {
       display: inline-block;
       font-size: 0.58rem;
@@ -1986,6 +2136,49 @@
     </div>
   </section>
 
+      <!-- Top Performing Videos -->
+      <div class="ong-section-header-row" style="margin-top:32px;">
+        <div>
+          <div class="ong-section-marker">
+            <span class="ong-section-num" style="color:var(--ong-muted);">▸</span>
+            <span class="ong-section-tick"></span>
+            <span class="ong-section-tag">Leaderboard</span>
+          </div>
+          <h2 class="ong-section-title" style="font-size:1.2rem;">Top Performing Videos</h2>
+        </div>
+      </div>
+      <div class="ong-pa-filters">
+        <div class="ong-pa-filter-group">
+          <span class="ong-toggle-label">Rank by</span>
+          <div class="ong-toggle-group" id="toggles-topvids">
+            <button class="ong-filter-btn active" data-metric="GMV">Top by GMV</button>
+            <button class="ong-filter-btn" data-metric="CTR">Top by CTR</button>
+            <button class="ong-filter-btn" data-metric="GPM">Top by GPM</button>
+          </div>
+        </div>
+        <div class="ong-pa-filter-meta" id="top-vids-count"></div>
+      </div>
+      <div class="ong-pa-table-wrap">
+        <table class="ong-pa-table" id="top-videos-table">
+          <thead>
+            <tr>
+              <th style="width:44px;">#</th>
+              <th>Video</th>
+              <th>Creator</th>
+              <th>Post Date</th>
+              <th>GMV</th>
+              <th>CTR</th>
+              <th>GPM</th>
+              <th>Orders</th>
+              <th>Impressions</th>
+            </tr>
+          </thead>
+          <tbody id="top-videos-tbody" class="ong-pa-tbody-scroll" style="max-height:540px;"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ Section 03: Revenue ══ -->
   <section class="ong-section">
     <div class="container">
@@ -2040,12 +2233,17 @@
   <div class="ong-tab-panel" id="panel-paid">
     <section class="ong-section" style="padding-top:52px;">
       <div class="container">
-        <div class="ong-section-marker">
-          <span class="ong-section-num">01</span>
-          <span class="ong-section-tick"></span>
-          <span class="ong-section-tag">Nomination</span>
+        <div class="ong-section-header-row">
+          <div>
+            <div class="ong-section-marker">
+              <span class="ong-section-num">01</span>
+              <span class="ong-section-tick"></span>
+              <span class="ong-section-tag">Nomination</span>
+            </div>
+            <h2 class="ong-section-title">Paid Affiliates List</h2>
+          </div>
+          <button class="ong-dl-btn" id="dl-pa-full">↓ Download Full List</button>
         </div>
-        <h2 class="ong-section-title">Paid Affiliates List</h2>
 
         <!-- Summary bar -->
         <div class="ong-pa-summary-bar">
@@ -2054,6 +2252,14 @@
             <div>
               <div class="ong-pa-summary-count" id="pa-confirmed-count">15</div>
               <div class="ong-pa-summary-label">CONFIRMED DEALS</div>
+            </div>
+          </div>
+          <div class="ong-pa-summary-divider"></div>
+          <div class="ong-pa-summary-item">
+            <div class="ong-pa-summary-dot" style="background:#ef4444;"></div>
+            <div>
+              <div class="ong-pa-summary-count" id="pa-rejected-count">0</div>
+              <div class="ong-pa-summary-label">REJECTED</div>
             </div>
           </div>
           <div class="ong-pa-summary-divider"></div>
@@ -2080,6 +2286,7 @@
               <button class="ong-filter-btn active" data-filter="group" data-value="all">All</button>
               <button class="ong-filter-btn" data-filter="group" data-value="confirmed">✓ Confirmed</button>
               <button class="ong-filter-btn" data-filter="group" data-value="backup">Backup</button>
+              <button class="ong-filter-btn" data-filter="group" data-value="rejected">✕ Rejected</button>
             </div>
           </div>
           <div class="ong-pa-filter-group">
@@ -2235,8 +2442,21 @@
   <!-- ══ Tab Panel: Content & Strategy ══ -->
   <div class="ong-tab-panel" id="panel-content">
 
+    <!-- Sub-tab bar -->
+    <div class="ong-sub-tab-bar" style="padding-top:28px;">
+      <div class="container">
+        <div style="display:flex; gap:0;">
+          <button class="ong-sub-tab-btn active" data-subtab="cs-commission">Commission Based Creators</button>
+          <button class="ong-sub-tab-btn" data-subtab="cs-paid">Paid Affiliates</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-panel: Commission Based Creators -->
+    <div class="ong-sub-panel active" id="sub-panel-cs-commission">
+
     <!-- ══ Section 01: Reach-out Messages & Guidelines ══ -->
-    <section class="ong-section" style="padding-top:52px;">
+    <section class="ong-section">
       <div class="container">
         <div class="ong-section-header-row">
           <div>
@@ -2427,6 +2647,29 @@
       </div>
     </section>
 
+    </div><!-- end sub-panel-cs-commission -->
+
+    <!-- Sub-panel: Paid Affiliates Guidelines -->
+    <div class="ong-sub-panel" id="sub-panel-cs-paid">
+      <section class="ong-section">
+        <div class="container">
+          <div class="ong-section-marker">
+            <span class="ong-section-num">01</span>
+            <span class="ong-section-tick"></span>
+            <span class="ong-section-tag">Guidelines</span>
+          </div>
+          <h2 class="ong-section-title">Paid Affiliates Content Brief</h2>
+          <div class="ong-chart-card" style="padding:0; overflow:hidden;">
+            <img
+              src="/Content%26Strategy/Paid%20Affiliates/Ongredients_Content_Brief_FINAL.png"
+              alt="Ongredients Paid Affiliates Content Brief"
+              style="width:100%; display:block;"
+            />
+          </div>
+        </div>
+      </section>
+    </div><!-- end sub-panel-cs-paid -->
+
   </div><!-- end panel-content -->
 
   <!-- ── Creator Detail Modal ── -->
@@ -2520,10 +2763,28 @@
             </div>
           </div>
         </div>
+
+        <!-- Client Comment -->
+        <div class="ong-modal-section" id="modal-comment-section">
+          <div class="ong-modal-section-label">Your Notes</div>
+          <textarea
+            class="ong-modal-comment-textarea"
+            id="modal-comment"
+            placeholder="Add private notes about this creator..."
+            rows="3"
+          ></textarea>
+          <div class="ong-modal-comment-actions">
+            <button class="ong-modal-save-comment-btn" id="modal-save-comment">💾 Save Note</button>
+            <span class="ong-modal-saved-indicator" id="modal-saved-indicator">✓ Saved</span>
+          </div>
+        </div>
       </div>
       <div class="ong-modal-footer">
         <button class="ong-modal-skip-btn" id="modal-skip">Close</button>
-        <button class="ong-modal-approve-btn" id="modal-approve">✓ Approve Creator</button>
+        <div class="ong-modal-footer-actions">
+          <button class="ong-modal-reject-btn" id="modal-reject" style="display:none;">✕ Reject</button>
+          <button class="ong-modal-approve-btn" id="modal-approve">✓ Approve Creator</button>
+        </div>
       </div>
     </div>
   </div>
@@ -2923,6 +3184,77 @@
       });
 
     } // end init()
+
+    /* ── Top Performing Videos ── */
+    let videoDetailData = [];
+    let topVidsMetric = 'GMV';
+    const TOP_N = 20;
+
+    function renderTopVideos() {
+      const tbody = document.getElementById('top-videos-tbody');
+      const countEl = document.getElementById('top-vids-count');
+      if (!videoDetailData.length) { tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:40px;color:var(--ong-muted);">Loading video data...</td></tr>'; return; }
+
+      const sorted = [...videoDetailData].sort((a, b) => {
+        const av = parseFloat(a[topVidsMetric]) || 0;
+        const bv = parseFloat(b[topVidsMetric]) || 0;
+        return bv - av;
+      }).slice(0, TOP_N);
+
+      countEl.textContent = `Top ${TOP_N} of ${videoDetailData.length.toLocaleString()} videos`;
+
+      function fmt(n) {
+        const v = parseFloat(n);
+        if (isNaN(v)) return '—';
+        if (v >= 1000000) return (v / 1000000).toFixed(1) + 'M';
+        if (v >= 1000) return (v / 1000).toFixed(1) + 'K';
+        return v.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      }
+
+      function fmtGMV2(n) {
+        const v = parseFloat(n);
+        if (isNaN(v)) return '—';
+        if (v >= 1000) return '$' + (v / 1000).toFixed(1) + 'K';
+        return '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function fmtPct(n) { const v = parseFloat(n); return isNaN(v) ? '—' : v.toFixed(2) + '%'; }
+      function fmtDate2(d) { if (!d) return '—'; const p = new Date(d); return p.toLocaleString('default', { month:'short', day:'numeric' }); }
+
+      tbody.innerHTML = sorted.map((v, i) => `
+        <tr>
+          <td style="font-family:var(--font-mono);color:var(--ong-muted);">${i + 1}</td>
+          <td>
+            <a class="ong-pa-creator-link" href="${v['Video link'] || '#'}" target="_blank" rel="noopener" style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle;">
+              ${(v['Video name'] || '').slice(0, 55)}<span class="ong-pa-creator-icon">↗</span>
+            </a>
+          </td>
+          <td style="font-weight:600;">@${v['Creator username'] || '—'}</td>
+          <td style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ong-text2);">${fmtDate2(v['Video post date'])}</td>
+          <td class="gmv-cell" style="color:#d4a800;">${fmtGMV2(v['GMV'])}</td>
+          <td style="font-family:var(--font-mono);font-size:0.72rem;">${fmtPct(v['Affiliate CTR'])}</td>
+          <td style="font-family:var(--font-mono);font-size:0.72rem;font-weight:600;">${v['Shoppable video GPM'] != null ? parseFloat(v['Shoppable video GPM']).toFixed(2) : '—'}</td>
+          <td style="font-family:var(--font-mono);font-size:0.72rem;">${fmt(v['Affiliate orders'])}</td>
+          <td style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ong-text2);">${fmt(v['Shoppable video impressions'])}</td>
+        </tr>
+      `).join('');
+    }
+
+    fetch('/data/ongredients/video_detail.json')
+      .then(r => r.json())
+      .then(data => {
+        videoDetailData = data;
+        renderTopVideos();
+      });
+
+    document.querySelectorAll('#toggles-topvids .ong-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#toggles-topvids .ong-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        topVidsMetric = btn.dataset.metric;
+        renderTopVideos();
+      });
+    });
 
     /* ── Commission Extra Charts (Section 02) ── */
     function initCommissionExtra(videoDaily) {
@@ -3374,6 +3706,16 @@
       });
     })();
 
+    /* ── Sub-tab switcher (Content & Strategy) ── */
+    document.querySelectorAll('.ong-sub-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.ong-sub-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.ong-sub-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('sub-panel-' + btn.dataset.subtab).classList.add('active');
+      });
+    });
+
     /* ── Tab switcher ── */
     document.querySelectorAll('.ong-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -3392,7 +3734,29 @@
     let paSortCol = 'gmv';
     let paSortDir = 'desc';
     let approvedNames = new Set();
+    let rejectedNames = new Set();
+    let paComments = {};
     let currentModalCreator = null;
+
+    function loadFromStorage() {
+      try {
+        const r = localStorage.getItem('ongredients_pa_rejected');
+        if (r) rejectedNames = new Set(JSON.parse(r));
+        const c = localStorage.getItem('ongredients_pa_comments');
+        if (c) paComments = JSON.parse(c);
+        const a = localStorage.getItem('ongredients_pa_approved');
+        if (a) approvedNames = new Set(JSON.parse(a));
+      } catch (e) { /* ignore corrupt data */ }
+    }
+    function saveRejected() {
+      localStorage.setItem('ongredients_pa_rejected', JSON.stringify([...rejectedNames]));
+    }
+    function saveComments() {
+      localStorage.setItem('ongredients_pa_comments', JSON.stringify(paComments));
+    }
+    function saveApproved() {
+      localStorage.setItem('ongredients_pa_approved', JSON.stringify([...approvedNames]));
+    }
 
     function fmtGMV(val, display) {
       if (display) return display;
@@ -3419,19 +3783,25 @@
       }
     }
 
+    function effectiveGroup(d) {
+      if (rejectedNames.has(d.name)) return 'rejected';
+      return d.group;
+    }
+
     function renderPATable() {
       let rows = paData.filter(d => {
         if (paFilterLevel !== 'all' && d.level !== paFilterLevel) return false;
         if (paFilterCategory !== 'all' && d.category !== paFilterCategory) return false;
-        if (paFilterGroup !== 'all' && d.group !== paFilterGroup) return false;
+        const effGroup = effectiveGroup(d);
+        if (paFilterGroup !== 'all' && effGroup !== paFilterGroup) return false;
         return true;
       });
 
       rows.sort((a, b) => {
-        // Always sort within groups (confirmed first, then backup)
-        if (a.group !== b.group) {
-          return a.group === 'confirmed' ? -1 : 1;
-        }
+        // Always sort within groups (confirmed first, then backup, then rejected)
+        const ORDER = { confirmed: 0, backup: 1, rejected: 2 };
+        const ga = effectiveGroup(a), gb = effectiveGroup(b);
+        if (ga !== gb) return ORDER[ga] - ORDER[gb];
         let av = a[paSortCol], bv = b[paSortCol];
         if (paSortCol === 'name') {
           av = av.toLowerCase(); bv = bv.toLowerCase();
@@ -3445,22 +3815,31 @@
       });
 
       const tbody = document.getElementById('pa-tbody');
-      const confirmedInView = rows.filter(d => d.group === 'confirmed');
-      const backupInView = rows.filter(d => d.group === 'backup');
 
       function rowHTML(d) {
         const isConfirmed = d.group === 'confirmed';
-        const actionCell = isConfirmed
-          ? `<button class="ong-pa-confirmed-badge" data-name="${d.name}">✓ Deal Confirmed</button>`
-          : (approvedNames.has(d.name)
-              ? `<button class="ong-approved-badge" data-name="${d.name}"><span class="badge-label"></span></button>`
-              : `<button class="ong-view-btn" data-name="${d.name}">View Details</button>`);
+        const isRejected = rejectedNames.has(d.name);
+        const hasComment = paComments[d.name] && paComments[d.name].trim().length > 0;
+        const commentIcon = hasComment
+          ? `<span class="ong-pa-comment-indicator" title="Has notes">💬</span>`
+          : '';
+        const rowGroup = isRejected ? 'rejected' : d.group;
+        let actionCell;
+        if (isRejected) {
+          actionCell = `<button class="ong-pa-rejected-badge" data-name="${d.name}">✕ Rejected</button>`;
+        } else if (isConfirmed) {
+          actionCell = `<button class="ong-pa-confirmed-badge" data-name="${d.name}">✓ Deal Confirmed</button>`;
+        } else if (approvedNames.has(d.name)) {
+          actionCell = `<button class="ong-approved-badge" data-name="${d.name}"><span class="badge-label"></span></button>`;
+        } else {
+          actionCell = `<button class="ong-view-btn" data-name="${d.name}">View Details</button>`;
+        }
         return `
-          <tr data-name="${d.name}" data-group="${d.group}">
+          <tr data-name="${d.name}" data-group="${rowGroup}">
             <td>
               <a class="ong-pa-creator-link" href="${d.url}" target="_blank" rel="noopener">
                 @${d.name}<span class="ong-pa-creator-icon">↗</span>
-              </a>
+              </a>${commentIcon}
             </td>
             <td><span class="ong-pa-level-badge level-${d.level}">${d.level}</span></td>
             <td class="gmv-cell">${fmtGMV(d.gmv, d.gmv_display)}</td>
@@ -3472,13 +3851,20 @@
 
       let html = '';
       if (paFilterGroup === 'all') {
-        if (confirmedInView.length > 0) {
-          html += `<tr class="ong-pa-group-divider"><td colspan="6">✓ Confirmed Deals — ${confirmedInView.length} creators</td></tr>`;
-          html += confirmedInView.map(rowHTML).join('');
+        const confirmedRows = rows.filter(d => effectiveGroup(d) === 'confirmed');
+        const backupRows    = rows.filter(d => effectiveGroup(d) === 'backup');
+        const rejectedRows  = rows.filter(d => effectiveGroup(d) === 'rejected');
+        if (confirmedRows.length > 0) {
+          html += `<tr class="ong-pa-group-divider"><td colspan="6">✓ Confirmed Deals — ${confirmedRows.length} creators</td></tr>`;
+          html += confirmedRows.map(rowHTML).join('');
         }
-        if (backupInView.length > 0) {
-          html += `<tr class="ong-pa-group-divider"><td colspan="6">Backup Options — ${backupInView.length} creators</td></tr>`;
-          html += backupInView.map(rowHTML).join('');
+        if (backupRows.length > 0) {
+          html += `<tr class="ong-pa-group-divider"><td colspan="6">Backup Options — ${backupRows.length} creators</td></tr>`;
+          html += backupRows.map(rowHTML).join('');
+        }
+        if (rejectedRows.length > 0) {
+          html += `<tr class="ong-pa-group-divider"><td colspan="6">✕ Rejected — ${rejectedRows.length} creators</td></tr>`;
+          html += rejectedRows.map(rowHTML).join('');
         }
       } else {
         html = rows.map(rowHTML).join('');
@@ -3491,9 +3877,11 @@
       document.getElementById('pa-count').textContent = countParts.join(' ');
 
       // Update summary counts
-      const totalConfirmed = paData.filter(d => d.group === 'confirmed').length;
+      const totalRejected = rejectedNames.size;
+      const totalConfirmed = paData.filter(d => d.group === 'confirmed' && !rejectedNames.has(d.name)).length;
       const totalBackup = paData.filter(d => d.group === 'backup').length;
       document.getElementById('pa-confirmed-count').textContent = totalConfirmed;
+      document.getElementById('pa-rejected-count').textContent = totalRejected;
       document.getElementById('pa-backup-count').textContent = totalBackup;
 
       // Sort icons
@@ -3507,8 +3895,8 @@
         }
       });
 
-      // Bind view-details buttons (backup) and confirmed badges
-      tbody.querySelectorAll('.ong-view-btn, .ong-pa-confirmed-badge').forEach(btn => {
+      // Bind view-details buttons (backup), confirmed badges, and rejected badges
+      tbody.querySelectorAll('.ong-view-btn, .ong-pa-confirmed-badge, .ong-pa-rejected-badge').forEach(btn => {
         btn.addEventListener('click', () => openModal(btn.dataset.name));
       });
 
@@ -3516,6 +3904,7 @@
       tbody.querySelectorAll('.ong-approved-badge').forEach(btn => {
         btn.addEventListener('click', () => {
           approvedNames.delete(btn.dataset.name);
+          saveApproved();
           updateSelectedBar();
           renderPATable();
         });
@@ -3566,14 +3955,23 @@
         notesSection.style.display = 'none';
       }
 
-      // Approve button — hidden for confirmed creators
+      // Approve / Reject button logic
       const approveBtn = document.getElementById('modal-approve');
+      const rejectBtn = document.getElementById('modal-reject');
       const skipBtn = document.getElementById('modal-skip');
       if (d.group === 'confirmed') {
         approveBtn.style.display = 'none';
-        skipBtn.textContent = 'Close';
+        rejectBtn.style.display = '';
+        if (rejectedNames.has(d.name)) {
+          rejectBtn.textContent = '✓ Rejected — click to restore';
+          rejectBtn.classList.add('restored');
+        } else {
+          rejectBtn.textContent = '✕ Reject Creator';
+          rejectBtn.classList.remove('restored');
+        }
       } else {
         approveBtn.style.display = '';
+        rejectBtn.style.display = 'none';
         skipBtn.textContent = 'Close';
         if (approvedNames.has(d.name)) {
           approveBtn.textContent = '✓ Approved — click to revoke';
@@ -3583,6 +3981,10 @@
           approveBtn.classList.remove('approved');
         }
       }
+      skipBtn.textContent = 'Close';
+
+      // Load client comment
+      document.getElementById('modal-comment').value = paComments[d.name] || '';
 
       document.getElementById('pa-modal-overlay').classList.add('open');
     }
@@ -3598,6 +4000,42 @@
       if (e.target === e.currentTarget) closeModal();
     });
 
+    /* ── Save comment button ── */
+    document.getElementById('modal-save-comment').addEventListener('click', () => {
+      if (!currentModalCreator) return;
+      const val = document.getElementById('modal-comment').value.trim();
+      if (val) {
+        paComments[currentModalCreator.name] = val;
+      } else {
+        delete paComments[currentModalCreator.name];
+      }
+      saveComments();
+      renderPATable();
+      // Show "Saved" indicator briefly
+      const indicator = document.getElementById('modal-saved-indicator');
+      indicator.classList.add('visible');
+      clearTimeout(indicator._hideTimeout);
+      indicator._hideTimeout = setTimeout(() => indicator.classList.remove('visible'), 1500);
+    });
+
+    /* ── Reject button ── */
+    document.getElementById('modal-reject').addEventListener('click', () => {
+      if (!currentModalCreator) return;
+      const d = currentModalCreator;
+      const btn = document.getElementById('modal-reject');
+      if (rejectedNames.has(d.name)) {
+        rejectedNames.delete(d.name);
+        btn.textContent = '✕ Reject Creator';
+        btn.classList.remove('restored');
+      } else {
+        rejectedNames.add(d.name);
+        btn.textContent = '✓ Rejected — click to restore';
+        btn.classList.add('restored');
+      }
+      saveRejected();
+      renderPATable();
+    });
+
     document.getElementById('modal-approve').addEventListener('click', () => {
       if (!currentModalCreator) return;
       const d = currentModalCreator;
@@ -3611,8 +4049,38 @@
         btn.textContent = '✓ Approved — click to revoke';
         btn.classList.add('approved');
       }
+      saveApproved();
       updateSelectedBar();
       renderPATable();
+    });
+
+    /* ── Download full list with client status + comments ── */
+    document.getElementById('dl-pa-full').addEventListener('click', () => {
+      const header = ['Name','TikTok URL','Level','GMV','Followers','Views','Main Category','Selling Categories','Gender','Age','Ethnicity','Traits','Audience Range','Female%','Male%','Original Group','Creator Status','Client Comment'];
+      const rows = paData.map(d => {
+        let clientStatus;
+        if (rejectedNames.has(d.name)) {
+          clientStatus = 'Rejected';
+        } else if (d.group === 'confirmed') {
+          clientStatus = 'Confirmed';
+        } else if (approvedNames.has(d.name)) {
+          clientStatus = 'Approved';
+        } else {
+          clientStatus = '-';
+        }
+        return [
+          d.name, d.url, d.level, d.gmv, d.followers, d.views,
+          d.category || '', (d.selling_categories || '').replace(/,/g, ';'),
+          d.gender || '', d.age || '', d.ethnicity || '',
+          (d.traits || '').replace(/,/g, ';'),
+          d.audience_range || '', d.female_pct, d.male_pct,
+          d.group, clientStatus,
+          paComments[d.name] || ''
+        ];
+      });
+      const csv = [header, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const today = new Date().toLocaleString('en-CA', { year:'numeric',month:'2-digit',day:'2-digit' });
+      dlCSV(csv, `ongredients_paid_affiliates_full_${today}.csv`);
     });
 
     /* ── Download ── */
@@ -3637,6 +4105,7 @@
       URL.revokeObjectURL(url);
     });
 
+    loadFromStorage();
     fetch('/data/ongredients/paid_affiliates.json')
       .then(r => r.json())
       .then(data => {
