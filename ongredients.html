@@ -839,6 +839,99 @@
       color: var(--ong-text2);
     }
 
+    /* ── Top Videos — scroll wrapper ── */
+    .ong-tv-scroll-wrap {
+      max-height: 540px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--ong-border);
+      box-shadow: 0 2px 12px rgba(28,26,14,0.05);
+    }
+    .ong-tv-scroll-wrap::-webkit-scrollbar { width: 6px; }
+    .ong-tv-scroll-wrap::-webkit-scrollbar-track { background: var(--ong-yellow-pale); }
+    .ong-tv-scroll-wrap::-webkit-scrollbar-thumb { background: var(--ong-border); border-radius: 3px; }
+    .ong-tv-scroll-wrap::-webkit-scrollbar-thumb:hover { background: var(--ong-muted); }
+
+    /* ── Top Videos — standalone table (does NOT use ong-pa-table) ── */
+    .ong-tv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+      table-layout: fixed;
+    }
+    .ong-tv-table thead tr {
+      background: var(--ong-yellow-pale);
+      border-bottom: 1px solid var(--ong-border);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .ong-tv-table th {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      padding: 13px 16px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .ong-tv-table tbody tr {
+      border-bottom: 1px solid var(--ong-border);
+      transition: background 0.12s;
+    }
+    .ong-tv-table tbody tr:last-child { border-bottom: none; }
+    .ong-tv-table tbody tr:hover { background: var(--ong-yellow-pale); }
+    .ong-tv-table td {
+      padding: 13px 16px;
+      color: var(--ong-dark);
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ong-tv-table td.tv-rank { font-family: var(--font-mono); color: var(--ong-muted); }
+    .ong-tv-table td.tv-video a {
+      color: var(--ong-dark);
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow: hidden;
+    }
+    .ong-tv-table td.tv-video a:hover { color: var(--ong-yellow-deep); }
+    .ong-tv-table .tv-title-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+      flex: 1;
+    }
+    .ong-tv-table .tv-icon {
+      font-size: 0.65rem;
+      color: var(--ong-muted);
+      flex-shrink: 0;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .ong-tv-table td.tv-video a:hover .tv-icon { opacity: 1; }
+    .ong-tv-table td.tv-creator { font-weight: 600; }
+    .ong-tv-table td.tv-date, .ong-tv-table td.tv-impressions {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ong-text2);
+    }
+    .ong-tv-table td.tv-gmv {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .ong-tv-table td.tv-stat { font-family: var(--font-mono); font-size: 0.72rem; }
+    .ong-tv-table td.tv-gpm { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; }
+
     .ong-pa-category-pill {
       display: inline-block;
       font-size: 0.68rem;
@@ -2136,48 +2229,48 @@
     </div>
   </section>
 
-      <!-- Top Performing Videos -->
-      <div class="ong-section-header-row" style="margin-top:32px;">
-        <div>
-          <div class="ong-section-marker">
-            <span class="ong-section-num" style="color:var(--ong-muted);">▸</span>
-            <span class="ong-section-tick"></span>
-            <span class="ong-section-tag">Leaderboard</span>
-          </div>
-          <h2 class="ong-section-title" style="font-size:1.2rem;">Top Performing Videos</h2>
+  <!-- Top Performing Videos -->
+  <div class="container" style="padding-top:0; padding-bottom:32px;">
+    <div class="ong-section-header-row" style="margin-top:32px;">
+      <div>
+        <div class="ong-section-marker">
+          <span class="ong-section-num" style="color:var(--ong-muted);">▸</span>
+          <span class="ong-section-tick"></span>
+          <span class="ong-section-tag">Leaderboard</span>
         </div>
-      </div>
-      <div class="ong-pa-filters">
-        <div class="ong-pa-filter-group">
-          <span class="ong-toggle-label">Rank by</span>
-          <div class="ong-toggle-group" id="toggles-topvids">
-            <button class="ong-filter-btn active" data-metric="GMV">Top by GMV</button>
-            <button class="ong-filter-btn" data-metric="CTR">Top by CTR</button>
-            <button class="ong-filter-btn" data-metric="GPM">Top by GPM</button>
-          </div>
-        </div>
-        <div class="ong-pa-filter-meta" id="top-vids-count"></div>
-      </div>
-      <div class="ong-pa-table-wrap">
-        <table class="ong-pa-table" id="top-videos-table">
-          <thead>
-            <tr>
-              <th style="width:44px;">#</th>
-              <th>Video</th>
-              <th>Creator</th>
-              <th>Post Date</th>
-              <th>GMV</th>
-              <th>CTR</th>
-              <th>GPM</th>
-              <th>Orders</th>
-              <th>Impressions</th>
-            </tr>
-          </thead>
-          <tbody id="top-videos-tbody" class="ong-pa-tbody-scroll" style="max-height:540px;"></tbody>
-        </table>
+        <h2 class="ong-section-title" style="font-size:1.2rem;">Top Performing Videos</h2>
       </div>
     </div>
-  </section>
+    <div class="ong-pa-filters">
+      <div class="ong-pa-filter-group">
+        <span class="ong-toggle-label">Rank by</span>
+        <div class="ong-toggle-group" id="toggles-topvids">
+          <button class="ong-filter-btn active" data-metric="GMV">Top by GMV</button>
+          <button class="ong-filter-btn" data-metric="CTR">Top by CTR</button>
+          <button class="ong-filter-btn" data-metric="GPM">Top by GPM</button>
+        </div>
+      </div>
+      <div class="ong-pa-filter-meta" id="top-vids-count"></div>
+    </div>
+    <div class="ong-tv-scroll-wrap">
+      <table class="ong-tv-table" id="top-videos-table">
+        <thead>
+          <tr>
+            <th style="width:44px;">#</th>
+            <th style="width:28%;">Video</th>
+            <th style="width:15%;">Creator</th>
+            <th style="width:9%;">Post Date</th>
+            <th style="width:9%;">GMV</th>
+            <th style="width:9%;">CTR</th>
+            <th style="width:8%;">GPM</th>
+            <th style="width:8%;">Orders</th>
+            <th>Impressions</th>
+          </tr>
+        </thead>
+        <tbody id="top-videos-tbody"></tbody>
+      </table>
+    </div>
+  </div>
 
   <!-- ══ Section 03: Revenue ══ -->
   <section class="ong-section">
@@ -3223,19 +3316,19 @@
 
       tbody.innerHTML = sorted.map((v, i) => `
         <tr>
-          <td style="font-family:var(--font-mono);color:var(--ong-muted);">${i + 1}</td>
-          <td>
-            <a class="ong-pa-creator-link" href="${v['Video link'] || '#'}" target="_blank" rel="noopener" style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle;">
-              ${(v['Video name'] || '').slice(0, 55)}<span class="ong-pa-creator-icon">↗</span>
+          <td class="tv-rank">${i + 1}</td>
+          <td class="tv-video">
+            <a href="${v['Video link'] || '#'}" target="_blank" rel="noopener">
+              <span class="tv-title-text">${v['Video name'] || ''}</span><span class="tv-icon">↗</span>
             </a>
           </td>
-          <td style="font-weight:600;">@${v['Creator username'] || '—'}</td>
-          <td style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ong-text2);">${fmtDate2(v['Video post date'])}</td>
-          <td class="gmv-cell" style="color:#d4a800;">${fmtGMV2(v['GMV'])}</td>
-          <td style="font-family:var(--font-mono);font-size:0.72rem;">${fmtPct(v['Affiliate CTR'])}</td>
-          <td style="font-family:var(--font-mono);font-size:0.72rem;font-weight:600;">${v['Shoppable video GPM'] != null ? parseFloat(v['Shoppable video GPM']).toFixed(2) : '—'}</td>
-          <td style="font-family:var(--font-mono);font-size:0.72rem;">${fmt(v['Affiliate orders'])}</td>
-          <td style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ong-text2);">${fmt(v['Shoppable video impressions'])}</td>
+          <td class="tv-creator">@${v['Creator username'] || '—'}</td>
+          <td class="tv-date">${fmtDate2(v['Video post date'])}</td>
+          <td class="tv-gmv">${fmtGMV2(v['GMV'])}</td>
+          <td class="tv-stat">${fmtPct(v['Affiliate CTR'])}</td>
+          <td class="tv-gpm">${v['Shoppable video GPM'] != null ? parseFloat(v['Shoppable video GPM']).toFixed(2) : '—'}</td>
+          <td class="tv-stat">${fmt(v['Affiliate orders'])}</td>
+          <td class="tv-impressions">${fmt(v['Shoppable video impressions'])}</td>
         </tr>
       `).join('');
     }
