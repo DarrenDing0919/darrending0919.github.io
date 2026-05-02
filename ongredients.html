@@ -350,7 +350,74 @@
       border-radius: 10px;
       padding: 16px 18px;
       box-shadow: 0 2px 10px rgba(28,26,14,0.05);
+      position: relative;
     }
+
+    /* ── Stat card info popup ── */
+    .ong-stat-card-info { cursor: default; }
+
+    .ong-info-popup {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      background: var(--ong-yellow-pale);
+      border: 1px solid rgba(200,160,0,0.32);
+      border-top: 2.5px solid #94a3b8;
+      border-radius: 10px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 28px rgba(28,26,14,0.10), 0 2px 8px rgba(28,26,14,0.06);
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.18s ease, visibility 0.18s ease;
+      z-index: 200;
+    }
+    .ong-info-popup::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-top-color: rgba(200,160,0,0.32);
+    }
+    .ong-info-popup-formula {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--ong-dark);
+      letter-spacing: 0.04em;
+      margin: 0 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--ong-border);
+    }
+    .ong-info-popup-body {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      line-height: 1.65;
+      color: var(--ong-muted);
+      margin: 0;
+    }
+    .ong-info-popup-body + .ong-info-popup-body {
+      margin-top: 8px;
+    }
+    .ong-stat-card-info:hover .ong-info-popup {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .ong-stat-info-icon {
+      display: inline-block;
+      font-size: 0.58rem;
+      color: var(--ong-muted);
+      margin-left: 4px;
+      opacity: 0.6;
+      vertical-align: middle;
+      transition: opacity 0.15s;
+    }
+    .ong-stat-card-info:hover .ong-stat-info-icon { opacity: 1; }
 
     .ong-stat-label {
       font-family: var(--font-mono);
@@ -2081,8 +2148,8 @@
         <button class="ong-range-btn active" data-days="30">Last 30d</button>
       </div>
 
-      <!-- 7 Stat cards -->
-      <div class="ong-stat-row7" style="margin-bottom:24px;">
+      <!-- 5 Stat cards -->
+      <div class="ong-stat-row5" style="margin-bottom:24px;">
         <div class="ong-stat-card" style="border-top-color:#3b82f6;">
           <p class="ong-stat-label">Invitations Sent</p>
           <p class="ong-stat-value" id="stat-sent">—</p>
@@ -2091,21 +2158,18 @@
           <p class="ong-stat-label">Sample Requested</p>
           <p class="ong-stat-value" id="stat-req">—</p>
         </div>
-        <div class="ong-stat-card" style="border-top-color:#a78bfa; opacity:0.5;">
-          <p class="ong-stat-label">Sample Approved</p>
-          <p class="ong-stat-value" style="font-size:0.85rem; color:var(--ong-muted);">Verifying</p>
-        </div>
-        <div class="ong-stat-card" style="border-top-color:#f97316;">
-          <p class="ong-stat-label">Ready to Ship</p>
-          <p class="ong-stat-value" id="stat-ready-to-ship">—</p>
-        </div>
         <div class="ong-stat-card" style="border-top-color:#22c55e;">
           <p class="ong-stat-label">Sample Shipped</p>
           <p class="ong-stat-value" id="stat-approved">—</p>
         </div>
-        <div class="ong-stat-card" style="border-top-color:#94a3b8; opacity:0.5;">
-          <p class="ong-stat-label">Approval Rate</p>
-          <p class="ong-stat-value" style="font-size:0.85rem; color:var(--ong-muted);">Verifying</p>
+        <div class="ong-stat-card ong-stat-card-info" style="border-top-color:#94a3b8;">
+          <p class="ong-stat-label">Approval Rate <span class="ong-stat-info-icon">ⓘ</span></p>
+          <p class="ong-stat-value" id="stat-approval-rate">—</p>
+          <div class="ong-info-popup">
+            <p class="ong-info-popup-formula">Approval Rate = Sample Shipped ÷ Sample Requested</p>
+            <p class="ong-info-popup-body">Due to delays between warehouse shipping and sample request approval, some samples may remain in "Ready to Ship" status and are excluded from this calculation.</p>
+            <p class="ong-info-popup-body">To ensure accuracy, we aim to have zero "Ready to Ship" samples at each weekly meeting — at that point, Sample Shipped = Sample Approved and this rate is fully accurate.</p>
+          </div>
         </div>
         <div class="ong-stat-card" style="border-top-color:#f5c842;">
           <p class="ong-stat-label">Video Posted</p>
@@ -2127,9 +2191,8 @@
         <div class="ong-toggle-group" id="toggles-1">
           <button class="ong-toggle-btn active" data-chart="chart1" data-index="0" style="background:#3b82f6;border-color:#3b82f6;color:#fff;">Invitations Sent</button>
           <button class="ong-toggle-btn" data-chart="chart1" data-index="1" data-color="#60a5fa">Sample Requested</button>
-          <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#f97316">Ready to Ship</button>
-          <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#22c55e">Sample Shipped</button>
-          <button class="ong-toggle-btn" data-chart="chart1" data-index="4" data-color="#d4a800">Video Posted</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="2" data-color="#22c55e">Sample Shipped</button>
+          <button class="ong-toggle-btn" data-chart="chart1" data-index="3" data-color="#d4a800">Video Posted</button>
         </div>
       </div>
       <div class="ong-chart-card">
@@ -2922,7 +2985,6 @@
           sent:           rows.map(r => r.sent),
           req:            rows.map(r => r.req),
           sample_approved:rows.map(r => r.sample_approved || 0),
-          ready_to_ship:  rows.map(r => r.ready_to_ship || 0),
           approved:       rows.map(r => r.approved),
           posted:         rows.map(r => r.posted),
         };
@@ -2931,11 +2993,10 @@
       const groups = {}, order = [];
       rows.forEach(r => {
         const k = keyFn(r.date);
-        if (!groups[k]) { groups[k] = { sent: 0, req: 0, sample_approved: 0, ready_to_ship: 0, approved: 0, posted: 0 }; order.push(k); }
+        if (!groups[k]) { groups[k] = { sent: 0, req: 0, sample_approved: 0, approved: 0, posted: 0 }; order.push(k); }
         groups[k].sent           += r.sent;
         groups[k].req            += r.req;
         groups[k].sample_approved+= r.sample_approved || 0;
-        groups[k].ready_to_ship  += r.ready_to_ship || 0;
         groups[k].approved       += r.approved;
         groups[k].posted         += r.posted;
       });
@@ -2944,7 +3005,6 @@
         sent:           order.map(k => groups[k].sent),
         req:            order.map(k => groups[k].req),
         sample_approved:order.map(k => groups[k].sample_approved),
-        ready_to_ship:  order.map(k => groups[k].ready_to_ship),
         approved:       order.map(k => groups[k].approved),
         posted:         order.map(k => groups[k].posted),
       };
@@ -3048,8 +3108,10 @@
     }
 
     function init(videoDaily) {
-      let currentStart  = new Date('2026-03-28');
-      let currentEnd    = new Date('2026-04-28');
+      const invFirst = rawInv.length ? parseLocal(rawInv[0].date) : new Date('2026-04-22');
+      const invLast  = rawInv.length ? parseLocal(rawInv[rawInv.length - 1].date) : new Date('2026-05-02');
+      let currentStart  = invFirst;
+      let currentEnd    = invLast;
       let currentPeriod = 'daily';
 
       function getRows() {
@@ -3067,23 +3129,26 @@
         c.data.labels           = agg.labels;
         c.data.datasets[0].data = agg.sent;
         c.data.datasets[1].data = agg.req;
-        c.data.datasets[2].data = agg.ready_to_ship;
-        c.data.datasets[3].data = agg.approved;
-        c.data.datasets[4].data = agg.posted;
+        c.data.datasets[2].data = agg.approved;
+        c.data.datasets[3].data = agg.posted;
         c.update();
 
         const tot = rows.reduce((a, r) => ({
-          sent:          a.sent          + r.sent,
-          req:           a.req           + r.req,
-          ready_to_ship: a.ready_to_ship + (r.ready_to_ship || 0),
-          approved:      a.approved      + r.approved,
-          posted:        a.posted        + r.posted,
-        }), { sent: 0, req: 0, ready_to_ship: 0, approved: 0, posted: 0 });
+          sent:           a.sent           + r.sent,
+          req:            a.req            + r.req,
+          sample_shipped: a.sample_shipped + (r.sample_approved || 0),
+          approved:       a.approved       + r.approved,
+          posted:         a.posted         + r.posted,
+        }), { sent: 0, req: 0, sample_shipped: 0, approved: 0, posted: 0 });
+
+        const approvalRate = tot.req > 0
+          ? (tot.sample_shipped / tot.req * 100).toFixed(1) + '%'
+          : '—';
 
         document.getElementById('stat-sent').textContent          = tot.sent.toLocaleString();
         document.getElementById('stat-req').textContent           = tot.req.toLocaleString();
-        document.getElementById('stat-ready-to-ship').textContent = tot.ready_to_ship.toLocaleString();
-        document.getElementById('stat-approved').textContent      = tot.approved.toLocaleString();
+        document.getElementById('stat-approved').textContent      = tot.sample_shipped.toLocaleString();
+        document.getElementById('stat-approval-rate').textContent = approvalRate;
         document.getElementById('stat-posted').textContent        = tot.posted.toLocaleString();
       }
 
@@ -3100,7 +3165,6 @@
         chart1: makeChart('chart1', [
           { label: 'Invitations Sent', color: '#94a3b8' },
           { label: 'Sample Requested', color: '#60a5fa' },
-          { label: 'Ready to Ship',    color: '#f97316' },
           { label: 'Sample Shipped',   color: '#22c55e' },
           { label: 'Video Posted',     color: '#f5c842' },
         ]),
@@ -3160,7 +3224,7 @@
       const fp = flatpickr('#date-range-input', {
         mode: 'range',
         dateFormat: 'M j, Y',
-        defaultDate: ['2026-03-28', '2026-04-28'],
+        defaultDate: [invFirst, invLast],
         onChange(selectedDates) {
           if (selectedDates.length === 2) {
             document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
@@ -3176,7 +3240,7 @@
           document.querySelectorAll('.ong-range-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           const days = parseInt(btn.dataset.days);
-          const end   = new Date('2026-04-28');
+          const end   = invLast;
           const start = new Date(end);
           start.setDate(end.getDate() - days + 1);
           currentStart = start;
