@@ -419,6 +419,363 @@
     }
     .ong-stat-card-info:hover .ong-stat-info-icon { opacity: 1; }
 
+    /* ── Sample Shipped clickable card ── */
+    .ong-stat-card-clickable {
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    }
+    .ong-stat-card-clickable:hover {
+      border-color: rgba(34,197,94,0.4);
+      box-shadow: 0 4px 18px rgba(34,197,94,0.12);
+      transform: translateY(-1px);
+    }
+    .ong-stat-card-clickable .ong-stat-click-hint {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: #22c55e;
+      opacity: 0;
+      margin: 6px 0 0;
+      letter-spacing: 0.06em;
+      transition: opacity 0.15s;
+    }
+    .ong-stat-card-clickable:hover .ong-stat-click-hint { opacity: 0.8; }
+
+    /* ── Shipped Creators Modal ── */
+    .ong-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28,26,14,0.55);
+      backdrop-filter: blur(3px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .ong-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .ong-modal {
+      background: var(--ong-yellow-pale);
+      border: 1px solid rgba(200,160,0,0.28);
+      border-top: 3px solid #22c55e;
+      border-radius: 14px;
+      width: min(580px, 92vw);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(28,26,14,0.18), 0 4px 16px rgba(28,26,14,0.08);
+      transform: translateY(12px);
+      transition: transform 0.2s ease;
+    }
+    .ong-modal-overlay.open .ong-modal { transform: translateY(0); }
+
+    .ong-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid var(--ong-border);
+      flex-shrink: 0;
+    }
+    .ong-modal-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ong-dark);
+      margin: 0;
+    }
+    .ong-modal-title span {
+      font-weight: 400;
+      color: var(--ong-muted);
+      margin-left: 8px;
+    }
+    .ong-modal-close {
+      background: none;
+      border: 1px solid var(--ong-border);
+      border-radius: 6px;
+      color: var(--ong-muted);
+      font-size: 1rem;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .ong-modal-close:hover { border-color: var(--ong-dark); color: var(--ong-dark); }
+
+    .ong-modal-filter {
+      padding: 12px 22px;
+      border-bottom: 1px solid var(--ong-border);
+      flex-shrink: 0;
+    }
+    .ong-modal-search {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--ong-border);
+      border-radius: 7px;
+      padding: 8px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ong-dark);
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.15s;
+    }
+    .ong-modal-search::placeholder { color: var(--ong-muted); }
+    .ong-modal-search:focus { border-color: rgba(200,160,0,0.5); }
+
+    .ong-modal-body {
+      overflow-y: auto;
+      flex: 1;
+      padding: 8px 0;
+    }
+    .ong-modal-body::-webkit-scrollbar { width: 5px; }
+    .ong-modal-body::-webkit-scrollbar-track { background: transparent; }
+    .ong-modal-body::-webkit-scrollbar-thumb { background: var(--ong-border); border-radius: 99px; }
+
+    .ong-creator-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 22px;
+      transition: background 0.1s;
+    }
+    .ong-creator-row:hover { background: rgba(200,160,0,0.06); }
+
+    .ong-creator-handle {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--ong-dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ong-creator-handle::before {
+      content: '@';
+      color: var(--ong-muted);
+      font-weight: 400;
+    }
+    .ong-creator-handle:hover { color: #22c55e; }
+
+    .ong-creator-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ong-creator-date {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--ong-muted);
+    }
+    .ong-creator-campaign {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--ong-muted);
+      background: rgba(200,160,0,0.1);
+      border: 1px solid var(--ong-border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      white-space: nowrap;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ong-modal-empty {
+      padding: 40px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ong-muted);
+    }
+
+    /* ── Video Posted Modal (wider) ── */
+    .ong-modal-wide {
+      width: min(900px, 96vw);
+    }
+
+    /* ── Posted Videos Table ── */
+    .ong-posted-table-wrap {
+      overflow-x: auto;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .ong-posted-table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      table-layout: fixed;
+    }
+    .ong-posted-table thead tr {
+      background: var(--ong-yellow-pale);
+      border-bottom: 1px solid var(--ong-border);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .ong-posted-table th {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ong-muted);
+      padding: 11px 14px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .ong-posted-table tbody tr {
+      border-bottom: 1px solid var(--ong-border);
+      transition: background 0.12s;
+    }
+    .ong-posted-table tbody tr:last-child { border-bottom: none; }
+    .ong-posted-table tbody tr:hover { background: var(--ong-yellow-pale); }
+    .ong-posted-table td {
+      padding: 10px 14px;
+      color: var(--ong-dark);
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .ong-posted-thumb-cell { width: 52px; padding: 6px 10px !important; }
+    .ong-posted-thumb {
+      width: 36px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      background: #f0ede0;
+    }
+    .ong-posted-thumb-ph {
+      width: 36px;
+      height: 48px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #fff8c0, #fef0c0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--ong-muted);
+    }
+    .ong-posted-creator-cell { width: 130px; }
+    .ong-posted-creator a {
+      font-weight: 600;
+      color: var(--ong-dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .ong-posted-creator a:hover { color: var(--ong-yellow-deep); }
+    .ong-posted-creator a::before { content: '@'; color: var(--ong-muted); font-weight: 400; }
+    .ong-posted-title-cell { width: auto; }
+    .ong-posted-title-link {
+      color: var(--ong-dark);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .ong-posted-title-link:hover { color: var(--ong-yellow-deep); }
+    .ong-posted-title-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+    .ong-posted-sort-th {
+      cursor: pointer;
+      user-select: none;
+    }
+    .ong-posted-sort-th:hover { color: var(--ong-yellow-deep); }
+    .ong-sort-arrow {
+      display: inline-block;
+      margin-left: 4px;
+      font-style: normal;
+      opacity: 0.4;
+      font-size: 0.6rem;
+    }
+    .ong-sort-arrow.active { opacity: 1; color: var(--ong-yellow-deep); }
+    .ong-posted-link-icon { opacity: 0; font-size: 0.65rem; transition: opacity 0.12s; flex-shrink: 0; }
+    .ong-posted-title-link:hover .ong-posted-link-icon { opacity: 1; }
+    td.ong-posted-gmv { font-weight: 600; color: #16a34a; }
+    td.ong-posted-num { color: var(--ong-text2); }
+    .ong-posted-product-tag {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(245,200,66,0.18);
+      color: #92400e;
+      border: 1px solid rgba(200,160,0,0.2);
+    }
+
+    .ong-modal-level-filters {
+      padding: 10px 22px;
+      border-bottom: 1px solid var(--ong-border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    .ong-level-filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 5px;
+      border: 1px solid var(--ong-border);
+      background: transparent;
+      color: var(--ong-muted);
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s, border-color 0.12s;
+    }
+    .ong-level-filter-btn.active {
+      background: var(--ong-dark);
+      color: var(--ong-yellow);
+      border-color: var(--ong-dark);
+    }
+
+    .ong-creator-gmv {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--ong-dark);
+      min-width: 72px;
+      text-align: right;
+    }
+    .ong-creator-level {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      min-width: 26px;
+      text-align: center;
+    }
+    .ong-level-L1 { background: rgba(148,163,184,0.15); color: #64748b; }
+    .ong-level-L2 { background: rgba(96,165,250,0.15);  color: #3b82f6; }
+    .ong-level-L3 { background: rgba(52,211,153,0.15);  color: #10b981; }
+    .ong-level-L4 { background: rgba(245,200,66,0.2);   color: #b45309; }
+    .ong-level-L5 { background: rgba(251,146,60,0.15);  color: #ea580c; }
+    .ong-level-L6 { background: rgba(244,63,94,0.15);   color: #e11d48; }
+    .ong-level-L7 { background: rgba(168,85,247,0.15);  color: #9333ea; }
+
     .ong-stat-label {
       font-family: var(--font-mono);
       font-size: 0.6rem;
@@ -1339,6 +1696,11 @@
       transition: transform 0.2s;
     }
 
+    .ong-modal.ong-modal-wide {
+      max-width: 900px;
+      overflow-y: visible;
+    }
+
     .ong-modal-overlay.open .ong-modal { transform: translateY(0); }
 
     .ong-modal-header {
@@ -2158,9 +2520,10 @@
           <p class="ong-stat-label">Sample Requested</p>
           <p class="ong-stat-value" id="stat-req">—</p>
         </div>
-        <div class="ong-stat-card" style="border-top-color:#22c55e;">
+        <div class="ong-stat-card ong-stat-card-clickable" style="border-top-color:#22c55e;" id="btn-shipped-list">
           <p class="ong-stat-label">Sample Shipped</p>
           <p class="ong-stat-value" id="stat-approved">—</p>
+          <p class="ong-stat-click-hint">↗ view creator list</p>
         </div>
         <div class="ong-stat-card ong-stat-card-info" style="border-top-color:#94a3b8;">
           <p class="ong-stat-label">Approval Rate <span class="ong-stat-info-icon">ⓘ</span></p>
@@ -2171,9 +2534,10 @@
             <p class="ong-info-popup-body">To ensure accuracy, we aim to have zero "Ready to Ship" samples at each weekly meeting — at that point, Sample Shipped = Sample Approved and this rate is fully accurate.</p>
           </div>
         </div>
-        <div class="ong-stat-card" style="border-top-color:#f5c842;">
+        <div class="ong-stat-card ong-stat-card-clickable" style="border-top-color:#f5c842;" id="btn-posted-list">
           <p class="ong-stat-label">Video Posted</p>
           <p class="ong-stat-value" id="stat-posted">—</p>
+          <p class="ong-stat-click-hint" style="color:#d4a800;">↗ view videos</p>
         </div>
       </div>
 
@@ -3150,6 +3514,10 @@
         document.getElementById('stat-approved').textContent      = tot.sample_shipped.toLocaleString();
         document.getElementById('stat-approval-rate').textContent = approvalRate;
         document.getElementById('stat-posted').textContent        = tot.posted.toLocaleString();
+
+        // Expose current date range to shipped modal
+        window._s1Start = currentStart;
+        window._s1End   = currentEnd;
       }
 
       function makeChart(id, dsList) {
@@ -4292,6 +4660,286 @@
         }
         renderPATable();
       });
+    });
+  </script>
+
+  <!-- ── Shipped Creators Modal ── -->
+  <div class="ong-modal-overlay" id="shipped-modal-overlay">
+    <div class="ong-modal">
+      <div class="ong-modal-header">
+        <p class="ong-modal-title">Sample Shipped — Creators <span id="modal-count"></span></p>
+        <button class="ong-modal-close" id="shipped-modal-close">✕</button>
+      </div>
+      <div class="ong-modal-filter">
+        <input class="ong-modal-search" id="shipped-modal-search" type="text" placeholder="Search by handle…" />
+      </div>
+      <div class="ong-modal-level-filters" id="shipped-modal-levels">
+        <button class="ong-level-filter-btn active" data-level="All">All</button>
+      </div>
+      <div class="ong-modal-body" id="shipped-modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    /* ── Shipped Creators Modal ── */
+    let shippedCreators = [];
+
+    fetch('/data/ongredients/shipped_creators.json')
+      .then(r => r.json())
+      .then(data => {
+        shippedCreators = data;
+        // Build level filter buttons from levels that actually exist, in order
+        const allLevels = ['L7','L6','L5','L4','L3','L2','L1'];
+        const existing = new Set(data.map(r => r.level));
+        const container = document.getElementById('shipped-modal-levels');
+        allLevels.filter(l => existing.has(l)).forEach(l => {
+          const btn = document.createElement('button');
+          btn.className = 'ong-level-filter-btn';
+          btn.dataset.level = l;
+          btn.textContent = l;
+          container.appendChild(btn);
+        });
+      });
+
+    function fmtShippedDate(str) {
+      const [y, m, d] = str.split('-').map(Number);
+      const dt = new Date(y, m - 1, d);
+      return dt.toLocaleString('default', { month: 'short', day: 'numeric' });
+    }
+
+    function agentLabel(campaign) {
+      const m = campaign.match(/Influu (Agent\d+)/);
+      return m ? m[1] : campaign.split('|')[0].trim();
+    }
+
+    function renderShippedModal(filterStart, filterEnd, query, level) {
+      const body = document.getElementById('shipped-modal-body');
+      const q = (query || '').toLowerCase();
+      const lv = level || 'All';
+
+      const filtered = shippedCreators.filter(r => {
+        const d = new Date(r.shipped_date);
+        const inRange = d >= filterStart && d <= filterEnd;
+        const matchQ  = !q  || r.handle.toLowerCase().includes(q);
+        const matchLv = lv === 'All' || r.level === lv;
+        return inRange && matchQ && matchLv;
+      });
+
+      document.getElementById('modal-count').textContent = `(${filtered.length})`;
+
+      if (!filtered.length) {
+        body.innerHTML = '<p class="ong-modal-empty">No creators found.</p>';
+        return;
+      }
+
+      // Sort by GMV desc
+      filtered.sort((a, b) => (b.gmv_30d || 0) - (a.gmv_30d || 0));
+
+      body.innerHTML = filtered.map(r => `
+        <div class="ong-creator-row">
+          <a class="ong-creator-handle" href="${r.url}" target="_blank" rel="noopener">${r.handle}</a>
+          <div class="ong-creator-meta">
+            <span class="ong-creator-gmv">${fmtGMVShort(r.gmv_30d || 0)}</span>
+            <span class="ong-creator-level ong-level-${r.level}">${r.level}</span>
+            <span class="ong-creator-date">${fmtShippedDate(r.shipped_date)}</span>
+            <span class="ong-creator-campaign">${agentLabel(r.campaign)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    let _modalQuery = '';
+    let _modalLevel = 'All';
+
+    function fmtGMVShort(v) {
+      if (v === 0) return '$0';
+      if (v >= 1000000) return '$' + (v/1000000).toFixed(1) + 'M';
+      if (v >= 1000)    return '$' + (v/1000).toFixed(1) + 'K';
+      return '$' + v.toFixed(0);
+    }
+
+    function _refreshModal() {
+      const s   = window._s1Start || new Date('2026-04-20');
+      const end = window._s1End   || new Date('2026-05-02');
+      renderShippedModal(s, end, _modalQuery, _modalLevel);
+    }
+
+    document.getElementById('btn-shipped-list').addEventListener('click', () => {
+      const overlay = document.getElementById('shipped-modal-overlay');
+      _modalQuery = '';
+      _modalLevel = 'All';
+      document.getElementById('shipped-modal-search').value = '';
+      document.querySelectorAll('.ong-level-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.level === 'All'));
+      _refreshModal();
+      overlay.classList.add('open');
+    });
+
+    document.getElementById('shipped-modal-close').addEventListener('click', () => {
+      document.getElementById('shipped-modal-overlay').classList.remove('open');
+    });
+    document.getElementById('shipped-modal-overlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.getElementById('shipped-modal-overlay').classList.remove('open');
+    });
+
+    document.getElementById('shipped-modal-search').addEventListener('input', e => {
+      _modalQuery = e.target.value;
+      _refreshModal();
+    });
+
+    document.getElementById('shipped-modal-levels').addEventListener('click', e => {
+      const btn = e.target.closest('.ong-level-filter-btn');
+      if (!btn) return;
+      _modalLevel = btn.dataset.level;
+      document.querySelectorAll('.ong-level-filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+      _refreshModal();
+    });
+  </script>
+
+  <!-- ── Posted Videos Modal ── -->
+  <div class="ong-modal-overlay" id="posted-modal-overlay">
+    <div class="ong-modal ong-modal-wide">
+      <div class="ong-modal-header">
+        <p class="ong-modal-title">Videos Posted <span id="posted-modal-count"></span></p>
+        <button class="ong-modal-close" id="posted-modal-close">✕</button>
+      </div>
+      <div class="ong-posted-table-wrap" id="posted-modal-body" style="padding:0;"></div>
+    </div>
+  </div>
+
+  <script>
+    /* ── Posted Videos Modal ── */
+    let postedVideos = [];
+
+    fetch('/data/ongredients/posted_videos.json')
+      .then(r => r.json())
+      .then(data => { postedVideos = data; });
+
+    function fmtNum(v) {
+      if (v >= 1000000) return (v/1000000).toFixed(1) + 'M';
+      if (v >= 1000)    return (v/1000).toFixed(1) + 'K';
+      return String(v);
+    }
+    function fmtGMVCard(v) {
+      if (!v) return '$0';
+      if (v >= 1000) return '$' + (v/1000).toFixed(1) + 'K';
+      return '$' + v.toFixed(2);
+    }
+    function fmtPostDate(str) {
+      if (!str) return '—';
+      const [y,m,d] = str.split('-').map(Number);
+      return new Date(y,m-1,d).toLocaleString('default',{month:'short',day:'numeric'});
+    }
+
+    let _postedSort = { col: 'date', dir: 'desc' }; // default: newest first
+
+    function renderPostedModal(filterStart, filterEnd) {
+      const body = document.getElementById('posted-modal-body');
+      let filtered = postedVideos.filter(r => {
+        if (!r.post_date) return false;
+        const d = new Date(r.post_date);
+        return d >= filterStart && d <= filterEnd;
+      });
+      document.getElementById('posted-modal-count').textContent = `(${filtered.length})`;
+      if (!filtered.length) {
+        body.innerHTML = '<p class="ong-modal-empty">No videos found in this date range.</p>';
+        return;
+      }
+
+      // sort
+      filtered = [...filtered].sort((a, b) => {
+        let va, vb;
+        if (_postedSort.col === 'revenue') { va = a.gmv || 0; vb = b.gmv || 0; }
+        else if (_postedSort.col === 'views') { va = a.views || 0; vb = b.views || 0; }
+        else if (_postedSort.col === 'likes') { va = a.likes || 0; vb = b.likes || 0; }
+        else { va = new Date(a.post_date); vb = new Date(b.post_date); } // date
+        return _postedSort.dir === 'asc' ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+      });
+
+      const arw = (col) => {
+        const active = _postedSort.col === col;
+        const sym = active ? (_postedSort.dir === 'desc' ? '▼' : '▲') : '▼';
+        return `<i class="ong-sort-arrow${active ? ' active' : ''}">${sym}</i>`;
+      };
+
+      body.innerHTML = `
+        <table class="ong-posted-table">
+          <thead>
+            <tr>
+              <th style="width:60px;"></th>
+              <th style="width:170px;">Creator</th>
+              <th style="">Title</th>
+              <th class="ong-posted-sort-th" data-sort="date" style="width:100px;">Date ${arw('date')}</th>
+              <th class="ong-posted-sort-th" data-sort="revenue" style="width:100px;">Revenue ${arw('revenue')}</th>
+              <th class="ong-posted-sort-th" data-sort="views" style="width:90px;">Views ${arw('views')}</th>
+              <th class="ong-posted-sort-th" data-sort="likes" style="width:80px;">Likes ${arw('likes')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filtered.map(v => `
+              <tr>
+                <td class="ong-posted-thumb-cell">
+                  <img class="ong-posted-thumb"
+                    src="${v.thumbnail}"
+                    alt="${v.creator}"
+                    onerror="this.style.display:'none';this.nextElementSibling.style.display='flex';"
+                  /><div class="ong-posted-thumb-ph" style="display:none;">▶</div>
+                </td>
+                <td class="ong-posted-creator-cell ong-posted-creator">
+                  <a href="${v.creator_url}" target="_blank" rel="noopener">${v.creator}</a>
+                </td>
+                <td class="ong-posted-title-cell">
+                  <a class="ong-posted-title-link" href="${v.url}" target="_blank" rel="noopener">
+                    <span class="ong-posted-title-text">${v.title || '(no title)'}</span>
+                    <span class="ong-posted-link-icon">↗</span>
+                  </a>
+                </td>
+                <td class="ong-posted-num">${fmtPostDate(v.post_date)}</td>
+                <td class="ong-posted-gmv">${fmtGMVCard(v.gmv)}</td>
+                <td class="ong-posted-num">${fmtNum(v.views)}</td>
+                <td class="ong-posted-num">${fmtNum(v.likes)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>`;
+
+      // attach sort click handlers
+      body.querySelectorAll('.ong-posted-sort-th').forEach(th => {
+        th.addEventListener('click', () => {
+          const col = th.dataset.sort;
+          if (_postedSort.col === col) {
+            _postedSort.dir = _postedSort.dir === 'desc' ? 'asc' : 'desc';
+          } else {
+            _postedSort.col = col;
+            _postedSort.dir = 'desc';
+          }
+          renderPostedModal(filterStart, filterEnd);
+        });
+      });
+    }
+
+    document.getElementById('btn-posted-list').addEventListener('click', () => {
+      const overlay = document.getElementById('posted-modal-overlay');
+      const s   = window._s1Start || new Date('2026-04-20');
+      const end = window._s1End   || new Date('2026-05-02');
+      _postedSort = { col: 'date', dir: 'desc' }; // reset sort on open
+      renderPostedModal(s, end);
+      overlay.classList.add('open');
+    });
+
+    document.getElementById('posted-modal-close').addEventListener('click', () => {
+      document.getElementById('posted-modal-overlay').classList.remove('open');
+    });
+    document.getElementById('posted-modal-overlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.getElementById('posted-modal-overlay').classList.remove('open');
+        document.getElementById('shipped-modal-overlay').classList.remove('open');
+      }
     });
   </script>
 </body>
