@@ -3074,7 +3074,7 @@
           <!-- Agent 1 -->
           <div class="ong-cs-agent-card">
             <p class="ong-cs-agent-num">Agent 01</p>
-            <p class="ong-cs-agent-name">Influu Agent1 EX Lotion BPC</p>
+            <p class="ong-cs-agent-name">Demo Agent1 EX Lotion BPC</p>
             <table class="ong-cs-agent-table">
               <tr><td>GMV Range</td><td>$1K – $10K</td></tr>
               <tr><td>Category</td><td>Beauty &amp; Personal Care</td></tr>
@@ -3089,7 +3089,7 @@
           <!-- Agent 2 -->
           <div class="ong-cs-agent-card">
             <p class="ong-cs-agent-num">Agent 02</p>
-            <p class="ong-cs-agent-name">Influu Agent2 EX Lotion BPC</p>
+            <p class="ong-cs-agent-name">Demo Agent2 EX Lotion BPC</p>
             <table class="ong-cs-agent-table">
               <tr><td>GMV Range</td><td>$10K – $50K</td></tr>
               <tr><td>Category</td><td>Beauty &amp; Personal Care</td></tr>
@@ -3104,7 +3104,7 @@
           <!-- Agent 3 -->
           <div class="ong-cs-agent-card">
             <p class="ong-cs-agent-num">Agent 03</p>
-            <p class="ong-cs-agent-name">Influu Agent3 EX Lotion BPC — Premium</p>
+            <p class="ong-cs-agent-name">Demo Agent3 EX Lotion BPC — Premium</p>
             <table class="ong-cs-agent-table">
               <tr><td>GMV Range</td><td>$50K – $2M</td></tr>
               <tr><td>Category</td><td>Beauty &amp; Personal Care</td></tr>
@@ -3557,8 +3557,8 @@
 
     /* ── Load data ── */
     Promise.all([
-      fetch('/data/ongredients/invitation.json').then(r => r.json()),
-      fetch('/data/ongredients/video_daily.json').then(r => r.json()),
+      fetch('/data/ongredients/invitation.json?v=demo1').then(r => r.json()),
+      fetch('/data/ongredients/video_daily.json?v=demo1').then(r => r.json()),
     ]).then(([invData, videoData]) => {
       rawInv = invData;
       init(videoData);
@@ -3868,7 +3868,7 @@
       `).join('');
     }
 
-    fetch('/data/ongredients/video_detail.json')
+    fetch('/data/ongredients/video_detail.json?v=demo1')
       .then(r => r.json())
       .then(data => {
         videoDetailData = data;
@@ -4734,7 +4734,7 @@
     });
 
     loadFromStorage();
-    fetch('/data/ongredients/paid_affiliates.json')
+    fetch('/data/ongredients/paid_affiliates.json?v=demo1')
       .then(r => r.json())
       .then(data => {
         paData = data;
@@ -4787,7 +4787,7 @@
     /* ── Shipped Creators Modal ── */
     let shippedCreators = [];
 
-    fetch('/data/ongredients/shipped_creators.json')
+    fetch('/data/ongredients/shipped_creators.json?v=demo1')
       .then(r => r.json())
       .then(data => {
         shippedCreators = data;
@@ -4811,7 +4811,7 @@
     }
 
     function agentLabel(campaign) {
-      const m = campaign.match(/Influu (Agent\d+)/);
+      const m = campaign.match(/Demo (Agent\d+)/);
       return m ? m[1] : campaign.split('|')[0].trim();
     }
 
@@ -4916,7 +4916,7 @@
     /* ── Posted Videos Modal ── */
     let postedVideos = [];
 
-    fetch('/data/ongredients/posted_videos.json')
+    fetch('/data/ongredients/posted_videos.json?v=demo1')
       .then(r => r.json())
       .then(data => { postedVideos = data; });
 
